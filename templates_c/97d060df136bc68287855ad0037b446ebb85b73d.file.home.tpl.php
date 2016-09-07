@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2016-09-06 21:37:40
+<?php /* Smarty version Smarty-3.1.18, created on 2016-09-07 10:42:24
          compiled from ".\templates\home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1944757cdde4d8a0373-69140913%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '97d060df136bc68287855ad0037b446ebb85b73d' => 
     array (
       0 => '.\\templates\\home.tpl',
-      1 => 1473190656,
+      1 => 1473190800,
       2 => 'file',
     ),
   ),
@@ -153,10 +153,8 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['last']       = ($_sm
                     </div>
                 </div>
 
-
             <?php endfor; endif; ?>
-
-            <!-- /#sidebar-wrapper -->
+            <!-- /#content-wrapper -->
 
             <div class="col-sm-10 content">
                 <?php if (isset($_GET['cat'])) {?>         <?php echo $_smarty_tpl->getSubTemplate ('catproducts.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
