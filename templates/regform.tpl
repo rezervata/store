@@ -28,14 +28,14 @@
         <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-9">
-                <input type="password"  name="password" id="password" placeholder="Password" class="form-control">
+                <input type="password"  name="pass" id="password" placeholder="Password" class="form-control">
             </div>
         </div> <!-- /.form-group -->
 
         <div class="form-group">
             <label for="confirmPassword" class="col-sm-3 control-label">Confirm Password</label>
             <div class="col-sm-9">
-                <input type="password" name="password_confirmation" id="confirmPassword" placeholder="Confirm Password" class="form-control">
+                <input type="password" name="pass_confirmation" id="confirmPassword" placeholder="Confirm Password" class="form-control">
             </div>
         </div> <!-- /.form-group -->
 
@@ -55,12 +55,15 @@
             </div>
         </div> <!-- /.form-group -->
         
-        <h1>{if isset($registerErr)}{$registerErr}{else}Registration Successful.{/if}</h1>
+        <h1>
+            {if isset({$registerErr})}{else}{$registerSuccess}{/if}
+        </h1>
+        
     </form> <!-- /form -->
+    
 </div> <!-- ./container -->
 
-
-<form id='register' action='register' method='post'
+{*<form id='register' action='register' method='post'
     accept-charset='UTF-8'>
 <fieldset >
 <legend>Register</legend>
@@ -74,7 +77,7 @@
 <label for='password' >Password*:</label>
 <input type='password' name='pass' id='password' maxlength="50" />
 <input type='submit' name='Submit' value='Submit' />
-<!--  <h1>{if isset($registerErr)}{$registerErr}{else}Registration Successful.{/if}</h1>  -->
+<!--  <h1>{if isset($registerErr)}{$registerErr}{else}{$registerSuccess}{/if}</h1>  -->
 
 </fieldset>
-</form>
+</form>*}

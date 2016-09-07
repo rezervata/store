@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2016-09-06 20:44:07
+<?php /* Smarty version Smarty-3.1.18, created on 2016-09-07 18:07:20
          compiled from ".\templates\regform.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2530557cebb1d5e8e90-06709634%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ef75011b4a338d8978bf73f09cbfb5a7b946d464' => 
     array (
       0 => '.\\templates\\regform.tpl',
-      1 => 1473187389,
+      1 => 1473264436,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'registerErr' => 0,
+    'registerSuccess' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -53,14 +54,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-9">
-                <input type="password"  name="password" id="password" placeholder="Password" class="form-control">
+                <input type="password"  name="pass" id="password" placeholder="Password" class="form-control">
             </div>
         </div> <!-- /.form-group -->
 
         <div class="form-group">
             <label for="confirmPassword" class="col-sm-3 control-label">Confirm Password</label>
             <div class="col-sm-9">
-                <input type="password" name="password_confirmation" id="confirmPassword" placeholder="Confirm Password" class="form-control">
+                <input type="password" name="pass_confirmation" id="confirmPassword" placeholder="Confirm Password" class="form-control">
             </div>
         </div> <!-- /.form-group -->
 
@@ -80,28 +81,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             </div>
         </div> <!-- /.form-group -->
         
-        <h1><?php if (isset($_smarty_tpl->tpl_vars['registerErr']->value)) {?><?php echo $_smarty_tpl->tpl_vars['registerErr']->value;?>
-<?php } else { ?>Registration Successful.<?php }?></h1>
+        <h1>
+            <?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['registerErr']->value;?>
+<?php $_tmp1=ob_get_clean();?><?php if (isset($_tmp1)) {?><?php } else { ?><?php echo $_smarty_tpl->tpl_vars['registerSuccess']->value;?>
+<?php }?>
+        </h1>
+        
     </form> <!-- /form -->
+    
 </div> <!-- ./container -->
 
-
-<form id='register' action='register' method='post'
-    accept-charset='UTF-8'>
-<fieldset >
-<legend>Register</legend>
-<input type='hidden' name='submitted' id='submitted' value='1'/>
-<label for='name' >Your Full Name*: </label>
-<input type='text' name='name' id='name' maxlength="50" />
-<label for='email' >Email Address*:</label>
-<input type='text' name='mail' id='email' maxlength="50" />
-<label for='phone' >Phone number*:</label>
-<input type='text' name='phone' id='Phone' maxlength="50" />
-<label for='password' >Password*:</label>
-<input type='password' name='pass' id='password' maxlength="50" />
-<input type='submit' name='Submit' value='Submit' />
-<!--  <h1><?php if (isset($_smarty_tpl->tpl_vars['registerErr']->value)) {?><?php echo $_smarty_tpl->tpl_vars['registerErr']->value;?>
-<?php } else { ?>Registration Successful.<?php }?></h1>  -->
-
-</fieldset>
-</form><?php }} ?>
+<?php }} ?>

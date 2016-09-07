@@ -60,17 +60,23 @@ $smarty->display('home.tpl');
 
 //print_r($_SESSION);
 
-if (isset($_POST['register'])) {
+//var_dump($_POST['submitted']);
+//var_dump($_POST['name']);
+//var_dump($_POST['pass']);
+//var_dump($_POST['phone']);
+//var_dump($_POST['mail']);
 
 
-//    if (empty($_POST['name'] && $_POST['mail'] && $_POST['phone'] && $_POST['pass'])) {
-//        die('Registration failed. Please field all fields.');
-//    }
+
+
+
+if (isset($_POST['submitted'])) {
 
     if (!empty($_POST['name'] && $_POST['mail'] && $_POST['phone'] && $_POST['pass'])) {
-        print_r($_SESSION);
+        print_r($_POST);
         $res = $db->insert("insert into clients (name, mail, phone, pass) values ( ? , ? , ? , ?) ", array($_POST['name'], $_POST['mail'], $_POST['phone'], $_POST['pass']));
         var_dump($res);
+        $smarty->assign('registerSuccess', 'Registration success!!!');
     } else
         $smarty->assign('registerErr', 'Registration failed.');
 }
