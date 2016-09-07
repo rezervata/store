@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2016-09-07 10:42:24
+<?php /* Smarty version Smarty-3.1.18, created on 2016-09-07 13:09:11
          compiled from ".\templates\home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1944757cdde4d8a0373-69140913%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '97d060df136bc68287855ad0037b446ebb85b73d' => 
     array (
       0 => '.\\templates\\home.tpl',
-      1 => 1473190800,
+      1 => 1473246544,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'CATEGORIES' => 0,
-    'TOPPRODUCT' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -44,12 +43,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">WebSiteName</a>
+                        <a class="navbar-brand" href="home/">WebSiteName</a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Page 1</a></li>
-                        <li><a href="#">Page 2</a></li> 
+                        <li class="active"><a href="home/">Home</a></li>
+                        <li><a href="home/">Page 1</a></li>
+                        <li><a href="home/">Page 2</a></li> 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="register/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -103,69 +102,22 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['last']       = ($_smar
             </div>
             <!-- /#sidebar-wrapper -->
 
-            <!-- Content -->
-            <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['prod'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['prod']);
-$_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['name'] = 'prod';
-$_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['TOPPRODUCT']->value) ? count($_loop) : max(0, (int) $_loop); unset($_loop);
-$_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['show'] = true;
-$_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['max'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['loop'];
-$_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['step'] = 1;
-$_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['start'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['step'] > 0 ? 0 : $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['loop']-1;
-if ($_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['show']) {
-    $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['total'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['loop'];
-    if ($_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['total'] == 0)
-        $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['show'] = false;
-} else
-    $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['total'] = 0;
-if ($_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['show']):
-
-            for ($_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['index'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['start'], $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['iteration'] = 1;
-                 $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['iteration'] <= $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['total'];
-                 $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['index'] += $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['step'], $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['iteration']++):
-$_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['rownum'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['iteration'];
-$_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['index_prev'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['index'] - $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['step'];
-$_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['index_next'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['index'] + $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['step'];
-$_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['iteration'] == 1);
-$_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['total']);
-?>
-
-                <div class="row">
-                    <div class="col-sm-3 col-md-4">
-                        <div class="thumbnail">
-                            <img src="product/<?php echo $_smarty_tpl->tpl_vars['TOPPRODUCT']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prod']['index']]['url'];?>
-" alt="<?php echo stripslashes($_smarty_tpl->tpl_vars['TOPPRODUCT']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prod']['index']]['name']);?>
-">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p><?php echo stripslashes($_smarty_tpl->tpl_vars['TOPPRODUCT']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prod']['index']]['name']);?>
-</p>
-                                <p>
-                                    <a href="product/<?php echo $_smarty_tpl->tpl_vars['TOPPRODUCT']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prod']['index']]['url'];?>
-" class="btn btn-primary" role="button"><?php echo stripslashes($_smarty_tpl->tpl_vars['TOPPRODUCT']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prod']['index']]['name']);?>
-</a>
-                                    <label><?php echo $_smarty_tpl->tpl_vars['TOPPRODUCT']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prod']['index']]['price'];?>
- лв.</label>
-                                    <a href="#" class="btn btn-default" role="button"><?php echo $_smarty_tpl->tpl_vars['TOPPRODUCT']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prod']['index']]['price'];?>
- лв.</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            <?php endfor; endif; ?>
-            <!-- /#content-wrapper -->
+            
 
             <div class="col-sm-10 content">
-                <?php if (isset($_GET['cat'])) {?>         <?php echo $_smarty_tpl->getSubTemplate ('catproducts.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+                <?php if (isset($_GET['cat'])) {?>             <?php echo $_smarty_tpl->getSubTemplate ('catproducts.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
         <?php }?>
-                <?php if (isset($_GET['product'])) {?>     <?php echo $_smarty_tpl->getSubTemplate ('product.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+                <?php if (isset($_GET['product'])) {?>         <?php echo $_smarty_tpl->getSubTemplate ('product.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
             <?php }?>
-                
-                <?php if (isset($_GET['register'])) {?>     <?php echo $_smarty_tpl->getSubTemplate ('regform.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
-           <?php }?>
-                <?php if (isset($_GET['clLogin'])) {?>     <?php echo $_smarty_tpl->getSubTemplate ('login.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
-           <?php }?>
+                <?php if (isset($_GET['adminlogin'])) {?>      <?php echo $_smarty_tpl->getSubTemplate ('adminlogin.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+         <?php }?>
+                <?php if (isset($_GET['register'])) {?>        <?php echo $_smarty_tpl->getSubTemplate ('regform.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+            <?php }?>
+                <?php if (isset($_GET['clLogin'])) {?>         <?php echo $_smarty_tpl->getSubTemplate ('login.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+              <?php }?>                
+                <?php if (isset($_GET['home'])) {?>            <?php echo $_smarty_tpl->getSubTemplate ('top.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+                <?php }?>
+
 
 
             </div>
