@@ -26,15 +26,23 @@
                         <li><a href="home/">Page 2</a></li> 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="register/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li>
-                        <li><a href="client-login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        {if isset({$_SESSION['loggedin']}) && {$_SESSION['loggedin'] == true}}
+                            {section name=us loop=$USER}
+                                <li><a href="register/"><span class="glyphicon glyphicon-user"></span>{$USER[us].name}</a></li>                            
+
+                            {/section}
+                            <li><a href="home/"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                            {else}
+                            <li><a href="register/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                            <li><a href="client-login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            {/if}
+
                     </ul>
                 </div>
             </nav>
-            {*     {if isset($smarty.session.admin) && $smarty.session.admin == '555'}
-            {include file='adminMenu.tpl'}
-            {/if}*}
+            {if isset($smarty.session.admin) && $smarty.session.admin == '555'}
+                {include file='adminMenu.tpl'}
+            {/if}
 
 
             <!-- login -->
@@ -72,22 +80,22 @@
             {*<!-- Content -->
             {section name=prod loop=$TOPPRODUCT}
 
-                <div class="row">
-                    <div class="col-sm-3 col-md-4">
-                        <div class="thumbnail">
-                            <img src="product/{$TOPPRODUCT[prod].url}" alt="{$TOPPRODUCT[prod].name|stripslashes}">
-                            <div class="caption">
-                                <h3>Thumbnail label</h3>
-                                <p>{$TOPPRODUCT[prod].name|stripslashes}</p>
-                                <p>
-                                    <a href="product/{$TOPPRODUCT[prod].url}" class="btn btn-primary" role="button">{$TOPPRODUCT[prod].name|stripslashes}</a>
-                                    <label>{$TOPPRODUCT[prod].price} лв.</label>
-                                    <a href="#" class="btn btn-default" role="button">{$TOPPRODUCT[prod].price} лв.</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="row">
+            <div class="col-sm-3 col-md-4">
+            <div class="thumbnail">
+            <img src="product/{$TOPPRODUCT[prod].url}" alt="{$TOPPRODUCT[prod].name|stripslashes}">
+            <div class="caption">
+            <h3>Thumbnail label</h3>
+            <p>{$TOPPRODUCT[prod].name|stripslashes}</p>
+            <p>
+            <a href="product/{$TOPPRODUCT[prod].url}" class="btn btn-primary" role="button">{$TOPPRODUCT[prod].name|stripslashes}</a>
+            <label>{$TOPPRODUCT[prod].price} лв.</label>
+            <a href="#" class="btn btn-default" role="button">{$TOPPRODUCT[prod].price} лв.</a>
+            </p>
+            </div>
+            </div>
+            </div>
+            </div>
 
             {/section}
             <!-- /#content-wrapper -->*}

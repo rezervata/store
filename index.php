@@ -56,10 +56,9 @@ if (isset($_GET['adminlogin'])) {
 $smarty->assign('CATEGORIES', $db->select("select id_cat,url,name from category order by name"));
 //$smarty->display('home.tpl');
 $smarty->assign('TOPPRODUCT', $db->select("select id_prod,url,name, opis, proizvoditel, price from products order by name"));
-$smarty->display('home.tpl');
+
 
 //print_r($_SESSION);
-
 //var_dump($_POST['submitted']);
 //var_dump($_POST['name']);
 //var_dump($_POST['pass']);
@@ -68,7 +67,8 @@ $smarty->display('home.tpl');
 
 
 
-
+$res = [];
+$dsta = [];
 
 if (isset($_POST['submitted'])) {
 
@@ -76,8 +76,32 @@ if (isset($_POST['submitted'])) {
         print_r($_POST);
         $res = $db->insert("insert into clients (name, mail, phone, pass) values ( ? , ? , ? , ?) ", array($_POST['name'], $_POST['mail'], $_POST['phone'], $_POST['pass']));
         var_dump($res);
-        $smarty->assign('registerSuccess', 'Registration success!!!');
-    } else
+
+        if ($res !== 0) {
+
+            $smarty->assign('registerSuccess', 'Registration success!!!');
+
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $_POST['name'];
+
+            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+                echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
+
+                $data = $db->select("select cli_id, name,phone,mail,pass from clients where cli_id= ?", array($res));
+                $smarty->assign('USER', $data);
+
+            } else {
+                echo "Please log in first to see this page.";
+            }
+        }
+    } else {
         $smarty->assign('registerErr', 'Registration failed.');
+    }
 }
+
+//$smarty->assign('TEST', $db->select("select cli_id, name,phone,mail,pass from clients where cli_id= 23"));
+$smarty->display('home.tpl');
+
+// $_SESSION['loggedin'] = false;
+// session_destroy();
 ?>
