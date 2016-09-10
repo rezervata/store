@@ -5,6 +5,7 @@ session_start();
 
 require_once 'libs/Smarty.class.php';
 require_once 'logic/db.class.php';
+require_once 'logic/error.php';
 
 
 $smarty = new Smarty;
@@ -12,6 +13,9 @@ $db = new DB;
 
 //$data = $logic->select("show tables");
 //print_r($data);
+
+if(isset($_GET['clExit'])) unset($_SESSION['client']);
+
 if (isset($_GET['cat'])) {
     $data = $db->select("select p.name, p.url, p.price from products p join category c on p.id_cat = c.id_cat where c.url= ?", array($_GET['cat']));
     $smarty->assign('CATPRODUCTS', $data);
@@ -21,22 +25,18 @@ if (isset($_GET['product'])) {
     $smarty->assign('PRODUCT', $data);
 }
 
-if (isset($_GET['clLogin'])) {
+if (!empty($_POST)) {
+    $res = $db->select("select name, mail, pass from clients where mail= ? and pass= ? ", array($_POST['mail'], md5($_POST['pass'])));
 
-    if (!empty($_POST)) {
-        $res = $db->select("select mail, pass from clients where mail= ? and pass= ? ", array($_POST['mail'], $_POST['pass']));
-        var_dump($res);
+    if (!empty($res)) {
+        if ($_POST['mail'] == $res[0]['mail'] && md5($_POST['pass']) == $res[0]['pass']) {
+            $_SESSION['client']['logged'] = true;
+            $_SESSION['client']['name'] = stripslashes($res[0]['name']);
 
-        if (!empty($res)) {
-            if ($_POST['mail'] == $res[0]['mail'] && $_POST['pass'] == $res[0]['pass']) {
-                $_SESSION['client'] = 111;
-
-                $smarty->assign('USERS', $res);
-            } else
-                $smarty->assign('ERR', 'Login incorrect.');
         } else
             $smarty->assign('ERR', 'Login incorrect.');
-    }
+    } else
+        $smarty->assign('ERR', 'Login incorrect.');
 }
 
 if (isset($_GET['adminlogin'])) {
@@ -53,55 +53,48 @@ if (isset($_GET['adminlogin'])) {
     }
 }
 
-$smarty->assign('CATEGORIES', $db->select("select id_cat,url,name from category order by name"));
-//$smarty->display('home.tpl');
-$smarty->assign('TOPPRODUCT', $db->select("select id_prod,url,name, opis, proizvoditel, price from products order by name"));
+if (isset($_GET['register']) && !empty($_POST)) {
 
-
-//print_r($_SESSION);
-//var_dump($_POST['submitted']);
-//var_dump($_POST['name']);
-//var_dump($_POST['pass']);
-//var_dump($_POST['phone']);
-//var_dump($_POST['mail']);
-
-
-
-$res = [];
-$dsta = [];
-
-if (isset($_POST['submitted'])) {
-
-    if (!empty($_POST['name'] && $_POST['mail'] && $_POST['phone'] && $_POST['pass'])) {
+    $result = newClient($_POST, $db);
+    if($result == 1000){
+        $_SESSION['client']['name'] = $_POST['name'];
+        $_SESSION['client']['logged'] = true;
+    }
+    
+    $smarty->assign('CLREGISTER', $result);
+    /*
+    if (!empty($_POST['name']) && !empty($_POST['mail']) && !empty($_POST['phone']) && !empty($_POST['pass'])) {
         print_r($_POST);
         $res = $db->insert("insert into clients (name, mail, phone, pass) values ( ? , ? , ? , ?) ", array($_POST['name'], $_POST['mail'], $_POST['phone'], $_POST['pass']));
         var_dump($res);
-
-        if ($res !== 0) {
-
-            $smarty->assign('registerSuccess', 'Registration success!!!');
-
-            $_SESSION['loggedin'] = true;
-            $_SESSION['username'] = $_POST['name'];
-
-            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-                echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
-
-                $data = $db->select("select cli_id, name,phone,mail,pass from clients where cli_id= ?", array($res));
-                $smarty->assign('USER', $data);
-
-            } else {
-                echo "Please log in first to see this page.";
-            }
-        }
-    } else {
+        $smarty->assign('registerSuccess', 'Registration success!!!');
+    } else
         $smarty->assign('registerErr', 'Registration failed.');
-    }
+  
+     */
 }
 
-//$smarty->assign('TEST', $db->select("select cli_id, name,phone,mail,pass from clients where cli_id= 23"));
+$smarty->assign('CATEGORIES', $db->select("select id_cat,url,name from category order by name"));
+//$smarty->display('home.tpl');
+$smarty->assign('TOPPRODUCT', $db->select("select id_prod,url,name, opis, proizvoditel, price from products order by name"));
 $smarty->display('home.tpl');
 
-// $_SESSION['loggedin'] = false;
-// session_destroy();
+
+
+function newClient($data = array(), $db){
+    if(empty($data['name']) || empty($data['mail']) || empty($data['phone']) || empty($data['pass']) || empty($data['pass2'])) return 1001;
+    if($data['pass'] != $data['pass2']) return 1002;
+    
+  
+    $check = $db->select("select cli_id from clients where mail = ?", array($data['mail']));
+    if(!empty($check)) return 1004;
+ 
+    
+    $res = $db->insert("insert into clients (name, mail, phone, pass) values ( ? , ? , ? , ?) ", array($_POST['name'], $_POST['mail'], $_POST['phone'], md5($_POST['pass'])));
+    if(!$res) return 1003;
+ 
+    return 1000;
+}
+
+print_r($_SESSION);
 ?>
