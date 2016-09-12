@@ -5,6 +5,7 @@ session_start();
 
 require_once 'libs/Smarty.class.php';
 require_once 'logic/db.class.php';
+require_once 'logic/client.class.php';
 require_once 'logic/error.php';
 
 
@@ -55,46 +56,37 @@ if (isset($_GET['adminlogin'])) {
 
 if (isset($_GET['register']) && !empty($_POST)) {
 
-    $result = newClient($_POST, $db);
+    $client= new Client($_POST, $db);
+    var_dump($client);
+    $result = $client->newClient($_POST,$db);
     if($result == 1000){
         $_SESSION['client']['name'] = $_POST['name'];
         $_SESSION['client']['logged'] = true;
     }
     
     $smarty->assign('CLREGISTER', $result);
-    /*
-    if (!empty($_POST['name']) && !empty($_POST['mail']) && !empty($_POST['phone']) && !empty($_POST['pass'])) {
-        print_r($_POST);
-        $res = $db->insert("insert into clients (name, mail, phone, pass) values ( ? , ? , ? , ?) ", array($_POST['name'], $_POST['mail'], $_POST['phone'], $_POST['pass']));
-        var_dump($res);
-        $smarty->assign('registerSuccess', 'Registration success!!!');
-    } else
-        $smarty->assign('registerErr', 'Registration failed.');
-  
-     */
 }
 
 $smarty->assign('CATEGORIES', $db->select("select id_cat,url,name from category order by name"));
-//$smarty->display('home.tpl');
 $smarty->assign('TOPPRODUCT', $db->select("select id_prod,url,name, opis, proizvoditel, price from products order by name"));
 $smarty->display('home.tpl');
 
 
 
-function newClient($data = array(), $db){
-    if(empty($data['name']) || empty($data['mail']) || empty($data['phone']) || empty($data['pass']) || empty($data['pass2'])) return 1001;
-    if($data['pass'] != $data['pass2']) return 1002;
-    
-  
-    $check = $db->select("select cli_id from clients where mail = ?", array($data['mail']));
-    if(!empty($check)) return 1004;
- 
-    
-    $res = $db->insert("insert into clients (name, mail, phone, pass) values ( ? , ? , ? , ?) ", array($_POST['name'], $_POST['mail'], $_POST['phone'], md5($_POST['pass'])));
-    if(!$res) return 1003;
- 
-    return 1000;
-}
+//function newClient($data = array(), $db){
+//    if(empty($data['name']) || empty($data['mail']) || empty($data['phone']) || empty($data['pass']) || empty($data['pass2'])) return 1001;
+//    if($data['pass'] != $data['pass2']) return 1002;
+//    
+//  
+//    $check = $db->select("select cli_id from clients where mail = ?", array($data['mail']));
+//    if(!empty($check)) return 1004;
+// 
+//    
+//    $res = $db->insert("insert into clients (name, mail, phone, pass) values ( ? , ? , ? , ?) ", array($_POST['name'], $_POST['mail'], $_POST['phone'], md5($_POST['pass'])));
+//    if(!$res) return 1003;
+// 
+//    return 1000;
+//}
 
 print_r($_SESSION);
 ?>

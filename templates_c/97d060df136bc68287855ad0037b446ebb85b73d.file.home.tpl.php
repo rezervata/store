@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2016-09-10 14:43:48
+<?php /* Smarty version Smarty-3.1.18, created on 2016-09-13 00:13:45
          compiled from ".\templates\home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1944757cdde4d8a0373-69140913%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '97d060df136bc68287855ad0037b446ebb85b73d' => 
     array (
       0 => '.\\templates\\home.tpl',
-      1 => 1473511428,
+      1 => 1473718200,
       2 => 'file',
     ),
   ),
@@ -55,11 +55,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['client']['name'];?>
 </a></li>
                             <li><a href="/client-exit/">Sign out</a></li>
-                        <?php } else { ?>
-                        <li><a href="register/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li><a href="client-login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        <?php }?>
-                        
+                            <?php } else { ?>
+                            <li><a href="register/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                            <li><a href="client-login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            <?php }?>
+                        <li><a href="shoppingCart/"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+
                     </ul>
                 </div>
             </nav>

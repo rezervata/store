@@ -2,7 +2,6 @@
     {if isset($CLREGISTER)}<h2>{$CLREGISTER|getError}</h2>{/if}
     <form class="form-horizontal" role="form" id='register' action='/register/' method='post'
     accept-charset='UTF-8'>
-{*        <input type='hidden' name='submitted' id='submitted' value='1'/>*}
         <h2>Registration Form</h2>
         <div class="form-group">
             <label for="name" class="col-sm-3 control-label">Full Name</label>

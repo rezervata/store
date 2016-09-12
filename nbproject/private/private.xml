@@ -5,12 +5,12 @@
         <group>
             <file>file:/D:/xampp/htdocs/store/templates/home.tpl</file>
             <file>file:/D:/xampp/htdocs/store/templates/adminlogin.tpl</file>
+            <file>file:/D:/xampp/htdocs/store/templates/login.tpl</file>
             <file>file:/D:/xampp/htdocs/store/templates/regform.tpl</file>
             <file>file:/D:/xampp/htdocs/store/logic/db.class.php</file>
-            <file>file:/D:/xampp/htdocs/store/templates/top.tpl</file>
             <file>file:/D:/xampp/htdocs/store/index.php</file>
-            <file>file:/D:/xampp/htdocs/store/.htaccess</file>
             <file>file:/D:/xampp/htdocs/store/logic/login.php</file>
+            <file>file:/D:/xampp/htdocs/store/.htaccess</file>
         </group>
     </open-files>
 </project-private>

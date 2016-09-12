@@ -29,11 +29,12 @@
                         {if isset($smarty.session.client.logged)}
                             <li><a href="#"><span class="glyphicon glyphicon-user"></span> {$smarty.session.client.name}</a></li>
                             <li><a href="/client-exit/">Sign out</a></li>
-                        {else}
-                        <li><a href="register/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li><a href="client-login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        {/if}
-                        
+                            {else}
+                            <li><a href="register/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                            <li><a href="client-login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            {/if}
+                        <li><a href="shoppingCart/"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+
                     </ul>
                 </div>
             </nav>

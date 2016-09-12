@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2016-09-10 13:58:49
+<?php /* Smarty version Smarty-3.1.18, created on 2016-09-13 00:03:27
          compiled from ".\templates\regform.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2530557cebb1d5e8e90-06709634%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ef75011b4a338d8978bf73f09cbfb5a7b946d464' => 
     array (
       0 => '.\\templates\\regform.tpl',
-      1 => 1473508422,
+      1 => 1473715734,
       2 => 'file',
     ),
   ),
@@ -28,7 +28,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </h2><?php }?>
     <form class="form-horizontal" role="form" id='register' action='/register/' method='post'
     accept-charset='UTF-8'>
-
         <h2>Registration Form</h2>
         <div class="form-group">
             <label for="name" class="col-sm-3 control-label">Full Name</label>
