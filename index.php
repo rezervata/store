@@ -8,6 +8,7 @@ require_once 'logic/db.class.php';
 require_once 'logic/client.class.php';
 require_once 'logic/error.php';
 
+// Bat svetko in da house
 
 $smarty = new Smarty;
 $db = new DB;
