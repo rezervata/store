@@ -7,7 +7,7 @@
     	<div class="liName">{$LAST5[li].name|stripslashes}</div>
         <div class="liText">
         	{*<p style="display:inline-block; background:url(images/m{$LAST5[li].image}.jpg) center; float:left; width:50px; height:40px;"></p>*}
-            <img src="images/t{$LAST5[li].image}.jpg" style="width:30%; float:left; margin-right:4px;">
+            <img src="/img/t{$LAST5[li].image}.jpg" style="width:30%; float:left; margin-right:4px;">
         	{$LAST5[li].data|stripslashes}...
             <div class="clearfix"></div>
         	<span>View more...</span>

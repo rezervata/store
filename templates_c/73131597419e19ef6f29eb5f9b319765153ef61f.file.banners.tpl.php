@@ -1,30 +1,30 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-01-26 11:19:14
+<?php /* Smarty version Smarty-3.1.18, created on 2017-01-26 15:59:18
          compiled from "./templates/banners.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:36067725858518151af7458-70670545%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1804062976588a00b6be96d3-08680618%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '73131597419e19ef6f29eb5f9b319765153ef61f' => 
     array (
       0 => './templates/banners.tpl',
-      1 => 1485391049,
+      1 => 1485438097,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '36067725858518151af7458-70670545',
+  'nocache_hash' => '1804062976588a00b6be96d3-08680618',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_58518151bb6a66_11282236',
   'variables' => 
   array (
     'BANNERS' => 0,
     'NODE' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_588a00b6c693b2_78157462',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_58518151bb6a66_11282236')) {function content_58518151bb6a66_11282236($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_588a00b6c693b2_78157462')) {function content_588a00b6c693b2_78157462($_smarty_tpl) {?>
 <?php  $_smarty_tpl->tpl_vars['NODE'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['NODE']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['BANNERS']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['NODE']->key => $_smarty_tpl->tpl_vars['NODE']->value) {
@@ -56,7 +56,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['si']['index_next'] = $_smart
 $_smarty_tpl->tpl_vars['smarty']->value['section']['si']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['si']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['si']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['si']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['si']['total']);
 ?>
-    <div class="svNode" style="position:absolute; height:140px; width:100%; background:url(images/<?php echo $_smarty_tpl->tpl_vars['NODE']->value[$_smarty_tpl->getVariable('smarty')->value['section']['si']['index']]['image'];?>
+    <div class="svNode" style="position:absolute; height:140px; width:100%; background:url(img/<?php echo $_smarty_tpl->tpl_vars['NODE']->value[$_smarty_tpl->getVariable('smarty')->value['section']['si']['index']]['image'];?>
 .jpg) center; background-size:140%; white-space: nowrap;">
     	<a href="product/<?php echo stripslashes($_smarty_tpl->tpl_vars['NODE']->value[$_smarty_tpl->getVariable('smarty')->value['section']['si']['index']]['name']);?>
 ">
