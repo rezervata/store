@@ -249,7 +249,7 @@ $(document).ready(function () {
 
 
 /*** BANNERS ***/
-	$(document).on('click','input[name="bNewBanner"]',function(){
+	$(document).on('click','a[name="bNewBanner"]',function(){
 		$('#metro_body').html('<p>Creating banner group...</p>');
 		$('#_blanketH').fadeIn(400);
 		
@@ -269,7 +269,7 @@ $(document).ready(function () {
 			}
 		},'json');
 	});
-	$(document).on('click','input[name="bShowBanners"]',function(){
+	$(document).on('click','a[name="bShowBanners"]',function(){
 		$('#metro_body').html('');
 		$('#metro_body').load('async.php?load=showBanners',function(){
 			$('#_blanketH').fadeIn(400);
