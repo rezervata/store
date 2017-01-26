@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+    "configurations": [{
+            "name": "Listen for XDebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9000,
+            // "program": "${workspaceRoot}\\index.php",
+            // "localSourceRoot": "${workspaceRoot}",
+            // "serverSourceRoot": "${D:\\xampp\\htdocs\\store\\index.php",
+            "log": true,
+            // "stopOnEntry": false,
+            // "args": [],
+            // "cwd": "${workspaceRoot}",
+            // "preLaunchTask": null,
+            // "runtimeExecutable": "${D:\\xampp\\htdocs\\store\\index.php}"
+            //"stopOnEntry": false,
+            //"program": "${D:\\xampp\\htdocs\\store\\index.php}",
+            //"localSourceRoot": "${workspaceRoot}"
+            // "serverSourceRoot": The path on the remote host where your webroot is located (for example "/var/www")
+            // "log": 
+        },
+        {
+            "name": "Launch currently open script",
+            "type": "php",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "${fileDirname}",
+            "port": 9000
+        }
+    ]
+}

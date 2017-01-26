@@ -1,0 +1,44 @@
+#AddDefaultCharset utf-8
+#
+#    Options +FollowSymLinks
+#    Options -Indexes
+#    DirectoryIndex index.php
+#
+#    RewriteEngine On
+#    RewriteBase /
+##
+##RewriteRule ^([a-z]+)/([a-z]+)/([0-9]+)/$ /?controller=$1&action=$2&id=$3&%{QUERY_STRING} [NS,L]
+##RewriteRule ^([a-z]+)/([a-z]+)/$ /?controller=$1&action=$2&%{QUERY_STRING} [NS,L]
+##RewriteRule ^([a-z]+)/([0-9]+)/$ /?controller=$1&id=$2&%{QUERY_STRING} [NS,L]
+##RewriteRule ^([a-z]+)/$ /?controller=$1&%{QUERY_STRING} [NS,L]
+##
+##    RewriteCond $1 !^(index\.php)
+##    RewriteCond %{REQUEST_URI} !\.(css│js│jpg│gif)$
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteCond %{REQUEST_FILENAME} !-d
+#    RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^test/(.*)/?$	  index.php?test=$1   	            [NC,L]
+RewriteRule ^category/(.*)/?$	  index.php?cat=$1                  [NC,L]
+RewriteRule ^product/(.*)/?$	  index.php?product=$1              [NC,L]
+#RewriteRule ^client-login/?$	  index.php?clLogin=1               [NC,L]
+RewriteRule ^admin-login/?$	  index.php?adminlogin=yes	    [NC,L]
+RewriteRule ^admin-exit/?$	  index.php?adminExit=yes	    [NC,L]
+#RewriteRule ^register/?$	  index.php?register=$1             [NC,L]
+RewriteRule ^home/(.*)/?$         index.php?home=$1                 [NC,L]
+RewriteRule ^orders/?$       index.php?myorders=1                [NC,L]
+RewriteRule ^basket/?$       index.php?vCart=1                [NC,L]
+RewriteRule ^admin-categories/?$       index.php?adminCategories=$1                [NC,L]
+RewriteRule ^admin-addnewcat/?$       index.php?addNewCat=$1                [NC,L]
+RewriteRule ^admin-products/?$       index.php?adminProducts=$1                [NC,L]
+RewriteRule ^admin-upload/?$       index.php?uploadImage=$1                [NC,L]
+RewriteRule ^cart/step/(.*)/?$	index.php?vCart=1&step=$1	[NC,L]
+RewriteRule ^cart/?$   index.php?vCart=1	[NC,L]
+RewriteRule ^admOrders/?(.*)$   index.php?admOrders=load&$1      [L]
+RewriteRule ^admClients/?(.*)$   index.php?admClients=load&$1      [L]
