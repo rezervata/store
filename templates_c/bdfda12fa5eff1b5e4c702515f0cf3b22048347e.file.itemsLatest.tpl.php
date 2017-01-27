@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-01-26 15:59:18
+<?php /* Smarty version Smarty-3.1.18, created on 2017-01-27 18:20:45
          compiled from "./templates/itemsLatest.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:325653873588a00b6c79b20-81510233%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bdfda12fa5eff1b5e4c702515f0cf3b22048347e' => 
     array (
       0 => './templates/itemsLatest.tpl',
-      1 => 1485439061,
+      1 => 1485534040,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_588a00b6da0fc0_57897789',
   'variables' => 
   array (
     'LAST5' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_588a00b6da0fc0_57897789',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_588a00b6da0fc0_57897789')) {function content_588a00b6da0fc0_57897789($_smarty_tpl) {?>	<div class="sidePanTitle">most recent products</div>
 
@@ -49,7 +49,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['li']['index_next'] = $_smart
 $_smarty_tpl->tpl_vars['smarty']->value['section']['li']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['li']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['li']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['li']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['li']['total']);
 ?>
-    <a class="lastetItem" href="product/<?php echo toSEO(stripslashes(htmlentities($_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name'])));?>
+    <a class="lastetItem" href="/product/<?php echo stripslashes($_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name']);?>
 " alt="<?php echo $_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name'];?>
 " title="<?php echo $_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name'];?>
 ">

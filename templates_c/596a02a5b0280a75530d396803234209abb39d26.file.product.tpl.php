@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-01-26 15:59:18
+<?php /* Smarty version Smarty-3.1.18, created on 2017-01-27 18:24:21
          compiled from "./templates/product.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1359697475588a00b6b0b375-35811020%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '596a02a5b0280a75530d396803234209abb39d26' => 
     array (
       0 => './templates/product.tpl',
-      1 => 1485391049,
+      1 => 1485534259,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_588a00b6bd4503_01078638',
   'variables' => 
   array (
     'CATEGORIES' => 0,
     'PRODUCT' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_588a00b6bd4503_01078638',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_588a00b6bd4503_01078638')) {function content_588a00b6bd4503_01078638($_smarty_tpl) {?><?php if (!empty($_smarty_tpl->tpl_vars['CATEGORIES']->value)) {?>
 
