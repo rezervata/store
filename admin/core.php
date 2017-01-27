@@ -867,7 +867,13 @@ function setOrderStatus($g){
         
         
  /*** END LATEST ***/       
-        
+        function myid(){
+	$a = microtime(false);
+	$b = substr($a,2,strlen($a)-1);
+	$b = str_replace(" ", "", $b);
+	return $b;
+}
+
         
         
 }//end class

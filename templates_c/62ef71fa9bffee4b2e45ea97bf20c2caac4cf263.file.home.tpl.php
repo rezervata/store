@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-01-26 15:59:18
+<?php /* Smarty version Smarty-3.1.18, created on 2017-01-27 18:36:45
          compiled from "./templates/home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1624016093588a00b67f9117-27486138%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '62ef71fa9bffee4b2e45ea97bf20c2caac4cf263' => 
     array (
       0 => './templates/home.tpl',
-      1 => 1485434282,
+      1 => 1485535001,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_588a00b6aff5f9_10091707',
   'variables' => 
   array (
     'CATEGORIES' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_588a00b6aff5f9_10091707',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_588a00b6aff5f9_10091707')) {function content_588a00b6aff5f9_10091707($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
@@ -103,8 +103,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                            class="searchbutton">
                 </form>
             </div>
-                                <div class="metro_body"></div>
-            <!-- Sidebar -->
+                                
+                                
+                              
+                                <div class="metro_body" id="metro_body"></div>
+            
+                                
+                                
+                                
+                                
+                                
+                                <!-- Sidebar -->
             <div class="col-sm-2 sidenav">
                 <ul class="sidebar-nav">
                     <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['kk'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['kk']);

@@ -195,7 +195,8 @@ if (isset($_GET['do'])) {
 		$ban_grp = isset($_SESSION['banGRP']) ? $_SESSION['banGRP'] : NULL;
 		echo $coreAsync->itemToBanner($_GET['id'], $ban_grp);
 	}
-    
+    	if($_GET['do'] == 'newBanGrp') $_SESSION['banGRP'] = $coreAsync->myid();
+
   //  if($_GET['do'] == 'contactUs') echo $core->contactUsMail($_POST);
  //   if($_GET['do'] == 'myInfo') echo $core->updateMyInfo($_POST,$_SESSION);
     
@@ -224,8 +225,8 @@ if (isset($_GET['load'])) {
     }
     
 if($_GET['load'] == 'showBanners'){
-		if(isset($_GET['del'])) $core->deleteBanner($_GET['del']);
-		$smarty->assign("BANNERS", $core->getBanners());
+		if(isset($_GET['del'])) $coreAsync->deleteBanner($_GET['del']);
+		$smarty->assign("BANNERS", $coreAsync->getBanners());
 		$smarty->display('bannersAdm.tpl');
 	}
 }

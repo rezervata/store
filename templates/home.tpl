@@ -74,8 +74,17 @@
                            class="searchbutton">
                 </form>
             </div>
-                                <div class="metro_body"></div>
-            <!-- Sidebar -->
+                                
+                                
+                              
+                                <div class="metro_body" id="metro_body"></div>
+            
+                                
+                                
+                                
+                                
+                                
+                                <!-- Sidebar -->
             <div class="col-sm-2 sidenav">
                 <ul class="sidebar-nav">
                     {section name=kk loop=$CATEGORIES}
