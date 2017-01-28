@@ -9,12 +9,12 @@ function getError($key)
 {
     $errors = array(
         1000    => 'All ok',
-        1001    => 'Molq, popylnete poletata',
-        1002    => 'Parolite kapaldy',
-        1003    => 'Greshka v DB.',
-        1004    => 'Clientyt syshtestvuva.',
-        1005    => 'Usera ne e administrator.',
-        1006    => 'Usera ne sashtestvuva.'
+        1001    => 'Please fill in all fields',
+        1002    => 'Incorrect password',
+        1003    => 'DB Error',
+        1004    => 'Client already exist.',
+        1005    => 'User is not administrator.',
+        1006    => 'User does not exist.'
     );
     
     return $errors[$key];

@@ -103,10 +103,10 @@ class Core {
         $resData = array();
         if ($id) {
             $resData['success'] = 1;
-            $resData['message'] = 'Категорията е добавена';
+            $resData['message'] = 'Category Added';
         } else {
             $resData['success'] = 0;
-            $resData['message'] = 'Грешка при добавяне на категория';
+            $resData['message'] = 'Error adding category';
         }
 
         echo json_encode($resData);
@@ -144,10 +144,10 @@ class Core {
         $resData = array();
         if ($res) {
             $resData['success'] = 1;
-            $resData['message'] = 'Категорията е обновена';
+            $resData['message'] = 'The category has been updated';
         } else {
             $resData['success'] = 0;
-            $resData['message'] = 'Грешка при промяна на данните на категорията';
+            $resData['message'] = 'Error change in the data category';
         }
 
         echo json_encode($resData);
@@ -196,10 +196,10 @@ class Core {
         $resData = array();
         if ($res) {
             $resData['success'] = 1;
-            $resData['message'] = 'Промените са успешно записани';
+            $resData['message'] = 'Changes are saved successfully';
         } else {
             $resData['success'] = 0;
-            $resData['message'] = 'Грешка при промяна на данните';
+            $resData['message'] = 'Error change data';
         }
 
         echo json_encode($resData);
@@ -213,17 +213,17 @@ class Core {
         $ext = pathinfo($f['nameImg']['name'], PATHINFO_EXTENSION);
 
         if (empty($f['nameImg']['name'])) {
-            return 'Моля, изберете снимка.';
+            return 'Please select a photo.';
         }
 
         $img_data = getimagesize($img);
 
         if ($img_data[2] != IMAGETYPE_JPEG) {
-            return 'Снимката трябва да е jpg.';
+            return 'The photo should be jpg.';
         }
 
         if ($img_data[0] < 480 && $img_data[1] < 480) {
-            return 'Минималният размер на снимката трябва да е 480 x 480';
+            return 'The minimum image size must be 480 x 480';
         }
 
         $target_dir = 'img';
@@ -243,10 +243,10 @@ class Core {
         } else {
             @unlink($target_dir . '/hi-' . $new_name);
             @unlink($target_dir . '/lo-' . $new_name);
-            return 'Грешка при запис на снимка.';
+            return 'Failed to save image.';
         }
 
-        return 'Снимката е прикачена.';
+        return 'The photo is attached.';
     }
 
     function swapImage($id, $swapid) {
@@ -277,9 +277,9 @@ class Core {
             @unlink("_items/{$dir}/hi-{$name}");
             @unlink("_items/{$dir}/lo-{$name}");
             $this->db->delete("delete from item_images where id=$id");
-            return array('state' => 6, 'msg' => 'Снимката е изтрита', 'class' => 'msg_green');
+            return array('state' => 6, 'msg' => 'The photo was deleted', 'class' => 'msg_green');
         } else {
-            return array('state' => 2, 'msg' => 'Снимката не е намерена', 'class' => 'msg_red');
+            return array('state' => 2, 'msg' => 'Image not found', 'class' => 'msg_red');
         }
     }
 
@@ -346,10 +346,10 @@ class Core {
         $resData = array();
         if ($res) {
             $resData['success'] = 1;
-            $resData['message'] = 'Промените са успешно записани(ъпдейт)';
+            $resData['message'] = 'The changes are successfully saved (update)';
         } else {
             $resData['success'] = 0;
-            $resData['message'] = 'Грешка при упдейт на данните';
+            $resData['message'] = 'Error update data';
         }
 
         echo json_encode($resData);
