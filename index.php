@@ -13,6 +13,7 @@ require_once 'logic/error.php';
 include_once 'config/config.php';
 include_once 'config/mineFunctions.php';    // Some function
 include_once 'admin/controllers/AdminController.php';
+// require_once 'logic/Image.class.php';
 
 $smarty = new \Smarty();
 $db = new \DB();
