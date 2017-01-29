@@ -21,6 +21,14 @@
 
          <p>{$PRODUCT[0].data|stripslashes}</p>
 </div>
+
+{if isset($smarty.session.admin.logged) && $smarty.session.admin.logged == md5('OK')}
+		<div style="float:left">
+			<input type="button" name="bEditItem" data-id="{$PRODUCT[0].id}" value="edit">
+                        <input type="button" name="bAddToBanGrp" data-id="{$PRODUCT[0].id}" value="add to banner">
+                </div>
+  {/if}
+
 {else}
 
     No such product!!!

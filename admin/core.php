@@ -171,27 +171,27 @@ class Core {
         return $rsProducts;
     }
 
-    function addProduct() {
-        $itemName = $_POST['newItemName'];
-        $itemPrice = $_POST['newItemPrice'];
-        $itemDesc = $_POST['newItemDesc'];
-        $itemCatId = $_POST['newItemCatId'];
-        $itemMake = $_POST['newItemMake'];
-        $itemMkey = $_POST['newItemMkey'];
-        $itemData = $_POST['newItemData'];
+    function addProduct($d) {
+        $itemName = $d['newItemName'];
+        $itemPrice = $d['newItemPrice'];
+        $itemDesc = $d['newItemDesc'];
+        $itemCatId = $d['newItemCatId'];
+        $itemMake = $d['newItemMake'];
+        $itemMkey = $d['newItemMkey'];
+        $itemData = $d['newItemData'];
 
+        $sql = "INSERT INTO items (name, price, mdesc, cat, make, mkeys, data) values (?,?,?,?,?,?,?) ";
+//                . "SET "
+//                . "`name` = '{$itemName}', "
+//                . "`price` = '{$itemPrice}', "
+//                . "`mdesc` = '{$itemDesc}', "
+//                . "`cat` = '{$itemCatId}', "
+//                . "`make` = '{$itemMake}', "
+//                . "`mkeys` = '{$itemMkey}', "
+//                . "`data` = '{$itemData}'";
 
-        $sql = "INSERT INTO items "
-                . "SET "
-                . "`name` = '{$itemName}', "
-                . "`price` = '{$itemPrice}', "
-                . "`mdesc` = '{$itemDesc}', "
-                . "`cat` = '{$itemCatId}', "
-                . "`make` = '{$itemMake}', "
-                . "`mkeys` = '{$itemMkey}', "
-                . "`data` = '{$itemData}'";
-
-        $res = $this->db->insert($sql);
+        $res = $this->db->insert("INSERT INTO items (name, price, mdesc, cat, make, mkeys, data) "
+                . "values ('$itemName', '$itemPrice', '$itemDesc', '$itemCatId', '$itemMake', '$itemMkey', '$itemData')", array());
 
         $resData = array();
         if ($res) {
@@ -199,7 +199,8 @@ class Core {
             $resData['message'] = 'Changes are saved successfully';
         } else {
             $resData['success'] = 0;
-            $resData['message'] = 'Error change data';
+            $resData['message'] = "INSERT INTO items (name, price, mdesc, cat, make, mkeys, data) "
+                . "values ('$itemName', '$itemPrice', '$itemDesc', '$itemCatId', '$itemMake', '$itemMkey', '$itemData')";
         }
 
         echo json_encode($resData);
@@ -758,7 +759,7 @@ function contactUsMail($p){
     }
 
     function deleteBanner($grp){
-	$this->db->delete("delete from banners where grp='$grp'");
+	$this->db->update("delete from banners where grp='$grp'");
     }
 /*** end banners ***/
     

@@ -32,7 +32,8 @@
                             <li><a href="admClients/">Clients</a></li>
                             <li><a href="admOrders/" name="bAdmOrders">Orders</a></li>
                             <li><a href="#" name="bShowBanners">Banners</a></li>
-                            <li><a href="#" name="bNewBanner">New Banner</a></li>    
+                            <li><a href="#" name="bNewBanner">New Banner</a></li> 
+                            <li><a href="#" name="run">TEST RUN</a></li> 
                             <li><a href="/admin-categories/">Categories</a></li>
                             <li><a href="/admin-products/">Products</a></li>
                             {/if}

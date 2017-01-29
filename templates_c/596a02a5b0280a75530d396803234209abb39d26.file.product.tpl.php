@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-01-27 18:24:21
+<?php /* Smarty version Smarty-3.1.18, created on 2017-01-29 16:40:39
          compiled from "./templates/product.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1359697475588a00b6b0b375-35811020%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '596a02a5b0280a75530d396803234209abb39d26' => 
     array (
       0 => './templates/product.tpl',
-      1 => 1485534259,
+      1 => 1485700835,
       2 => 'file',
     ),
   ),
@@ -54,6 +54,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
          <p><?php echo stripslashes($_smarty_tpl->tpl_vars['PRODUCT']->value[0]['data']);?>
 </p>
 </div>
+
+<?php if (isset($_SESSION['admin']['logged'])&&$_SESSION['admin']['logged']==md5('OK')) {?>
+		<div style="float:left">
+			<input type="button" name="bEditItem" data-id="<?php echo $_smarty_tpl->tpl_vars['PRODUCT']->value[0]['id'];?>
+" value="edit">
+                        <input type="button" name="bAddToBanGrp" data-id="<?php echo $_smarty_tpl->tpl_vars['PRODUCT']->value[0]['id'];?>
+" value="add to banner">
+                </div>
+  <?php }?>
+
 <?php } else { ?>
 
     No such product!!!

@@ -60,7 +60,7 @@ if (isset($_GET['do'])) {
 
     if ($_GET['do'] == 'addProduct') {
         if (isset($_POST)) {
-            $coreAsync->addProduct();
+            $coreAsync->addProduct($_POST);
         }
     }
 
@@ -200,7 +200,7 @@ if (isset($_GET['do'])) {
   //  if($_GET['do'] == 'contactUs') echo $core->contactUsMail($_POST);
  //   if($_GET['do'] == 'myInfo') echo $core->updateMyInfo($_POST,$_SESSION);
     
-   
+  // if($_GET['do'] == 'run'); 
     
 }
 

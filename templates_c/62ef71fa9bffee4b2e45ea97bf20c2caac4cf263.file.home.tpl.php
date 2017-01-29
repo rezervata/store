@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-01-27 18:36:45
+<?php /* Smarty version Smarty-3.1.18, created on 2017-01-29 16:58:43
          compiled from "./templates/home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1624016093588a00b67f9117-27486138%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '62ef71fa9bffee4b2e45ea97bf20c2caac4cf263' => 
     array (
       0 => './templates/home.tpl',
-      1 => 1485535001,
+      1 => 1485701804,
       2 => 'file',
     ),
   ),
@@ -57,7 +57,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             <li><a href="admClients/">Clients</a></li>
                             <li><a href="admOrders/" name="bAdmOrders">Orders</a></li>
                             <li><a href="#" name="bShowBanners">Banners</a></li>
-                            <li><a href="#" name="bNewBanner">New Banner</a></li>    
+                            <li><a href="#" name="bNewBanner">New Banner</a></li> 
+                            <li><a href="#" name="run">TEST RUN</a></li> 
                             <li><a href="/admin-categories/">Categories</a></li>
                             <li><a href="/admin-products/">Products</a></li>
                             <?php }?>
