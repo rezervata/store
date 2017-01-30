@@ -222,6 +222,8 @@ class Core {
         }
 
         $img_data = getimagesize($img);
+        
+        
 
         if ($img_data[2] != IMAGETYPE_JPEG) {
             return 'The photo should be jpg.';
@@ -288,17 +290,48 @@ class Core {
         }
     }
 
-    function updateProduct()
+    function updateProduct($d)
     {
-        $itemId = $_POST['itemId'];
-        $itemName = $_POST['itemName'];
-        $itemPrice = $_POST['itemPrice'];
-        $itemDesc = $_POST['itemDesc'];
-        $itemCatId = $_POST['itemCatId'];
-        $itemMake = $_POST['itemMake'];
-        $itemMkey = $_POST['itemMKey'];
-        $itemData = $_POST['itemData'];
-        $itemStatus = $_POST['itemStatus'];
+        $itemId = $d['itemId'];
+        $itemName = $d['itemName'];
+        $itemPrice = $d['itemPrice'];
+        $itemDesc = $d['itemDesc'];
+        $itemCatId = $d['itemCatId'];
+        $itemMake = $d['itemMake'];
+        $itemMkey = $d['itemMKey'];
+        $itemData = $d['itemData'];
+        $itemStatus = isset($d['itemStatus']) ? $d['itemStatus'] : 0;
+
+//        $itemStatus = $d['itemStatus'] == NULL ? 0:1; 
+        $itemImage = $d['hItemImage'];
+        
+        $val = '';
+             $page = $_SERVER['HTTP_REFERER'];
+            //  $page = substr($page, 17, 16);
+        if (empty($_FILES['fIMG'])) {
+            echo 'Select picture.';
+        } else {
+            for ($i = 0; $i < count($_FILES['fIMG']['name']); $i++) {
+                $pic['nameImg'] = array(
+                    'name' => $_FILES['fIMG']['name'][$i],
+                    'type' => $_FILES['fIMG']['type'][$i],
+                    'tmp_name' => $_FILES['fIMG']['tmp_name'][$i],
+                    'error' => $_FILES['fIMG']['error'][$i],
+                    'size' => $_FILES['fIMG']['size'][$i]
+                );
+                $val .= ' [' . $_FILES['fIMG']['name'][$i] . '] ';
+                $val .= $this->attachImage($_POST, $pic) . '<br>';
+            }
+       
+//            $sec = "2";
+//            header("Refresh: $sec; url=$page");
+            echo $val;
+            // sleep(20);
+//            return;
+        }//else
+        
+//        attachImage($itemImage, );
+
         $newFileName = null;
 
          $set = array();
@@ -908,7 +941,63 @@ class Core {
         }
         return $ret;
     }    
-        
+    
+//    function editItem($d,$f){
+//	$id = $this->esc($d['hItemId']);
+//	$old_img = $this->esc($d['hItemImage']);
+//	$name = $this->esc($d['xName']);
+//	$make = $this->esc($d['xMake']);
+//	$cat = $this->esc($d['sCat']);
+//	$keys = $this->esc($d['xKeys']);
+//	$mdesc = $this->esc($d['xMDesc']);
+//	$desc = $this->db->escString(trim($d['xDesc']));
+//	$price = $this->esc(str_replace(',','.',$d['xPrice']));
+//	$name = str_replace('-','',$name);
+//	if(isset($d['cHidden']) && $d['cHidden'] == 'on') $hidden = 1; else $hidden = 0;
+//
+//	if(empty($name) || empty($make) || empty($keys) || empty($mdesc) || empty($desc)) return 'Empty fields.';
+//	if($cat == '0') return 'Please, select category.';
+//	if(!is_numeric($price)) return 'Price must be number.';
+//	
+//	$r = $this->db->getAsoc("select id from items where name='$name' and id != $id");
+//	if(count($r) > 0) return 'Product already exists.';
+//	
+//	if(isset($f['fIMG']) && $f['fIMG']['tmp_name']){
+//		$i_name = $this->myid();
+//		$img = new Image;
+//		$img_res = $img->process($f['fIMG']['tmp_name'],$i_name);
+//		if($img_res != 'OK') return $img_res;
+//		
+//		if(file_exists('images/t'.$old_img.'.jpg')) unlink('images/t'.$old_img.'.jpg');
+//		if(file_exists('images/m'.$old_img.'.jpg')) unlink('images/m'.$old_img.'.jpg');
+//		if(file_exists('images/'.$old_img.'.jpg')) unlink('images/'.$old_img.'.jpg');
+//	}else $i_name = NULL;
+//	
+//	$sql = '';
+//	if($i_name) $sql = ", image='$i_name'";
+////	$this->db->update("update items set cat=$cat, name='$name', make='$make' $sql , mkeys='$keys', mdesc='$mdesc', data='$desc', price=$price, hidden=$hidden, updated=now() where id=$id");
+//	$this->db->update("update items (cat, name, make, image, mkeys, mdesc, data, price, hidden, updated) values ($cat, '$name', '$make', $sql, '$keys', '$mdesc', '$desc', '$price', '$hidden', now()) where id=$id", array());
+//        return 'Edited successfully.';
+//}
+//        
+function getItemById($id){
+	$r = $this->db->getAsoc("select id,cat,name,image,make,mkeys,mdesc,data,price,hidden from items where id=$id");
+	if(count($r) > 0) return $r[0];
+	else return false;
+}
+
+function getCombCats(){
+	$r = $this->db->getAsoc("select id,name from folders where parent=0 order by name");
+	if(count($r) > 0){
+		for($i=0; $i< count($r); $i++){
+			$parent = $r[$i]['id'];
+			$rr = $this->db->getAsoc("select id,name from folders where parent=$parent order by name");
+			if(count($rr) > 0) $r[$i]['sub'] = $rr;
+		}
+	}
+	return $r;
+}
+
 }//end class
 
 

@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-01-29 16:02:47
+<?php /* Smarty version Smarty-3.1.18, created on 2017-01-30 17:28:58
          compiled from "./templates/adminProducts.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1926797556588df607775259-47497591%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1939488519588f5bba9b3e03-12558021%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '5127665b034539b02adc8ae4d037c66d4ff99e84' => 
     array (
       0 => './templates/adminProducts.tpl',
-      1 => 1485391049,
+      1 => 1485767140,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1926797556588df607775259-47497591',
+  'nocache_hash' => '1939488519588f5bba9b3e03-12558021',
   'function' => 
   array (
   ),
@@ -19,12 +19,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'rsCategories' => 0,
     'rsProducts' => 0,
+    'PAGES' => 0,
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_588df607a0c5d8_28768244',
+  'unifunc' => 'content_588f5bbae86630_84597964',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_588df607a0c5d8_28768244')) {function content_588df607a0c5d8_28768244($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_588f5bbae86630_84597964')) {function content_588f5bbae86630_84597964($_smarty_tpl) {?>
 
 <h2 > Продукти </h2 >
 <div id = "blockNewProduct" >
@@ -314,5 +315,54 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['prod']['last']       = ($_sm
             </tr >
             
         <?php endfor; endif; ?>
+
+
      </table >
- </div ><?php }} ?>
+ </div >
+
+ 
+        
+	<p style="text-align:center; margin:0; padding:1em; background-color:red">
+<?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['sp'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['sp']);
+$_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['name'] = 'sp';
+$_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['PAGES']->value) ? count($_loop) : max(0, (int) $_loop); unset($_loop);
+$_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['show'] = true;
+$_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['max'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['loop'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['step'] = 1;
+$_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['start'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['step'] > 0 ? 0 : $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['loop']-1;
+if ($_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['show']) {
+    $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['total'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['loop'];
+    if ($_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['total'] == 0)
+        $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['show'] = false;
+} else
+    $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['total'] = 0;
+if ($_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['show']):
+
+            for ($_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['index'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['start'], $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['iteration'] = 1;
+                 $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['iteration'] <= $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['total'];
+                 $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['index'] += $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['step'], $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['iteration']++):
+$_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['rownum'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['iteration'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['index_prev'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['index'] - $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['step'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['index_next'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['index'] + $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['step'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['iteration'] == 1);
+$_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['sp']['total']);
+?>
+	<?php if (isset($_GET['page'])) {?>
+		<a href="admin-products/<?php echo $_GET['page'];?>
+/page/<?php echo $_smarty_tpl->tpl_vars['PAGES']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sp']['index']];?>
+" class="btn " alt="page <?php echo $_smarty_tpl->tpl_vars['PAGES']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sp']['index']];?>
+" title="page <?php echo $_smarty_tpl->tpl_vars['PAGES']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sp']['index']];?>
+"><?php echo $_smarty_tpl->tpl_vars['PAGES']->value[$_smarty_tpl->getVariable('smarty')->value['section']['sp']['index']];?>
+</a>
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+            ...
+        </ul>
+    </nav>
+    
+    
+    <?php }?>
+<?php endfor; endif; ?>
+	</p><?php }} ?>

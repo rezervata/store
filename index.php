@@ -156,6 +156,8 @@ if(isset($_GET['admClients'])){
 
 $smarty->assign("BANNERS", $core->getBanners());
 $smarty->assign("LAST5", $core->getLatest());
+$smarty->assign("ALLCATS",$core->getCombCats());
+
 
 
 $smarty->display('home.tpl');

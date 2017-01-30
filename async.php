@@ -201,6 +201,8 @@ if (isset($_GET['do'])) {
  //   if($_GET['do'] == 'myInfo') echo $core->updateMyInfo($_POST,$_SESSION);
     
   // if($_GET['do'] == 'run'); 
+       	if($_GET['do'] == 'editItem') echo $coreAsync->updateProduct($_POST);
+
     
 }
 
@@ -229,6 +231,15 @@ if($_GET['load'] == 'showBanners'){
 		$smarty->assign("BANNERS", $coreAsync->getBanners());
 		$smarty->display('bannersAdm.tpl');
 	}
+        
+        if($_GET['load'] == 'editItem' && isset($_GET['id'])){
+		$smarty->assign("PRODUCT", $coreAsync->getItemById($_GET['id']));
+		$smarty->assign("ALLCATS",$coreAsync->getCombCats());
+		$smarty->display('itemEdit.tpl');
+	}
+        
+        
+        
 }
 
     //   .......... END CART STEPS.......
