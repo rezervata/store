@@ -1,4 +1,4 @@
-/* Globals $ */
+'use strict'
 
 $(document).keyup(function(e) {
     if (e.keyCode === 27) {
@@ -40,14 +40,15 @@ $(document).ready(function() {
             window.location.reload();
         });
     });
-    $(document).on('click', '.plus', function(event) {
-            var id = $(this).data('id');
-            $.post('async.php?do=plus', 'id=' + id, function() {
-                window.location.reload();
-            });
-        });
-        // .............. CART STEPS .........
 
+    $(document).on('click', '.plus', function(event) {
+        var id = $(this).data('id');
+        $.post('async.php?do=plus', 'id=' + id, function() {
+            window.location.reload();
+        });
+    });
+
+    // .............. CART STEPS .........
     $(document).on('click', '._guestOrder', function(event) {
         $('#metro_body').html('');
         var url = 'async.php?load=guestOrder';
@@ -89,7 +90,7 @@ $(document).ready(function() {
     $(document).on('click', '#login', function(event) {
         $.post('async.php?do=login', $('form[name="loginform"]').serialize(), function(data) {
             $('.login').html(data.msg);
-                //            console.log(data)
+            //            console.log(data)
             if (data.state == 'T') window.location.reload();
         }, 'json');
     });
@@ -98,11 +99,11 @@ $(document).ready(function() {
         $('.logout').html('');
         $('.logout').load('async.php?do=clExit', function() {
             setTimeout(function() {
-                    location.reload();
-                }, 100);
-                //                    $('#_blanketH').fadeIn(400,function(){
-                //				
-                //			})
+                location.reload();
+            }, 100);
+            //                    $('#_blanketH').fadeIn(400,function(){
+            //				
+            //			})
         });
     });
 
@@ -167,7 +168,7 @@ $(document).ready(function() {
 
     $(document).on('click', '.tblOrders tbody tr', function() {
         var id = $(this).attr('oid');
-            // alert($(this).attr('oid'))
+        // alert($(this).attr('oid'))
         $('#orderData').html('');
         $('#orderData').load('async.php?load=admAnOrder&id=' + id, function() {});
         $('#_blanketH').fadeIn(400);
@@ -177,42 +178,42 @@ $(document).ready(function() {
 
     /*** ADM USERS ***/
     $(document).on('click', '.tblClients .cRow', function() {
-            $('#metro_body').html('');
-            $('#metro_body').load('async.php?load=showClient&id=' + $(this).attr('cid'), function() {
-                $('#_blanketH').fadeIn(400);
-            });
+        $('#metro_body').html('');
+        $('#metro_body').load('async.php?load=showClient&id=' + $(this).attr('cid'), function() {
+            $('#_blanketH').fadeIn(400);
         });
-        /*** end adm users ***/
+    });
+    /*** end adm users ***/
 
     /*** ADM ORDERS ***/
     $(document).on('click', 'input[name=bAdmOrders]', function() {
         window.location.href = 'admOrders/';
     });
     $(document).on('click', '.orderOper span', function() {
-            var id = $(this).data('id');
-            var status = $(this).data('rel');
-            var code = $('input[name="shipCode"]').val();
-            var notes = $('textarea[name="xNotes"]').val();
+        var id = $(this).data('id');
+        var status = $(this).data('rel');
+        var code = $('input[name="shipCode"]').val();
+        var notes = $('textarea[name="xNotes"]').val();
 
-            $('.aj_msg').html('Processing...');
+        $('.aj_msg').html('Processing...');
 
-            $.get('async.php?do=admAnOrder', 'status=' + status + '&id=' + id + '&code=' + code + '&notes=' + notes, function(data) {
-                $('.aj_msg').html(data.msg);
-                if (data.state == 'T') {
-                    $('.orderData').html('');
-                    setTimeout(function() {
-                        $('#_blanketH').fadeOut(400, function() { location.reload(); });
-                    }, 1000);
-                }
-            }, 'json');
-        });
-        /*** end adm orders ***/
+        $.get('async.php?do=admAnOrder', 'status=' + status + '&id=' + id + '&code=' + code + '&notes=' + notes, function(data) {
+            $('.aj_msg').html(data.msg);
+            if (data.state == 'T') {
+                $('.orderData').html('');
+                setTimeout(function() {
+                    $('#_blanketH').fadeOut(400, function() { location.reload(); });
+                }, 1000);
+            }
+        }, 'json');
+    });
+    /*** end adm orders ***/
 
     /*** ADM CLIENTS ***/
     $(document).on('click', 'input[name="bAdmClients"]', function() {
-            window.location.href = 'admClients/';
-        });
-        /*** end adm clients ***/
+        window.location.href = 'admClients/';
+    });
+    /*** end adm clients ***/
 
     /*** BANNERS ***/
     $(document).on('click', 'a[name="bNewBanner"]', function() {
@@ -242,12 +243,12 @@ $(document).ready(function() {
         });
     });
     $(document).on('click', '.bDelBanner', function() {
-            var grp = $(this).data('grp');
-            $('#metro_body').load('async.php?load=showBanners&del=' + grp, '', function() {
-                location.reload();
-            });
+        var grp = $(this).data('grp');
+        $('#metro_body').load('async.php?load=showBanners&del=' + grp, '', function() {
+            location.reload();
         });
-        /*** end banners ***/
+    });
+    /*** end banners ***/
 
     /*** slider ***/
     function slideRun() {
@@ -270,38 +271,39 @@ $(document).ready(function() {
 
     slideRun();
     setInterval(function() {
-            slideRun();
-        }, 5000);
-        /*** end slider ***/
+        slideRun();
+    }, 5000);
+    /*** end slider ***/
 
+    /*** ADMINISTRATION ***/
     /*** ADM NEW CATEGORY ***/
     $(document).on('click', '.newCat', function(event) {
-            var postData = getData('#blockNewCategory');
-            newCategory(postData);
-        });
-        /*** END ADM NEW CATEGORY ***/
+        var postData = getData('#blockNewCategory');
+        newCategory(postData);
+    });
+    /*** END ADM NEW CATEGORY ***/
 
     /*** ADM UPDATE CATEGORY ***/
     $(document).on('click', '.updateCat', function(event) {
-            var postData = getData('#blockUpdateCat');
-            postData.name = $('#parentId :selected').text().trim();
-            updateCategory(postData);
-        });
-        /*** END ADM UPDATE CATEGORY ***/
+        var postData = getData('#blockUpdateCat');
+        postData.name = $('#parentId :selected').text().trim();
+        updateCategory(postData);
+    });
+    /*** END ADM UPDATE CATEGORY ***/
 
     /*** ADM NEW PRODUCT ***/
     $(document).on('click', '.newProduct', function(event) {
-            var postData = getData('#blockNewProduct');
-            addProduct(postData);
-        });
-        /*** END ADM NEW PRODUCT ***/
+        var postData = getData('#blockNewProduct');
+        addProduct(postData);
+    });
+    /*** END ADM NEW PRODUCT ***/
 
     /*** ADM UPDATE PRODUCT ***/
     $(document).on('click', '.updateProduct', function(event) {
-            var postData = getData('#blockUpdateProduct');
-            updateProduct(postData);
-        });
-/*** END ADM UPDATE PRODUCT ***/
+        var postData = getData('#blockUpdateProduct');
+        updateProduct(postData);
+    });
+    /*** END ADM UPDATE PRODUCT ***/
 
 }); // do ready end
 
@@ -312,7 +314,7 @@ function getData(obj_form) {
         .each(function() {
             if (this.name && this.name !== '') {
                 hData[this.name] = this.value
-//                console.log('hData[' + this.name + '] = ' + hData[this.name]);
+                    //                console.log('hData[' + this.name + '] = ' + hData[this.name]);
             }
         });
     return hData
@@ -374,12 +376,11 @@ function addProduct(postData) {
                 $('#newItemDesc').val('');
                 $('#newItemMake').val();
                 $('#newItemMkey').val();
-
                 $('#newItemData').val();
             }
 
             alert(data.message);
-if(data.success == 1) location.reload();
+            if (data.success == 1) location.reload();
         },
         type);
 }

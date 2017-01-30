@@ -40,8 +40,8 @@ class Core {
 
     private $db;
     private $cart;
-    private $ipp = 9;
-    private $p_off = 3;
+    private $itemPerPage = 10;
+    private $pageOff = 3;
     private $contactMail = 'hap4eta@gmail.com';
     private $siteMail = 'hap4eta@gmail.com';
 
@@ -159,14 +159,18 @@ class Core {
      *
      * @param type $smarty
      */
-    function products() {
+    function products()
+    {
+        if (isset($_GET['page'])) {
+            $curentPage = $_GET['page'];
+        } else {
+            $curentPage = 1;
+        }
 
-        $sql = "SELECT * "
-                . "FROM `items` "
-                . "ORDER BY id "
-                . "LIMIT 10";
+        $res = $this->getProducts($curentPage);
+        $pages = $this->getPageArr($res['cnt'], $curentPage);
 
-        $rsProducts = $this->db->select($sql);
+        $rsProducts = array('data' => $res['data'], 'pages' => $pages);
 
         return $rsProducts;
     }
@@ -181,14 +185,14 @@ class Core {
         $itemData = $d['newItemData'];
 
         $sql = "INSERT INTO items (name, price, mdesc, cat, make, mkeys, data) values (?,?,?,?,?,?,?) ";
-//                . "SET "
-//                . "`name` = '{$itemName}', "
-//                . "`price` = '{$itemPrice}', "
-//                . "`mdesc` = '{$itemDesc}', "
-//                . "`cat` = '{$itemCatId}', "
-//                . "`make` = '{$itemMake}', "
-//                . "`mkeys` = '{$itemMkey}', "
-//                . "`data` = '{$itemData}'";
+    //                . "SET "
+    //                . "`name` = '{$itemName}', "
+    //                . "`price` = '{$itemPrice}', "
+    //                . "`mdesc` = '{$itemDesc}', "
+    //                . "`cat` = '{$itemCatId}', "
+    //                . "`make` = '{$itemMake}', "
+    //                . "`mkeys` = '{$itemMkey}', "
+    //                . "`data` = '{$itemData}'";
 
         $res = $this->db->insert("INSERT INTO items (name, price, mdesc, cat, make, mkeys, data) "
                 . "values ('$itemName', '$itemPrice', '$itemDesc', '$itemCatId', '$itemMake', '$itemMkey', '$itemData')", array());
@@ -440,136 +444,136 @@ class Core {
     }
     
     function url(){
-    $base_url = isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off' ? 'https' : 'http';
-    $base_url .= '://'. $_SERVER['HTTP_HOST'];
-    $base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']); 
-    return $base_url;
+            $base_url = isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off' ? 'https' : 'http';
+            $base_url .= '://'. $_SERVER['HTTP_HOST'];
+            $base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']); 
+            return $base_url;
+        }
+        
+        //    function getAnOrder($id){
+        //	$id = $this->esc($id);
+        //	$r = $this->db->getAsoc("select
+        //		o.id, o.uid, o.total as subtotal, o.ship_price, o.total + o.ship_price as total, o.pay_method, o.status as o_status, o.ship_code, o.notes, o.input, o.checked, o.dispatched,
+        //		c.fname, c.lname, c.email, c.phone, c.status as cl_status,
+        //		l.country, l.state, l.city, l.street, l.zip
+        //		from orders o
+        //		join clients c on o.uid = c.id
+        //		join location l on o.ship_addr = l.id
+        //		where o.id=$id");
+        //	$rr = $this->db->getAsoc("select o.qty, o.price, o.qty * o.price as sum, i.name from ord_data o
+        //		join items i on o.itemid = i.id
+        //		where o.ordid = $id");
+        //		
+        //	if(!empty($r) || !empty($rr)){
+        //		$ret = $r[0];
+        //		$ret['cart'] = $rr;
+        //		return $ret;
+        //	}
+        //}
+        
+        /*** MAILER ***/
+    function sendMail($to,$body,$sub,$both = false){
+        try{
+            $mail = new PHPMailer;
+            $mail->IsSMTP();
+            
+            $mail->Host = 'smtp.gmail.com';
+            $mail->Port = 587;
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'tls';
+            $mail->Username = 'medicinespeed2@gmail.com';
+            $mail->Password = 'Medicine1';
+            
+            $mail->AddReplyTo('medicinespeed1@gmail.com', 'Medicine Speed Store');
+            if($both) $mail->AddAddress($this->siteMail, '');
+            $mail->AddAddress($to, '');
+            $mail->SetFrom('medicinespeed2@gmail.com', 'Medicine Speed Store');
+            $mail->Subject = $sub;
+            $mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
+            $mail->MsgHTML($body);
+            if($mail->Send()) return true;			
+        } catch(phpmailerException $e){
+            return false;							
+        }
+    }
+
+    function contactUsMail($p){
+        $to = $this->contactMail;
+        $name = $this->esc($p['xName']);
+        $email = $this->esc($p['xEmail']);
+        $sub = $this->esc($p['xSubject']);
+        $msg = strip_tags(trim($p['xMessage']));
+        $msg = nl2br($msg);
+        
+        if(empty($name) || empty($email) || empty($sub) || empty($msg)) return json_encode(array('state'=>'F', 'msg'=>'Empty field(s).'));
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) return json_encode(array('state' => 'F', 'msg' => 'Your e-mail address is not valid.'));
+        
+        $body = file_get_contents('templates/_contactUs.html');
+        $body = str_replace(
+            array('%%SUB','%%BODY','%%NAME','%%EMAIL'),
+            array($sub, $msg, $name, $email),
+            $body
+        );
+        
+        $sub = 'Medicine speed - '.$sub;
+            
+        if($this->sendMail($to,$body,$sub)) return json_encode(array('state' => 'T', 'msg' => 'Thank you for contacting us.'));
+        else return json_encode(array('state' => 'F', 'msg' => 'Error sending data.'));
     }
     
-//    function getAnOrder($id){
-//	$id = $this->esc($id);
-//	$r = $this->db->getAsoc("select
-//		o.id, o.uid, o.total as subtotal, o.ship_price, o.total + o.ship_price as total, o.pay_method, o.status as o_status, o.ship_code, o.notes, o.input, o.checked, o.dispatched,
-//		c.fname, c.lname, c.email, c.phone, c.status as cl_status,
-//		l.country, l.state, l.city, l.street, l.zip
-//		from orders o
-//		join clients c on o.uid = c.id
-//		join location l on o.ship_addr = l.id
-//		where o.id=$id");
-//	$rr = $this->db->getAsoc("select o.qty, o.price, o.qty * o.price as sum, i.name from ord_data o
-//		join items i on o.itemid = i.id
-//		where o.ordid = $id");
-//		
-//	if(!empty($r) || !empty($rr)){
-//		$ret = $r[0];
-//		$ret['cart'] = $rr;
-//		return $ret;
-//	}
-//}
-    
-    /*** MAILER ***/
-function sendMail($to,$body,$sub,$both = false){
-	try{
-		$mail = new PHPMailer;
-		$mail->IsSMTP();
-		
-		$mail->Host = 'smtp.gmail.com';
-		$mail->Port = 587;
-		$mail->SMTPAuth = true;
-		$mail->SMTPSecure = 'tls';
-		$mail->Username = 'medicinespeed2@gmail.com';
-		$mail->Password = 'Medicine1';
-		
-		$mail->AddReplyTo('medicinespeed1@gmail.com', 'Medicine Speed Store');
-		if($both) $mail->AddAddress($this->siteMail, '');
-		$mail->AddAddress($to, '');
-		$mail->SetFrom('medicinespeed2@gmail.com', 'Medicine Speed Store');
-		$mail->Subject = $sub;
-		$mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
-		$mail->MsgHTML($body);
-		if($mail->Send()) return true;			
-	} catch(phpmailerException $e){
-		return false;							
-	}
-}
-
-function contactUsMail($p){
-	$to = $this->contactMail;
-	$name = $this->esc($p['xName']);
-	$email = $this->esc($p['xEmail']);
-	$sub = $this->esc($p['xSubject']);
-	$msg = strip_tags(trim($p['xMessage']));
-	$msg = nl2br($msg);
-	
-	if(empty($name) || empty($email) || empty($sub) || empty($msg)) return json_encode(array('state'=>'F', 'msg'=>'Empty field(s).'));
-	if(!filter_var($email, FILTER_VALIDATE_EMAIL)) return json_encode(array('state' => 'F', 'msg' => 'Your e-mail address is not valid.'));
-	
-	$body = file_get_contents('templates/_contactUs.html');
-	$body = str_replace(
-		array('%%SUB','%%BODY','%%NAME','%%EMAIL'),
-		array($sub, $msg, $name, $email),
-		$body
-	);
-	
-	$sub = 'Medicine speed - '.$sub;
-		
-	if($this->sendMail($to,$body,$sub)) return json_encode(array('state' => 'T', 'msg' => 'Thank you for contacting us.'));
-	else return json_encode(array('state' => 'F', 'msg' => 'Error sending data.'));
-}
-    
     function mailOrder($id, $status, $trace=false, $anote=false){
-	$order = $this->getAnOrder($id);
-	if(!empty($order)){
-		$cart = '';
-		foreach($order['cart'] as $n){
-			$cart .= '<tr>
-    	<td style="text-align:left; background:#e3e3e3;">'.stripslashes($n['name']).'</td>
-        <td style="text-align:center; background:#e3e3e3;">'.$n['qty'].'</td>
-        <td style="text-align:right; background:#e3e3e3;">'.$n['price'].'</td>
-        <td style="text-align:right; background:#e3e3e3;">'.($n['qty'] * $n['price']).'</td>
-    </tr>';
-		}
-		
-		$note = '';
-		if($status == 'new' || $status == '1'){
-			$status = 'AWAITING PAYMENT';
-			$note = '<p>Your order with the reference id '.$id.' has been placed successfully and will be <strong>shipped as soon as we receive your payment.</strong><br><strong>Please, use this reference number ('.$id.') when you make payment.</strong></p>';
-		}
-		elseif($status == 'pay' || $status == '2'){
-			$status = 'PAYMENT VERIFIED';
-			$note = "<p>Your payment on order <strong>$id</strong> has been verified. Your goods will be dispatched as soon as possible.";
-		}
-		elseif($status == 'send' || $status == '3'){
-			$status = 'GOODS DISPATCHED';
-			$note = "Your shipment code is <strong>$trace</strong>. You can trace your shipment with it.";
-		}
-		elseif($status == 'cancel' || $status == '9') $status = 'CANCELED';
-		
-		if($anote) $anote = "<div style=\"border:#95b6df 1px solid; margin-bottom:4px;\">
-	<p style=\"padding:0.2em 1em 0.2em 2em; margin:0; color:#fff; background:#95b6df;\">Madicine now | Special notes</p><p>$anote</p></div>";
-	
-		$body = file_get_contents('templates/_cartOrderNew.html');
-		$body = str_replace(
-			array('%%NO','%%DATE','%%CART','%%SUB','%%SHIP','%%TOTAL','%%PAYMENT', '%%STATUS','%%NNOTE', '%%ANOTE'),
-			array($id,date("F j, Y, g:i a"),$cart,$order['subtotal'],$order['ship_price'],$order['total'], payMethod($order['pay_method'], $order['total']),$status,$note,$anote),
-			$body
-		);
-		
-		$body = str_replace(
-			array('%%COUNTRY','%%STATE','%%CITY','%%STR','%%ZIP'),
-			array($order['country'], $order['state'], $order['city'], $order['street'], $order['zip'] ? $order['zip'] : '-'),
-			$body
-		);
-		
-		$body = str_replace(
-			array('%%NAME','%%EMAIL','%%PHONE'),
-			array($order['fname'].' '.$order['lname'], $order['email'], $order['phone']),
-			$body
-		);
-	}
-	return array('body' => $body, 'email' => $order['email']);
-}
-/*** end mailer ***/
+        $order = $this->getAnOrder($id);
+        if(!empty($order)){
+            $cart = '';
+            foreach($order['cart'] as $n){
+                $cart .= '<tr>
+            <td style="text-align:left; background:#e3e3e3;">'.stripslashes($n['name']).'</td>
+            <td style="text-align:center; background:#e3e3e3;">'.$n['qty'].'</td>
+            <td style="text-align:right; background:#e3e3e3;">'.$n['price'].'</td>
+            <td style="text-align:right; background:#e3e3e3;">'.($n['qty'] * $n['price']).'</td>
+        </tr>';
+            }
+            
+            $note = '';
+            if($status == 'new' || $status == '1'){
+                $status = 'AWAITING PAYMENT';
+                $note = '<p>Your order with the reference id '.$id.' has been placed successfully and will be <strong>shipped as soon as we receive your payment.</strong><br><strong>Please, use this reference number ('.$id.') when you make payment.</strong></p>';
+            }
+            elseif($status == 'pay' || $status == '2'){
+                $status = 'PAYMENT VERIFIED';
+                $note = "<p>Your payment on order <strong>$id</strong> has been verified. Your goods will be dispatched as soon as possible.";
+            }
+            elseif($status == 'send' || $status == '3'){
+                $status = 'GOODS DISPATCHED';
+                $note = "Your shipment code is <strong>$trace</strong>. You can trace your shipment with it.";
+            }
+            elseif($status == 'cancel' || $status == '9') $status = 'CANCELED';
+            
+            if($anote) $anote = "<div style=\"border:#95b6df 1px solid; margin-bottom:4px;\">
+        <p style=\"padding:0.2em 1em 0.2em 2em; margin:0; color:#fff; background:#95b6df;\">Madicine now | Special notes</p><p>$anote</p></div>";
+        
+            $body = file_get_contents('templates/_cartOrderNew.html');
+            $body = str_replace(
+                array('%%NO','%%DATE','%%CART','%%SUB','%%SHIP','%%TOTAL','%%PAYMENT', '%%STATUS','%%NNOTE', '%%ANOTE'),
+                array($id,date("F j, Y, g:i a"),$cart,$order['subtotal'],$order['ship_price'],$order['total'], payMethod($order['pay_method'], $order['total']),$status,$note,$anote),
+                $body
+            );
+            
+            $body = str_replace(
+                array('%%COUNTRY','%%STATE','%%CITY','%%STR','%%ZIP'),
+                array($order['country'], $order['state'], $order['city'], $order['street'], $order['zip'] ? $order['zip'] : '-'),
+                $body
+            );
+            
+            $body = str_replace(
+                array('%%NAME','%%EMAIL','%%PHONE'),
+                array($order['fname'].' '.$order['lname'], $order['email'], $order['phone']),
+                $body
+            );
+        }
+        return array('body' => $body, 'email' => $order['email']);
+    }
+    /*** end mailer ***/
     
     function getUserLocation($u) {
         $u = isset($_SESSION['client']) ? $_SESSION['client'] : '';
@@ -629,7 +633,7 @@ function contactUsMail($p){
         return $r;
     }
 
-// funkcia   za dobaviane na Address
+    // funkcia   za dobaviane na Address
     function newUserLocation($p, $user) {
         if (!$user)
             return json_encode(array('state' => 'F', 'msg' => 'User not logged.'));
@@ -695,7 +699,7 @@ function contactUsMail($p){
         return array('state' => 'T', 'msg' => 'Data saved.<br>Please, proceed with shopping cart.', 'data' => $res);
     }
 
-// krai funkcia guest user
+    // krai funkcia guest user
 
     function createUser($p) {
         //   function createUser($p,$human){
@@ -705,7 +709,7 @@ function contactUsMail($p){
         $fname = $this->esc($p['fname']);
         $lname = $this->esc($p['lname']);
         $phone = $this->esc($p['phone']);
-//	$equation = md5($p['xEquation']);
+    //	$equation = md5($p['xEquation']);
         if (empty($email) || empty($pass) || empty($pass2) || empty($fname) || empty($lname) || empty($phone)) {
             return json_encode(array('state' => 'F', 'msg' => 'Empty filed(s). All fields are required.'));
         }
@@ -715,7 +719,7 @@ function contactUsMail($p){
             return json_encode(array('state' => 'F', 'msg' => 'Password is too weak.'));
         if (!filter_var($email, FILTER_VALIDATE_EMAIL))
             return json_encode(array('state' => 'F', 'msg' => 'E-mail address is not valid.'));
-//	if($equation != $human) return json_encode(array('state' => 'F', 'msg' => 'Is the equation too difficult for you?'));
+    //	if($equation != $human) return json_encode(array('state' => 'F', 'msg' => 'Is the equation too difficult for you?'));
 
         $rc = $this->db->getAsoc("select id from clients where email = '$email' and status > 0");
         if (count($rc) > 0)
@@ -727,155 +731,183 @@ function contactUsMail($p){
         $body = str_replace(
                 array('%%FNAME', '%%LNAME', '%%EMAIL', '%%PASS'), array($fname, $lname, $email, $pass), $body
         );
-	$this->sendMail($email,$body,'Medicine Get - account creation');
+	    $this->sendMail($email,$body,'Medicine Get - account creation');
 
         return array('state' => 'T', 'msg' => 'User registered successfully.', 'id' => $id, 'email' => $email);
     }
 
     /*** BANNERS ***/
     function itemToBanner($id,$grp){
-	if(!$grp) return json_encode(array('state'=>'F','msg'=>'No banner group created.'));
-	$r = $this->db->getAsoc("select id from banners where itemid=$id");
-	if(count($r) > 0) return json_encode(array('state'=>'F','msg'=>'Duplicated product.'));
-	
-	$this->db->insert("insert into banners(itemid,grp) values($id,'$grp')");
-	return json_encode(array('state'=>'T','msg'=>'Product added to banner.'));
-	
+        if(!$grp) return json_encode(array('state'=>'F','msg'=>'No banner group created.'));
+        $r = $this->db->getAsoc("select id from banners where itemid=$id");
+        if(count($r) > 0) return json_encode(array('state'=>'F','msg'=>'Duplicated product.'));
+        
+        $this->db->insert("insert into banners(itemid,grp) values($id,'$grp')");
+        return json_encode(array('state'=>'T','msg'=>'Product added to banner.'));
+        
     }
 
     function getBanners(){
-	$res = array();
-//        $r = array();
-//	$r = $this->db->getAsoc("select distinct(grp) from banners order by id DESC");
-        $r = $this->db->getAsoc("select id, itemid, grp from banners order by id DESC");
-	if(count($r) > 0){
-		foreach($r as $row){
-			$grp = $row['grp'];
-			$b = $this->db->getAsoc("select b.id as bid, i.id, i.name, i.image, i.price from banners b join items i on b.itemid=i.id where b.grp='$grp' order by b.id");
-			if(count($b) > 0) $res[$grp] = $b;
-		}
-		return $res;
-	}else return NULL;
+        $res = array();
+        //        $r = array();
+        //	$r = $this->db->getAsoc("select distinct(grp) from banners order by id DESC");
+            $r = $this->db->getAsoc("select id, itemid, grp from banners order by id DESC");
+        if(count($r) > 0){
+            foreach($r as $row){
+                $grp = $row['grp'];
+                $b = $this->db->getAsoc("select b.id as bid, i.id, i.name, i.image, i.price from banners b join items i on b.itemid=i.id where b.grp='$grp' order by b.id");
+                if(count($b) > 0) $res[$grp] = $b;
+            }
+            return $res;
+        }else return NULL;
     }
 
     function deleteBanner($grp){
-	$this->db->update("delete from banners where grp='$grp'");
+	    $this->db->update("delete from banners where grp='$grp'");
     }
-/*** end banners ***/
+    /*** end banners ***/
     
     /*** ADM ORDERS ***/
-function getOrders($p){
-	$sql = '';
-	$id = $this->esc($p['id']);
-	$from = $this->esc($p['from']);
-	$to = $this->esc($p['to']);
-	$email = $this->esc($p['email']);
-	
-	if(!empty($from)) $sql .= " and o.input >= '$from'";
-	if(!empty($to)) $sql .= " and o.input <= '$to'";
-	if(!empty($id)) $sql .= ' and o.id = '. $id;
-	if(!empty($email)) $sql .= " and c.email = '$email'";
+    function getOrders($p){
+        $sql = '';
+        $id = $this->esc($p['id']);
+        $from = $this->esc($p['from']);
+        $to = $this->esc($p['to']);
+        $email = $this->esc($p['email']);
+        
+        if(!empty($from)) $sql .= " and o.input >= '$from'";
+        if(!empty($to)) $sql .= " and o.input <= '$to'";
+        if(!empty($id)) $sql .= ' and o.id = '. $id;
+        if(!empty($email)) $sql .= " and c.email = '$email'";
 
-	$r = $this->db->getAsoc("select o.id, c.fname, c.lname, o.total + o.ship_price as sum, o.pay_method, o.status, o.input from orders o join clients c on o.uid = c.id where 1=1 $sql order by o.status, o.id desc limit 100");
-	return $r;
-}
+        $r = $this->db->getAsoc("select o.id, c.fname, c.lname, o.total + o.ship_price as sum, o.pay_method, o.status, o.input from orders o join clients c on o.uid = c.id where 1=1 $sql order by o.status, o.id desc limit 100");
+        return $r;
+    }
 
-function getClients($p){
-	$sql = '';
-	$fname = $this->esc($p['fname']);
-	$lname = $this->esc($p['lname']);
-	$email = $this->esc($p['email']);
-	
-	if(!empty($fname)) $sql .= " and fname like '%$fname%'";
-	if(!empty($lname)) $sql .= " and lname like '%$lname%'";
-	if(!empty($email)) $sql .= " and email like '$email'";
-	$r = $this->db->getAsoc("select id,fname,lname,email,phone,status,date(registered) as input from clients where 1=1 $sql order by fname,lname limit 100");
-	return $r;
-}
+    function getClients($p){
+        $sql = '';
+        $fname = $this->esc($p['fname']);
+        $lname = $this->esc($p['lname']);
+        $email = $this->esc($p['email']);
+        
+        if(!empty($fname)) $sql .= " and fname like '%$fname%'";
+        if(!empty($lname)) $sql .= " and lname like '%$lname%'";
+        if(!empty($email)) $sql .= " and email like '$email'";
+        $r = $this->db->getAsoc("select id,fname,lname,email,phone,status,date(registered) as input from clients where 1=1 $sql order by fname,lname limit 100");
+        return $r;
+    }
 
-function getClientById($id){
-	$co = $this->db->getAsoc("select count(id) as cnt, ifnull(sum(ship_price + total),0) as amount from orders where uid=$id");
-	$r = $this->db->getAsoc("select id,fname,lname,email,phone,status,date(registered) as input from clients where id=$id");
-	if(count($r) > 0){
-		$out = $r[0];
-		if(count($co) > 0){
-			$out['orders'] = $co[0]['cnt'];
-			$out['amount'] = $co[0]['amount'];
-		}else{
-			$out['orders'] = 0;
-			$out['amount'] = 0.00;
-		}
-		
-		return $out;
-	}
-	else return false;
-}
+    function getClientById($id){
+        $co = $this->db->getAsoc("select count(id) as cnt, ifnull(sum(ship_price + total),0) as amount from orders where uid=$id");
+        $r = $this->db->getAsoc("select id,fname,lname,email,phone,status,date(registered) as input from clients where id=$id");
+        if(count($r) > 0){
+            $out = $r[0];
+            if(count($co) > 0){
+                $out['orders'] = $co[0]['cnt'];
+                $out['amount'] = $co[0]['amount'];
+            }else{
+                $out['orders'] = 0;
+                $out['amount'] = 0.00;
+            }
+            
+            return $out;
+        }
+        else return false;
+    }
 
-function getAnOrder($id){
-	$id = $this->esc($id);
-	$r = $this->db->getAsoc("select
-		o.id, o.uid, o.total as subtotal, o.ship_price, o.total + o.ship_price as total, o.pay_method, o.status as o_status, o.ship_code, o.notes, o.input, o.checked, o.dispatched,
-		c.fname, c.lname, c.email, c.phone, c.status as cl_status,
-		l.country, l.state, l.city, l.street, l.zip
-		from orders o
-		join clients c on o.uid = c.id
-		join location l on o.ship_addr = l.id
-		where o.id=$id");
-	$rr = $this->db->getAsoc("select o.qty, o.price, o.qty * o.price as sum, i.name from ord_data o
-		join items i on o.itemid = i.id
-		where o.ordid = $id");
-		
-	if(!empty($r) || !empty($rr)){
-		$ret = $r[0];
-		$ret['cart'] = $rr;
-		return $ret;
-	}
-}
-function setOrderStatus($g){
-	$id = $this->esc($g['id']);
-	$status = $this->esc($g['status']);
-	$code = $this->esc($g['code']);
-	$notes = $this->esc($g['notes']);
-	
-	if(empty($code) && $status == 3) return json_encode(array('state' => 'F', 'msg' => 'Please provide shipping code.'));
-	$r = $this->db->getAsoc("select status as s from orders where id=$id");
-	if(empty($r)) return json_encode(array('state' => 'F', 'msg' => 'Order does not exists.'));
-	
-	if($r[0]['s'] < $status){
-		if($status == 2) $this->db->update("update orders set status=$status, notes='$notes', checked=now() where id=$id");
-		elseif($status == 3) $this->db->update("update orders set status=$status, notes='$notes', ship_code='$code', dispatched=now() where id=$id");
-		else $this->db->update("update orders set status=$status, notes='$notes' where id=$id");
-	}
-	elseif($r[0]['s'] == $status) return json_encode(array('state' => 'F', 'msg' => 'The order is the same status.'));
-	elseif($r[0]['s'] > $status) return json_encode(array('state' => 'F', 'msg' => 'Cannot return to previous status'));
-	
-	$ordArr = $this->mailOrder($id, $status,$code, $notes);
-	$body = $ordArr['body'];
-	$email = $ordArr['email'];
-	$this->sendMail($email,$body,"Medicine Speed - order $id update",true);
-		
-	return json_encode(array('state' => 'T', 'msg' => 'Order updated.'));
-}
+    function getAnOrder($id){
+        $id = $this->esc($id);
+        $r = $this->db->getAsoc("select
+            o.id, o.uid, o.total as subtotal, o.ship_price, o.total + o.ship_price as total, o.pay_method, o.status as o_status, o.ship_code, o.notes, o.input, o.checked, o.dispatched,
+            c.fname, c.lname, c.email, c.phone, c.status as cl_status,
+            l.country, l.state, l.city, l.street, l.zip
+            from orders o
+            join clients c on o.uid = c.id
+            join location l on o.ship_addr = l.id
+            where o.id=$id");
+        $rr = $this->db->getAsoc("select o.qty, o.price, o.qty * o.price as sum, i.name from ord_data o
+            join items i on o.itemid = i.id
+            where o.ordid = $id");
+            
+        if(!empty($r) || !empty($rr)){
+            $ret = $r[0];
+            $ret['cart'] = $rr;
+            return $ret;
+        }
+    }
+    function setOrderStatus($g){
+        $id = $this->esc($g['id']);
+        $status = $this->esc($g['status']);
+        $code = $this->esc($g['code']);
+        $notes = $this->esc($g['notes']);
+        
+        if(empty($code) && $status == 3) return json_encode(array('state' => 'F', 'msg' => 'Please provide shipping code.'));
+        $r = $this->db->getAsoc("select status as s from orders where id=$id");
+        if(empty($r)) return json_encode(array('state' => 'F', 'msg' => 'Order does not exists.'));
+        
+        if($r[0]['s'] < $status){
+            if($status == 2) $this->db->update("update orders set status=$status, notes='$notes', checked=now() where id=$id");
+            elseif($status == 3) $this->db->update("update orders set status=$status, notes='$notes', ship_code='$code', dispatched=now() where id=$id");
+            else $this->db->update("update orders set status=$status, notes='$notes' where id=$id");
+        }
+        elseif($r[0]['s'] == $status) return json_encode(array('state' => 'F', 'msg' => 'The order is the same status.'));
+        elseif($r[0]['s'] > $status) return json_encode(array('state' => 'F', 'msg' => 'Cannot return to previous status'));
+        
+        $ordArr = $this->mailOrder($id, $status,$code, $notes);
+        $body = $ordArr['body'];
+        $email = $ordArr['email'];
+        $this->sendMail($email,$body,"Medicine Speed - order $id update",true);
+            
+        return json_encode(array('state' => 'T', 'msg' => 'Order updated.'));
+    }
     
 
 
-/*** end adm orders ***/
-/*** LATEST ***/
+    /*** end adm orders ***/
+    /*** LATEST ***/
     function getLatest($lim=10){
-	$r = $this->db->getAsoc("select id,name,image,left(data,70) as data from items order by id DESC limit $lim");
-	return $r;
+        $r = $this->db->getAsoc("select id,name,image,left(data,70) as data from items order by id DESC limit $lim");
+        return $r;
     }
         
         
- /*** END LATEST ***/       
-        function myid(){
-	$a = microtime(false);
-	$b = substr($a,2,strlen($a)-1);
-	$b = str_replace(" ", "", $b);
-	return $b;
-}
+    /*** END LATEST ***/       
+    function myid(){
+        $a = microtime(false);
+        $b = substr($a,2,strlen($a)-1);
+        $b = str_replace(" ", "", $b);
+        return $b;
+    }
 
+
+    /***   PAGINING ***/
+    function getProducts($page = 1){
+        $startPage = $page * $this->itemPerPage - $this->itemPerPage;
+        if ($startPage < 0) {
+             $startPage = 0;
+        }
+
+        $itemPerPage = $this->itemPerPage;
         
+        $res = $this->db->select("select count(id) as cnt from items where hidden = 0 and shopped = 0");
+        $rsProducts = $this->db->select("select * from items order by id DESC limit $startPage,$itemPerPage");
+        
+        return array('data' => $rsProducts, 'cnt' => $res[0]['cnt']);
+    }
+
+
+    function getPageArr($countTotalItems, $page){
+        $ret = array();
+        $pages = ceil($countTotalItems / $this->itemPerPage);
+        if(($page - $this->pageOff) <= 0) $start = 1; else $start = $page - $this->pageOff;
+        if(($page + $this->pageOff) >= $pages) $end = $pages; else $end = $page + $this->pageOff;
+
+        for($i = $start; $i <= $end; $i++){
+        //for($i = $start; $i<10; $i++){
+            $ret[] = $i;
+        }
+        return $ret;
+    }    
         
 }//end class
 

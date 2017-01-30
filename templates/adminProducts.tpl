@@ -147,5 +147,39 @@
             </tr >
             
         {/section}
+
+{*<!-- PAGES -->*}
      </table >
  </div >
+
+ 
+        {*<!-- PAGES -->*}
+	<p style="text-align:center; margin:0; padding:1em; background-color:red">
+{section name=sp loop=$PAGES}
+	{if isset($smarty.get.page)}
+		<a href="admin-products/{$smarty.get.page}/page/{$PAGES[sp]}" class="btn " alt="page {$PAGES[sp]}" title="page {$PAGES[sp]}">{$PAGES[sp]}</a>
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+            ...
+        </ul>
+    </nav>
+    
+    {*{elseif isset($smarty.get.make)}
+    	<a href="manufacturer/{$smarty.get.make}/page/{$PAGES[sp]}" class="_btn" alt="page {$PAGES[sp]}" title="page {$PAGES[sp]}">{$PAGES[sp]}</a>
+    {elseif isset($smarty.get.lastUpd)}
+    	<a href="last-updated/page/{$PAGES[sp]}" class="_btn" alt="page {$PAGES[sp]}" title="page {$PAGES[sp]}">{$PAGES[sp]}</a>
+    {elseif isset($smarty.get.newest)}
+    	<a href="newest/page/{$PAGES[sp]}" class="_btn" alt="page {$PAGES[sp]}" title="page {$PAGES[sp]}">{$PAGES[sp]}</a>
+    {elseif isset($smarty.get.topSeller)}
+    	<a href="top-sellers/page/{$PAGES[sp]}" class="_btn" alt="page {$PAGES[sp]}" title="page {$PAGES[sp]}">{$PAGES[sp]}</a>
+    {elseif isset($smarty.get.mostVisited)}
+    	<a href="most-visited/page/{$PAGES[sp]}" class="_btn" alt="page {$PAGES[sp]}" title="page {$PAGES[sp]}">{$PAGES[sp]}</a>
+	{elseif isset($smarty.get.hidden)}
+    	<a href="show-hidden/page/{$PAGES[sp]}" class="_btn" alt="page {$PAGES[sp]}" title="page {$PAGES[sp]}">{$PAGES[sp]}</a>
+    {elseif isset($smarty.get.search)}
+    	<a href="search/{$smarty.get.search}/page/{$PAGES[sp]}" class="_btn" alt="page {$PAGES[sp]}" title="page {$PAGES[sp]}">{$PAGES[sp]}</a>*}
+    {/if}
+{/section}
+	</p>

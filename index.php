@@ -41,7 +41,6 @@ if (isset($_GET['cat'])) {
 }
 
 if (isset($_GET['product'])) {
-
     $data = $db->select("select id, name, image, mkeys, price, mdesc, data from items where name= ?", array($_GET['product']));
     $smarty->assign('PRODUCT', $data);
 }
@@ -120,11 +119,12 @@ if (isset($_GET['adminProducts'])) {
 
     $smarty->assign('pageTitle', 'Admin site');
     $smarty->assign('rsCategories', $rsCategories);
-    $smarty->assign('rsProducts', $rsProducts);
+    $smarty->assign('rsProducts', $rsProducts['data']);
+    $smarty->assign('PAGES', $rsProducts['pages']);
 }
 
 $smarty->assign('CATEGORIES', $db->select("select id, metakeys, name from folders order by name"));
-$smarty->assign('TOPPRODUCT', $db->select("select id,image, name, make, mkeys, mdesc, cat, price from items order by name LIMIT 10"));
+$smarty->assign('TOPPRODUCT', $db->select("select * from items order by id limit 10"));
 
 //...........SEARCH............
 if (isset($_GET['search'])) {
@@ -155,7 +155,7 @@ if(isset($_GET['admClients'])){
 
 
 $smarty->assign("BANNERS", $core->getBanners());
-$smarty->assign("LAST5",$core->getLatest());
+$smarty->assign("LAST5", $core->getLatest());
 
 
 $smarty->display('home.tpl');
