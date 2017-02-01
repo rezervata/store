@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-02-01 14:25:00
+<?php /* Smarty version Smarty-3.1.18, created on 2017-02-01 22:29:37
          compiled from "./templates/login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:19375668845891d2c6b53371-87466674%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f5f63cf8bf5077cbe9e40e023158dd20352e878a' => 
     array (
       0 => './templates/login.tpl',
-      1 => 1485951872,
+      1 => 1485980776,
       2 => 'file',
     ),
   ),
@@ -41,7 +41,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         </div>
             <div class="g-recaptcha" data-sitekey="6LeY-BMUAAAAAILzmoKccnfPH3F6uga8EW1NOaCM"></div>
 
-        <button class="btn btn-lg btn-primary btn-block" id="login" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" id="submit" nane="login" type="submit">Sign in</button>
     </form>
 
 </div>

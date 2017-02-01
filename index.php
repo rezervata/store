@@ -163,4 +163,4 @@ $smarty->assign("ALLCATS",$core->getCombCats());
 $smarty->display('home.tpl');
 
 print_r($_SESSION);
-print_r($rec_res);
+var_dump($rec_res);

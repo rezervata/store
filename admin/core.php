@@ -8,6 +8,7 @@ require_once 'logic/db.class.php';
 require_once 'logic/Image.class.php';
 require_once 'logic/class.phpmailer.php';
 require_once 'logic/mods.php';
+require_once 'libs/recaptchalib.php';
 
 function ordStat($type) {
     if ($type == '2')
@@ -1000,7 +1001,7 @@ function getCombCats(){
 
 /***GOOGLE RECAPTCHA***/
 
-function recaptcha($p) {
+function recaptcha() {
     if (isset($_POST['submit'])){
         $secret = '6LeY-BMUAAAAAEfnisS53HbcJsVbTx_foPFwUNN_';
         $response = $_POST['g-recaptcha-response'];
@@ -1008,7 +1009,7 @@ function recaptcha($p) {
         $url = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoteip");
         $rec_res = json_decode($url, TRUE);
             if ($rec_res['success'] == 1){
-            echo 'You are not a robobt!';
+            echo 'Success!';
             } else {
             die('Please note that you are human!');    
             }

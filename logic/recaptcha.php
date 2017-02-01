@@ -18,7 +18,7 @@ $error = null;
 if ($_POST["g-recaptcha-response"]) {
         $resp = recaptcha_check_answer ($privatekey,
                                         $_SERVER["REMOTE_ADDR"],
-//                                        $_POST["recaptcha_challenge_field"],
+                                        $_POST["recaptcha_challenge_field"],
                                         $_POST["g-recaptcha-response"]);
 
         if ($resp->is_valid) {
