@@ -1,0 +1,13 @@
+RECAPTCHA registration for medicinespeed1@gmail.com
+ 
+RECAPTCHA KEY : 		6LeY-BMUAAAAAILzmoKccnfPH3F6uga8EW1NOaCM
+RECAPTCHA SECRET KEY:		6LeY-BMUAAAAAEfnisS53HbcJsVbTx_foPFwUNN_
+
+
+
+Ако вашите потребители да подадат формуляра с интегриран Recaptcha, вие ще получите наред с други неща низ с името "G-ReCAPTCHA отговор". Ако искате да разберете дали Google е направен преглед на съответния потребител, изпрати искане POST със следните параметри:
+URL: https://www.google.com/recaptcha/api/siteverify
+тайна (задължително)	6LeY-BMUAAAAAEfnisS53HbcJsVbTx_foPFwUNN_
+отговор (задължително)	Стойност на "г-ReCAPTCHA-отговор"
+remoteip	The IP адреса на крайния потребител
+

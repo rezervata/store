@@ -101,7 +101,8 @@ if (isset($_GET['do'])) {
 //   .........   CART STEPS
     if ($_GET['do'] == 'login') {
         $res = $coreAsync->authUser($_POST);
-        if ($res['state'] == 'T') {
+        $rec_res = $coreAsync->recaptcha($p);
+        if ($res['state'] == 'T' && $rec_res['success'] == 1) {
             $_SESSION['client']['id'] = $res['id'];
             $_SESSION['client']['email'] = $res['email'];
             $_SESSION['client']['fname'] = $res['fname'];
@@ -120,7 +121,8 @@ if (isset($_GET['do'])) {
     
     if($_GET['do'] == 'accCreate'){
 	$res = $coreAsync->createUser($_POST);
-        if ($res['state'] == 'T') {
+        $rec_res = $coreAsync->recaptcha($p);
+        if ($res['state'] == 'T' && $rec_res['success'] == 1) {
             $_SESSION['client'] = $res;
             $uid = array();
         $uid['id'] = $_SESSION['client']['id'];

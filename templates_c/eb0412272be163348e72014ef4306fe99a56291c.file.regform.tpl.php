@@ -1,8 +1,33 @@
-<head>
+<?php /* Smarty version Smarty-3.1.18, created on 2017-02-01 14:39:00
+         compiled from "./templates/regform.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:13850194045891d6e41d5370-96321852%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'eb0412272be163348e72014ef4306fe99a56291c' => 
+    array (
+      0 => './templates/regform.tpl',
+      1 => 1485951884,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '13850194045891d6e41d5370-96321852',
+  'function' => 
+  array (
+  ),
+  'variables' => 
+  array (
+    'CLREGISTER' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_5891d6e4200e89_80956144',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5891d6e4200e89_80956144')) {function content_5891d6e4200e89_80956144($_smarty_tpl) {?><head>
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <div class="container">
-    {if isset($CLREGISTER)}<h2>{*{$CLREGISTER|getError}*}</h2>{/if}
+    <?php if (isset($_smarty_tpl->tpl_vars['CLREGISTER']->value)) {?><h2></h2><?php }?>
     <form class="form-horizontal" role="form" name='register' id="regform" action='' method='post'
     accept-charset='UTF-8'>
         <h2>Registration Form</h2>
@@ -127,4 +152,4 @@
 
         
        
-       
+       <?php }} ?>
