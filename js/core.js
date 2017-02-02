@@ -468,6 +468,8 @@ $(document).on('click', '#_saveEditItem', function() {
                 */
             }
 
+            location.reload();
+
         }
     }).submit();
 

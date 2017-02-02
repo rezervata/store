@@ -11,7 +11,7 @@ require_once 'logic/mods.php';
 require_once 'libs/recaptchalib.php';
 
 function ordStat($type) {
-    if ($type == '2')
+    if ($type == '2') 
         return 'checked';
     if ($type == '3')
         return 'executed';
@@ -303,7 +303,6 @@ class Core {
         $itemData = $d['itemData'];
         $itemStatus = isset($d['itemStatus']) ? $d['itemStatus'] : 0;
 
-//        $itemStatus = $d['itemStatus'] == NULL ? 0:1; 
         $itemImage = $d['hItemImage'];
         
         $val = '';
@@ -312,8 +311,11 @@ class Core {
         if (empty($_FILES['fIMG'])) {
             echo 'Select picture.';
         } else {
-            for ($i = 0; $i < count($_FILES['fIMG']['name']); $i++) {
-                $pic['nameImg'] = array(
+            // for ($i = 0; $i < count($_FILES['fIMG']['name']); $i++) {
+                
+            // }
+
+            $pic['nameImg'] = array(
                     'name' => $_FILES['fIMG']['name'],
                     'type' => $_FILES['fIMG']['type'],
                     'tmp_name' => $_FILES['fIMG']['tmp_name'],
@@ -322,16 +324,13 @@ class Core {
                 );
                 $val .= ' [' . $_FILES['fIMG']['name'] . '] ';
                 $val .= $this->attachImage($_POST, $pic) . '<br>';
-            }
        
-//            $sec = "2";
-//            header("Refresh: $sec; url=$page");
+           $sec = "2";
+           header("Refresh: $sec; url=$page");
             echo $val;
             // sleep(20);
-//            return;
-        }//else
-        
-//        attachImage($itemImage, );
+        //    return;
+        }
 
         $newFileName = null;
 
@@ -374,18 +373,14 @@ class Core {
                 . "SET {$setStr} "
                 . "WHERE id = '{$itemId}'";
 
-        // include '../config/db.php';
-        // $rs = mysqli_query($link, $sql);
-        // mysqli_close($link);
-
-        // $res = updateProductAction($itemId, $itemName, $itemPrice, $itemStatus, $itemDesc, $itemCatId, $itemMake, $itemMkey, $itemData);
-
         $res = $this->db->update($sql);
 
         $resData = array();
         if ($res) {
             $resData['success'] = 1;
             $resData['message'] = 'The changes are successfully saved (update)';
+            $resData['image'] = $val;
+            $resData['urt'] = $page;
         } else {
             $resData['success'] = 0;
             $resData['message'] = 'Error update data';
