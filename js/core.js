@@ -304,7 +304,6 @@ $(document).ready(function() {
         updateProduct(postData);
     });
     /*** END ADM UPDATE PRODUCT ***/
-
 }); // do ready end
 
 /*** ADM FUNCTIONY ***/
@@ -422,56 +421,55 @@ function updateProduct(item) {
         success: function(data) {
             alert(data['message']);
         }
-    }); 
-        
+    });
+
 }
-/*** END ADM FUNCTION ***/
 
 /*** ITEM ***/
-	$(document).on('click','input[name="bAddItem"]', function(){
-		$('#metro_body').html('');
-		$('#metro_body').load('async.php?load=newItem',function(){
-			$('#_blanketH').fadeIn(400);
-		});
-	});
-	
-	$(document).on('click','#_saveItem',function(){
-		$('form#newItem').ajaxForm({
-			target:'.aj_msg',
-			success:function(){
-				if($('.aj_msg').html() == 'Product created.'){
-					$('form#newItem').html('');
-					setTimeout(function(){
-						$('#_blanketH').fadeOut(400,function(){location.reload();});
-					}, 1000);
-				}
-				
-			}
-		}).submit();
-	});
-	
-	$(document).on('click','input[name="bEditItem"]', function(){
-		$('#metro_body').html('');
-		$('#metro_body').load('async.php?load=editItem&id=' + $(this).data('id'),function(){
-			$('#_blanketH').fadeIn(400);
-		});
-	});
-	
-	$(document).on('click','#_saveEditItem',function(){
-		$('form#editItem').ajaxForm({
-			target:'.aj_msg',
-			success:function(){
-				if($('.aj_msg').html() == 'Edited successfully.'){
-					//$('form#newItem').html('');
-					/*
-					setTimeout(function(){
-						$('#_blanketH').fadeOut(400,function(){location.reload();});
-					}, 1000);
-					*/
-				}
-				
-			}
-		}).submit();
+$(document).on('click', 'input[name="bAddItem"]', function() {
+    $('#metro_body').html('');
+    $('#metro_body').load('async.php?load=newItem', function() {
+        $('#_blanketH').fadeIn(400);
+    });
+});
 
-	});
+$(document).on('click', '#_saveItem', function() {
+    $('form#newItem').ajaxForm({
+        target: '.aj_msg',
+        success: function() {
+            if ($('.aj_msg').html() == 'Product created.') {
+                $('form#newItem').html('');
+                setTimeout(function() {
+                    $('#_blanketH').fadeOut(400, function() { location.reload(); });
+                }, 1000);
+            }
+
+        }
+    }).submit();
+});
+
+$(document).on('click', 'input[name="bEditItem"]', function() {
+    $('#metro_body').html('');
+    $('#metro_body').load('async.php?load=editItem&id=' + $(this).data('id'), function() {
+        $('#_blanketH').fadeIn(400);
+    });
+});
+
+$(document).on('click', '#_saveEditItem', function() {
+    $('#editItem').ajaxForm({
+        target: '.aj_msg',
+        success: function() {
+            if ($('.aj_msg').html() == 'Edited successfully.') {
+                //$('form#newItem').html('');
+                /*
+                setTimeout(function(){
+                	$('#_blanketH').fadeOut(400,function(){location.reload();});
+                }, 1000);
+                */
+            }
+
+        }
+    }).submit();
+
+});
 /*** end item ***/

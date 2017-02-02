@@ -314,13 +314,13 @@ class Core {
         } else {
             for ($i = 0; $i < count($_FILES['fIMG']['name']); $i++) {
                 $pic['nameImg'] = array(
-                    'name' => $_FILES['fIMG']['name'][$i],
-                    'type' => $_FILES['fIMG']['type'][$i],
-                    'tmp_name' => $_FILES['fIMG']['tmp_name'][$i],
-                    'error' => $_FILES['fIMG']['error'][$i],
-                    'size' => $_FILES['fIMG']['size'][$i]
+                    'name' => $_FILES['fIMG']['name'],
+                    'type' => $_FILES['fIMG']['type'],
+                    'tmp_name' => $_FILES['fIMG']['tmp_name'],
+                    'error' => $_FILES['fIMG']['error'],
+                    'size' => $_FILES['fIMG']['size']
                 );
-                $val .= ' [' . $_FILES['fIMG']['name'][$i] . '] ';
+                $val .= ' [' . $_FILES['fIMG']['name'] . '] ';
                 $val .= $this->attachImage($_POST, $pic) . '<br>';
             }
        

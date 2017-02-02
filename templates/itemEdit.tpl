@@ -1,5 +1,5 @@
 
-<p class="aj_msg"></p>
+<p class="aj_msg">
 <form method="post" id="editItem" action="async.php?do=editItem" enctype="multipart/form-data">
 	<div class="regular_table_form" style="width:700px; text-align:left; position:relative; margin:0 auto;">
     	<div style="width:300px; float:left;">
@@ -103,3 +103,4 @@
     </table>
 -->*}
 </form>
+</p>
