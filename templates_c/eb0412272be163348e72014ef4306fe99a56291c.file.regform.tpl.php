@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-02-01 14:39:00
+<?php /* Smarty version Smarty-3.1.18, created on 2017-02-03 19:04:49
          compiled from "./templates/regform.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:13850194045891d6e41d5370-96321852%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'eb0412272be163348e72014ef4306fe99a56291c' => 
     array (
       0 => './templates/regform.tpl',
-      1 => 1485951884,
+      1 => 1486117376,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_5891d6e4200e89_80956144',
   'variables' => 
   array (
     'CLREGISTER' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_5891d6e4200e89_80956144',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5891d6e4200e89_80956144')) {function content_5891d6e4200e89_80956144($_smarty_tpl) {?><head>
     <script src='https://www.google.com/recaptcha/api.js'></script>

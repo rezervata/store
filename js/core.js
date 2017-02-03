@@ -88,7 +88,7 @@ $(document).ready(function() {
     });
 
     $(document).on('click', '#login', function(event) {
-        $.post('async.php?do=login', $('form[name="loginform"]').serialize(), function(data) {
+        $.post('test.php?do=login', $('form[name="loginform"]').serialize(), function(data) {
             $('.login').html(data.msg);
             //            console.log(data)
             if (data.state == 'T') window.location.reload();

@@ -14,9 +14,13 @@
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
-            <div class="g-recaptcha" data-sitekey="6LeY-BMUAAAAAILzmoKccnfPH3F6uga8EW1NOaCM"></div>
-
-        <button class="btn btn-lg btn-primary btn-block" id="login" type="submit">Sign in</button>
+            <div class="g-recaptcha" data-sitekey="6LeY-BMUAAAAAILzmoKccnfPH3F6uga8EW1NOaCM"></div> 
+        <?php
+        require_once 'libs/recaptchalib.php';
+        $publickey = "6LeY-BMUAAAAAILzmoKccnfPH3F6uga8EW1NOaCM";
+        echo recaptcha_get_html($publickey);
+        ?>
+        <input type="submit" id="login" class="btn btn-lg btn-primary btn-block">Sign in</input>
     </form>
-
+  
 </div>

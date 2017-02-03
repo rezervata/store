@@ -1,19 +1,28 @@
 <?php
-function recaptcha($p) {
-    if (isset($_POST['submit'])){
-        $secret = '6LeY-BMUAAAAAEfnisS53HbcJsVbTx_foPFwUNN_';
-        $response = $_POST['g-recaptcha-response'];
-        $remoteip = $_SERVER['REMOTE_ADDR'];
-        $url = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoteip");
-        $rec_res = json_decode($url, TRUE);
-            if ($rec_res['success'] == 1){
-            echo 'You are not a robobt!';
-            } else {
-            die('Please note that you are human!');    
-            }
-        }
-}
+require_once 'libs/recaptchalib.php';
+require_once 'async.php';
 
+        $pubkey = '6LeY-BMUAAAAAILzmoKccnfPH3F6uga8EW1NOaCM';
+        $privkey = '6LeY-BMUAAAAAEfnisS53HbcJsVbTx_foPFwUNN_';
+        $remoteip = $_SERVER['REMOTE_ADDR'];
+        $challenge = recaptcha_get_html($pubkey, $error = null, $use_ssl = false);
+//       $challenge = $_POST["rc-imageselect-target"];
+        $response = $_POST['g-recaptcha-response'];
+        
+        $resp = recaptcha_check_answer($privkey, $remoteip, $challenge, $response);
+     
+          if ($_GET['do'] == 'login') {
+        
+            if (!$resp->is_valid){
+                  //          die('Please note that you are human!');    
+                    $coreAsync->authUser($_POST);
+        } else {
+                        echo 'You are not a robot!';
+               
+
+            }
+          }
+        
 
 
 

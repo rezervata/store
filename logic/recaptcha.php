@@ -3,7 +3,7 @@
     <form action="" method="post">
 <?php
 
-require_once('/libs/recaptchalib.php');
+require_once $_SERVER['DOCUMENT_ROOT'].'libs/recaptchalib.php';
 
 // Get a key from https://www.google.com/recaptcha/admin/create
 $publickey = "6LeY-BMUAAAAAILzmoKccnfPH3F6uga8EW1NOaCM";
@@ -18,7 +18,7 @@ $error = null;
 if ($_POST["g-recaptcha-response"]) {
         $resp = recaptcha_check_answer ($privatekey,
                                         $_SERVER["REMOTE_ADDR"],
-                                        $_POST["recaptcha_challenge_field"],
+                                        isset($_POST["recaptcha_challenge_field"]),
                                         $_POST["g-recaptcha-response"]);
 
         if ($resp->is_valid) {
