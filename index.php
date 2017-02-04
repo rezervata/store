@@ -4,6 +4,8 @@
 
 session_name('store');
 session_start();
+//setcookie('foo', 'bar', time()+3600);
+// header("location: logic/check-cookie.php");
 
 require_once 'libs/Smarty.class.php';
 require_once 'logic/db.class.php';
@@ -163,4 +165,4 @@ $smarty->assign("ALLCATS",$core->getCombCats());
 $smarty->display('home.tpl');
 
 print_r($_SESSION);
-var_dump($rec_res);
+//print_r($url);
