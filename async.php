@@ -6,6 +6,8 @@ session_start();
 require_once 'logic/db.class.php';
 require_once 'admin/core.php';
 require_once 'libs/Smarty.class.php';
+require_once 'libs/recaptchalib.php';
+
 
 $smarty = new Smarty;
 $db = new DB();
@@ -99,30 +101,48 @@ if (isset($_GET['do'])) {
     }
 //}
 //   .........   CART STEPS
-//    if ($_GET['do'] == 'login') {
-//        $res = $coreAsync->authUser($_POST);
-//     //   $rec_res = $coreAsync->recaptcha($p);
-//        if ($res['state'] == 'T') {
-//            $_SESSION['client']['id'] = $res['id'];
-//            $_SESSION['client']['email'] = $res['email'];
-//            $_SESSION['client']['fname'] = $res['fname'];
-//            $_SESSION['client']['lname'] = $res['lname'];
-//            $_SESSION['client']['logged'] = md5('yes');
-//            $adr = $coreAsync->getUserLocation($u);
-//            $_SESSION['client']['shipAddr'] = $adr['0']['id'];
-//            $_SESSION['client']['shipTax'] = $adr['0']['shipping'];
-//            $_SESSION['cart_step'] = 3;
-//     
-//        } else
-//            unset($_SESSION['client']);
-//        echo json_encode($res);
-//        return;
-//    }
+    if ($_GET['do'] == 'login') {
+        $res = $coreAsync->authUser($_POST);
+//*** RECAPTCHA***//
+        $pubkey = '6LeY-BMUAAAAAILzmoKccnfPH3F6uga8EW1NOaCM';
+        $privkey = '6LeY-BMUAAAAAEfnisS53HbcJsVbTx_foPFwUNN_';
+        $remoteip = $_SERVER['REMOTE_ADDR'];
+        $r = $_POST['g-recaptcha-response'];        
+        $url = file_get_contents("https://google.com/recaptcha/api/siteverify?secret=$privkey&response=$r&remoteip=$remoteip");
+        $d = json_decode($url, true); 
+        $challenge = $d["success"];
+         
+//***END RECAPTCHA***//
+            if ($res['state'] == 'T' && $challenge == 'true') {
+            $_SESSION['client']['id'] = $res['id'];
+            $_SESSION['client']['email'] = $res['email'];
+            $_SESSION['client']['fname'] = $res['fname'];
+            $_SESSION['client']['lname'] = $res['lname'];
+            $_SESSION['client']['logged'] = md5('yes');
+            $adr = $coreAsync->getUserLocation($u);
+            $_SESSION['client']['shipAddr'] = $adr['0']['id'];
+            $_SESSION['client']['shipTax'] = $adr['0']['shipping'];
+            $_SESSION['cart_step'] = 3;
+     
+        } else
+            unset($_SESSION['client']);
+        echo json_encode($res);
+        return;
+    }
     
     if($_GET['do'] == 'accCreate'){
 	$res = $coreAsync->createUser($_POST);
-     //   $rec_res = $coreAsync->recaptcha($p);
-        if ($res['state'] == 'T' && $rec_res == 1) {
+     //*** RECAPTCHA***//
+        $pubkey = '6LeY-BMUAAAAAILzmoKccnfPH3F6uga8EW1NOaCM';
+        $privkey = '6LeY-BMUAAAAAEfnisS53HbcJsVbTx_foPFwUNN_';
+        $remoteip = $_SERVER['REMOTE_ADDR'];
+        $r = $_POST['g-recaptcha-response'];        
+        $url = file_get_contents("https://google.com/recaptcha/api/siteverify?secret=$privkey&response=$r&remoteip=$remoteip");
+        $d = json_decode($url, true); 
+        $challenge = $d["success"];
+         
+//***END RECAPTCHA***//
+        if ($res['state'] == 'T' && $challenge == 'true') {
             $_SESSION['client'] = $res;
             $uid = array();
         $uid['id'] = $_SESSION['client']['id'];
