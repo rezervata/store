@@ -513,10 +513,10 @@ class Core {
             $mail->Username = 'medicinespeed2@gmail.com';
             $mail->Password = 'Medicine1';
             
-            $mail->AddReplyTo('medicinespeed1@gmail.com', 'Medicine Speed Store');
+            $mail->AddReplyTo('medicinespeed1@gmail.com', 'Medicine Get Store');
             if($both) $mail->AddAddress($this->siteMail, '');
             $mail->AddAddress($to, '');
-            $mail->SetFrom('medicinespeed2@gmail.com', 'Medicine Speed Store');
+            $mail->SetFrom('medicinespeed2@gmail.com', 'Medicine Get Store');
             $mail->Subject = $sub;
             $mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
             $mail->MsgHTML($body);
@@ -544,7 +544,7 @@ class Core {
             $body
         );
         
-        $sub = 'Medicine speed - '.$sub;
+        $sub = 'Medicine Get - '.$sub;
             
         if($this->sendMail($to,$body,$sub)) return json_encode(array('state' => 'T', 'msg' => 'Thank you for contacting us.'));
         else return json_encode(array('state' => 'F', 'msg' => 'Error sending data.'));

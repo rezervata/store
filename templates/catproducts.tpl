@@ -1,6 +1,6 @@
 {section name=cp loop=$CATPRODUCTS}
 
-<a href="product/{$CATPRODUCTS[cp].name|stripslashes}">
+<a href="product/{$CATPRODUCTS[cp].name|stripslashes|toSEO}">
   <div class="col-sm-4 col-md-3" style="
 width: 200px;
 height: 300px;
@@ -9,7 +9,7 @@ height: 300px;
 width: 195px;
 height: 295px;
 ">
-        <a href="product/{$CATPRODUCTS[cp].name}">
+        <a href="product/{$CATPRODUCTS[cp].name|toSEO}">
         <img src="../img/m{$CATPRODUCTS[cp].image}.jpg " style="height:100px; width:100px" class="btn btn-primary" role="button">
       </a>
         <div class="caption">

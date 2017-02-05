@@ -1,14 +1,14 @@
 {*home admin*}
 
 <div id="blockNewCategory">
-    Нова категория
+    New category
     <input name="newCategoryName" id="newCategoryName" type="text" value=""/>
     <br/>
 
-    Подкатегория на
+    Subcategory of
     <select name="generalCatId">
         <option value="0">
-            Главна категория
+            Main category
             {foreach $rsCategories as $item}
             <option value="{$item['id']}">{$item['name']}</option>
         {/foreach}
@@ -16,5 +16,5 @@
         </option>
     </select>
     <br/>
-    <input type="button" onclick="newCategory();" value="Нова категория"/>
+    <input type="button" onclick="newCategory();" value="New category"/>
 </div>

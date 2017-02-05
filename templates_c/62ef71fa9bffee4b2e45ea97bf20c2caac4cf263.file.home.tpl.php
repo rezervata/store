@@ -1,29 +1,29 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-02-03 13:39:13
+<?php /* Smarty version Smarty-3.1.18, created on 2017-02-05 17:31:17
          compiled from "./templates/home.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1546480062588f3842735607-48108341%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1922127071589740e28f6857-72719638%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '62ef71fa9bffee4b2e45ea97bf20c2caac4cf263' => 
     array (
       0 => './templates/home.tpl',
-      1 => 1486117376,
+      1 => 1486308023,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1546480062588f3842735607-48108341',
+  'nocache_hash' => '1922127071589740e28f6857-72719638',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_588f3842a360d6_89848458',
+  'unifunc' => 'content_589740e2bea4f3_85009538',
   'variables' => 
   array (
     'CATEGORIES' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_588f3842a360d6_89848458')) {function content_588f3842a360d6_89848458($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_589740e2bea4f3_85009538')) {function content_589740e2bea4f3_85009538($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
     <head>
         <base href="/">
@@ -35,8 +35,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/core.js"></script>
-        <script type="text/javascript" src="js/admin.js"></script>
-
+        
     </head>
     <body>
 
@@ -46,7 +45,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="/">WebSiteName</a>
+                        <a class="navbar-brand" href="/">MEDICINE-GET.com</a>
                     </div>
                     <ul class="nav navbar-nav">
                         
@@ -58,7 +57,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             <li><a href="admOrders/" name="bAdmOrders">Orders</a></li>
                             <li><a href="#" name="bShowBanners">Banners</a></li>
                             <li><a href="#" name="bNewBanner">New Banner</a></li> 
-                            <li><a href="#" name="run">TEST RUN</a></li> 
                             <li><a href="/admin-categories/">Categories</a></li>
                             <li><a href="/admin-products/">Products</a></li>
                             <?php }?>
@@ -100,7 +98,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="row">
                 <form class="col-md-3 col-md-push-5" method="get" action="index.php">
                     <input type="text" name="search" title="Search…">
-                    <input type="submit" name="search_BTN" title="Search Now!" value="Go"
+                    <input type="submit" name="search_BTN" title="Search Now!" value="Search!"
                            class="searchbutton">
                 </form>
             </div>

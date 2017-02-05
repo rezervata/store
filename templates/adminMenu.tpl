@@ -1,14 +1,14 @@
 {*home admin*}
 
 <div id="blockNewCategory">
-    Нова категория
+    New category
     <input name="newCategoryName" id="newCategoryName" type="text" value=""/>
     <br/>
 
-    Подкатегория на
+    Subcategory of
     <select name="generalCatId" style=" width:300px">
         <option value="0">
-            Главна категория
+            Main category
             {section name=kk loop=$rsCategories}
 
             <option value="{$rsCategories[kk].id_cat}">{$rsCategories[kk].name|stripslashes} </option>
@@ -19,20 +19,20 @@
     <br/>
 
 
-    <input class="newCat" type="button"  value="Нова категория"/>
+    <input class="newCat" type="button"  value="New category"/>
 </div>
 
 <br/>
 <hr/>
 <br/>
-<h2>Категории</h2>
+<h2>Categories</h2>
 <table  border="1" cellpadding="1" cellspasing="1">
     <tr>
         <th>N:</th>
         <th>ID</th>
-        <th>Име</th>
-        <th>Родителска категория</th>
-        <th>Действие</th>
+        <th>Name</th>
+        <th>Parent category</th>
+        <th>Action</th>
     </tr>
 {*    {foreach $rsCategories as $item name=categories}*}
         {section name=kk loop=$rsCategories}
@@ -45,7 +45,7 @@
             <td>
                 <select id="parentId_{$rsCategories[kk].parent_id}" value="{$rsCategories[kk].name|stripslashes}">
                     <option value="0"/>
-                    Главна категория
+                    Main category
 {*                    {foreach $rsMainCategories as $mainItem}*}
                         {section name=mk loop=$rsMainCategories}
                         <option value="{$rsMainCategories[mk].id_cat}" {if {$rsCategories[kk].parent_id} == {$rsMainCategories[mk].id_cat}} selected{/if}/>{$rsMainCategories[mk].name|stripslashes}
@@ -55,7 +55,7 @@
                 </select>
             </td>
             <td>
-                <input type="button" value="Запамети" onclick="updateCat({$rsCategories[kk].id_cat});"/>
+                <input type="button" value="Save" onclick="updateCat({$rsCategories[kk].id_cat});"/>
             </td>
         </tr>
         {/section}
@@ -65,7 +65,7 @@
 <br/>
 <hr/>
 
-<div style="color:#f00;">main menu <a href=""></a></div>
+<div style="color:#f00;">Main menu <a href=""></a></div>
 
 <div class="container">
     {if isset($ADMINLOGIN)}<h2>{$ADMINLOGIN|getError}</h2>{/if}

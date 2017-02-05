@@ -1,14 +1,14 @@
 {*admin Categories*}
 
 <div id="blockNewCategory">
-    Нова категория
+    New category
     <input name="newCategoryName" id="newCategoryName" type="text" value=""/>
     <br/>
 
-    Подкатегория на
+    Subcategory of
     <select name="generalCatId" style=" width:300px">
         <option value="0">
-            Главна категория
+            Main category
             {section name=kk loop=$rsCategories}
 
             <option value="{$rsCategories[kk].id}">{$rsCategories[kk].name|stripslashes} </option>
@@ -17,20 +17,20 @@
     </select>
     <br/>
     <br/>
-    <input class="newCat" type="button"  value="Нова категория"/>
+    <input class="newCat" type="button"  value="New category"/>
 </div>
 
 <br/>
 <hr/>
 <br/>
-    <h2>Категории</h2>
+    <h2>Categories</h2>
     <table  border="1" cellpadding="1" cellspasing="1">
         <tr>
             <th>N:</th>
             <th>ID</th>
-            <th>Име</th>
-            <th>Родителска категория</th>
-            <th>Действие</th>
+            <th>Name</th>
+            <th>Parent category</th>
+            <th>Action</th>
         </tr>
             {section name=kk loop=$rsCategories}
             <tr id="blockUpdateCat">
@@ -56,7 +56,7 @@
                     </select>
                 </td>
                 <td>
-                    <input class="updateCat" type="button" value="Запамети"/>
+                    <input class="updateCat" type="button" value="Save"/>
                 </td>
             </tr>
             {/section}

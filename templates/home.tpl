@@ -10,8 +10,7 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/core.js"></script>
-        <script type="text/javascript" src="js/admin.js"></script>
-
+        
     </head>
     <body>
 
@@ -21,7 +20,7 @@
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="/">WebSiteName</a>
+                        <a class="navbar-brand" href="/">MEDICINE-GET.com</a>
                     </div>
                     <ul class="nav navbar-nav">
                         
@@ -33,7 +32,6 @@
                             <li><a href="admOrders/" name="bAdmOrders">Orders</a></li>
                             <li><a href="#" name="bShowBanners">Banners</a></li>
                             <li><a href="#" name="bNewBanner">New Banner</a></li> 
-                            <li><a href="#" name="run">TEST RUN</a></li> 
                             <li><a href="/admin-categories/">Categories</a></li>
                             <li><a href="/admin-products/">Products</a></li>
                             {/if}
@@ -71,7 +69,7 @@
             <div class="row">
                 <form class="col-md-3 col-md-push-5" method="get" action="index.php">
                     <input type="text" name="search" title="Search…">
-                    <input type="submit" name="search_BTN" title="Search Now!" value="Go"
+                    <input type="submit" name="search_BTN" title="Search Now!" value="Search!"
                            class="searchbutton">
                 </form>
             </div>

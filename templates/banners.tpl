@@ -4,7 +4,7 @@
 <div>
 {section name=si loop=$NODE}
     <div class="svNode" style="position:absolute; height:140px; width:100%; background:url(img/m{$NODE[si].image}.jpg) center; background-size:140%; white-space: nowrap;">
-    	<a href="product/{$NODE[si].name|stripslashes}">
+    	<a href="product/{$NODE[si].name|stripslashes|toSEO}">
         <p style="opacity:0; color:#fff; text-shadow:#000 1px 1px 3px;">{$NODE[si].name|stripslashes}<br>
         <span style="font-size:1.6em;">now for: &euro; {$NODE[si].price}</span></p>
         </a>

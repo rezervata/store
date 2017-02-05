@@ -7,10 +7,10 @@
 		    <input type="hidden" name="hItemImage" value="{$PRODUCT.image}">
         
         	<label>Name</label>
-            <input name="itemName" value="{$PRODUCT.name|stripslashes|htmlspecialchars}">
+            <input name="itemName" value="{$PRODUCT.name|stripslashes|htmlspecialchars|toSEO}">
             
             <label>Make</label>
-            <input name="itemMake" value="{$PRODUCT.make|stripslashes|htmlspecialchars}">
+            <input name="itemMake" value="{$PRODUCT.make|stripslashes|htmlspecialchars|toSEO}">
             
             <label>Category</label>
             <select name="itemCatId">
@@ -27,10 +27,10 @@
             </select>
             
             <label>Meta keywords</label>
-            <input name="itemMKey" value="{$PRODUCT.mkeys|stripslashes|htmlspecialchars}">
+            <input name="itemMKey" value="{$PRODUCT.mkeys|stripslashes|htmlspecialchars|toSEO}">
             
             <label>Meta description</label>
-            <input name="itemDesc" value="{$PRODUCT.mdesc|stripslashes|htmlspecialchars}">
+            <input name="itemDesc" value="{$PRODUCT.mdesc|stripslashes|htmlspecialchars|toSEO}">
             
             <label>price</label>
             <input name="itemPrice" value="{$PRODUCT.price}">
@@ -44,7 +44,7 @@
             <input type="file" name="fIMG">
             
             <label>Description</label>
-            <textarea name="itemData">{$PRODUCT.data|stripslashes}</textarea>
+            <textarea name="itemData">{$PRODUCT.data|stripslashes|toSEO}</textarea>
         </div>
         <div class="clearfix"></div>
         

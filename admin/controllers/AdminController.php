@@ -21,7 +21,7 @@ function indexAction($smarty, $db) {
     // get all parent categories
     $rsCategories = getAllMainCategories($db);
 
-    $smarty->assign('pageTitle', 'Админ сайта');
+    $smarty->assign('pageTitle', 'Admin site');
     $smarty->assign('rsCategories', $rsCategories);
 
 }
@@ -35,10 +35,10 @@ function addNewCatAction($smarty, $db) {
 
     if ($res) {
         $resData['success'] = 1;
-        $resData['message'] = 'Категорията е добавена';
+        $resData['message'] = 'Category is created';
     } else {
         $resData['success'] = 0;
-        $resData['message'] = 'Грешка при добавяне на категория';
+        $resData['message'] = 'Error adding category';
     }
 
     echo json_encode($resData);

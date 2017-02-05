@@ -1,18 +1,18 @@
 {* admin Products *}
 
-<h2 > Продукти </h2 >
+<h2 > Products </h2 >
 <div id = "blockNewProduct" >
     <table border = "1"cellpadding = "1"cellspacing = "1" >  
-        <caption > Добавяне на продукти </caption >
+        <caption > Add new products </caption >
         <tr >  
-            <th > Име </th >
-            <th > Цена </th >  
-            <th > Категория </th >
-            <th > Производител </th >
+            <th > Name </th >
+            <th > Price </th >  
+            <th > Category </th >
+            <th > Manufacturer </th >
             <th > Mkey </th > 
             <th > Mdes </th >
-            <th > Описание </th >
-            <th > Запамети </th >
+            <th > Description </th >
+            <th > Save </th >
         </tr >
         <tr > 
             <td > 
@@ -23,7 +23,7 @@
             </td >
             <td >
                 <select id = "newItemCatId"name = "newItemCatId" >
-                    <option value = "0"> Главна категория </option >
+                    <option value = "0"> Main category </option >
                     {section name = kk loop = $rsCategories} 
                         <option value = "{$rsCategories[kk].id}">
                             {$rsCategories[kk].name|stripslashes}
@@ -33,7 +33,7 @@
             </td >  
             <td >
                 <select id = "newItemMake"name = "newItemMake" >
-                    <option value = "0" > Нов производител </option >
+                    <option value = "0" > New manufacturer </option >
                         {section  name = prod loop = $rsProducts}
                             <option value = "{$rsProducts[prod].make|stripslashes}" >  {$rsProducts[prod].make|stripslashes} </option > 
                         {/section}
@@ -49,7 +49,7 @@
                 <textarea id = "newItemData"name = "newItemData" ></textarea >
             </td >
             <td >
-                <input class = "newProduct"type = "button"value = "Запамети"/>
+                <input class = "newProduct"type = "button"value = "Save"/>
             </td >
         </tr >    
     </table >
@@ -60,16 +60,16 @@
         <tr >
             <th > N: </th >
             <th > ID </th >
-            <th > Име </th >
-            <th > Цена </th >
-            <th > Категория </th >
-            <th > Производител </th >
+            <th > Name </th >
+            <th > Price </th >
+            <th > Category </th >
+            <th > Manufacturer </th >
             <th > Mkey </th >
             <th > Mdes </th >
-            <th > Описание </th >
-            <th > Изтрит </th >
-            <th > Изображение </th >
-            <th > Съхранение </th >
+            <th > Description </th >
+            <th > Deleted </th >
+            <th > Image </th >
+            <th > Save </th >
         </tr >
         {section name = pr loop = $rsProducts} 
             <tr id="blockUpdateProduct">
@@ -87,7 +87,7 @@
                 </td >
                 <td >
                     <select id = "itemCatId_{$rsProducts[pr].id}" >
-                        <option value = "0" > Главна категория </option >
+                        <option value = "0" > Main category </option >
                             {section name = kk loop = $rsCategories}
                                 <option value = "{$rsCategories[kk].id}" >
                                     {$rsCategories[kk].name|stripslashes}
@@ -97,7 +97,7 @@
                 </td >
                 <td >
                     <select id = "newItemMake_{$rsProducts[pr].id}" > 
-                        <option value = "0" > Нов производител </option >  
+                        <option value = "0" > New manufacturer </option >  
                             {section  name = prod loop = $rsProducts}
                                 <option value = "{$rsProducts[prod].make|stripslashes}" >
                                     {$rsProducts[prod].make|stripslashes} 
@@ -137,12 +137,12 @@
                         <br/>
                         <input type = "hidden"name = "itemId"value = "{$rsProducts[pr].id}"/>
                         <br/>
-                        <input type = "submit"value = "Качване"/>
+                        <input type = "submit"value = "Upload"/>
                         <br/>
                     </form >
                 </td >
                 <td >
-                    <input class="updateProduct" type = "button"value = "Запамети"/>
+                    <input class="updateProduct" type = "button"value = "Save"/>
                 </td >
             </tr >
             

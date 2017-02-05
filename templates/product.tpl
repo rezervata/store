@@ -15,7 +15,7 @@
        </div>
 
 
-    <label>Price: {$PRODUCT[0].price} лв.</label>
+    <label>Price: {$PRODUCT[0].price} euro</label>
 
             <a href="#" class="btn btn-default toCart" role="button" data-id="{$PRODUCT[0].id}">Add to Cart</a>
 
