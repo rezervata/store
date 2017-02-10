@@ -85,7 +85,41 @@
 								   	<li><a href="#"> <span>EUR</span> </a></li>
 								   </ul>
 								</li>*}
-								<li><a href="#"><span> <i class="fa fa-unlock-alt"></i></span> Login  </a>
+                                                                
+                                                      {*          
+                                                                {if isset($smarty.session.admin.logged)}
+                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> {$smarty.session.admin.name}</a></li>
+                            <li><a href="/admin-exit/" name="logout" id="logout" class="logout glyphicon glyphicon-user" >Sign out</a></li>
+                        {elseif isset($smarty.session.client.logged)}
+                            <li><a href="#" class="glyphicon glyphicon-user">{$smarty.session.client.fname} {$smarty.session.client.lname}</a></li>
+                            <li><a href="#" name="logout" id="logout" class="logout glyphicon glyphicon-user" >Sign out</a></li>
+                                <div class="logout"></div>
+                             <li><a href="orders/" name="myorders" class="glyphicon glyphicon-user">My Orders</a></li>
+                        {else}
+                            <li><a href="#" id="_accCreate" name="_accCreate" class="_accCreate glyphicon glyphicon-user"> Sign Up</a></li>
+                            <li><a href="#" id="clLogin" name="clLogin" class="clLogin glyphicon glyphicon-log-in"> Login</a></li>
+                            <div class="login"></div>
+                            <div class="acc_create"></div>
+                        {/if}
+                                                               *} 
+                                                                
+                                                                {if isset($smarty.session.admin.logged)}
+                            <li><a href="#"><span <i class="fa fa-unlock-alt"></i></span> {$smarty.session.admin.name}</a></li>
+                            <li><a href="/admin-exit/" name="logout" id="logout" <i class="fa fa-unlock-alt"></i> >Sign out</a></li>
+                        {elseif isset($smarty.session.client.logged)}
+                        
+                        <li><a href="#" <i class="fa fa-unlock-alt"></i>{$smarty.session.client.fname} {$smarty.session.client.lname}</a></li>
+                            <li><a href="#" name="logout" id="logout" <i class="fa fa-unlock-alt"></i>Sign out</a></li>
+                                <div class="logout"></div>
+                                {else}
+                            <li><a href="#" id="_accCreate" name="_accCreate" <i class="fa fa-key"></i> Sign Up</a></li>
+                            <li><a href="#" id="clLogin" name="clLogin" <i class="fa fa-unlock-alt"></i> Login</a></li>
+                            <div class="login"></div>
+                            <div class="acc_create"></div>
+                        {/if}
+                        
+                        
+								{*<li><a href="#"><span> <i class="fa fa-unlock-alt"></i></span> Login  </a>
 									<div class="block-content">
 									  <ul class="form-list">
 									    <li> 
@@ -110,9 +144,9 @@
 										  </div>
 									  </div>
 									</div>
-								</li>
-								<li><a href="#"><span><i class="fa fa-key"></i></span>  Register</a></li>
-								<li><a href="#"><span> <i class="fa fa-heart"></i> </span>Wishlist</a></li>
+								</li>*}
+								{*<li><a href="#"><span><i class="fa fa-key"></i></span>  Register</a></li>
+								<li><a href="#"><span> <i class="fa fa-heart"></i> </span>Wishlist</a></li>*}
 							</ul>
 						
 						</div>
@@ -126,16 +160,20 @@
 				<div class="row">
 					<div class="col-sm-12 col-md-3 col-lg-3">
 					  <div class="h2-logo">
-						<a href="index.html"><img src="../libs/img/logos/medicine-get-logo.png" alt="" /></a>
+						<a href="/"><img src="../libs/img/logos/medicine-get-logo.png" alt="" /></a>
 					  </div>
 					</div>
-					{*<div class="col-sm-12 col-md-6 col-lg-6">
+					<div class="col-sm-12 col-md-6 col-lg-6">
 					  <div class="h2-cat-search">
 					    <div class="em-category-search">
-						  <form action="#">
+						  <form method="get" action="index.php">
 						   <div class="form-search cate_search">
 						     <div class="input_cat hidden-xs"> 
-							  <div class="catsearch-dropdown over">
+                                                         
+                     
+                                                         
+                                                         
+							  {*<div class="catsearch-dropdown over">
 							    <span class="current">&nbsp;&nbsp;&nbsp; All Categories</span>
 									<ul >
 										<li><a href="#"> &nbsp;&nbsp;&nbsp;All Categories </a></li>
@@ -170,23 +208,43 @@
 										<li><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Office</a></li>
 										<li><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lamp-Chair</a></li>
 									</ul>
-								</div>
+								</div>*}
 							</div> 
+                                                        
 							<div class="text-search">
 								<input type="search" placeholder="Search entire store here..." class="input-text required-entry" value=""> 
-								<button class="button" title="Search" type="submit"><span><span>Search</span></span></button>
+								<button class="button" name="search_BTN" title="Search Now!" type="submit"><span><span>Search</span></span></button>
 							</div> 
 					       </div>
 						 </form>
 						</div>
 					  </div>
-					</div>*}
+					</div>
+                                                        
+                                                        
+                            {*                            <li>
+                            <a href="cart/" id="_cartStep">
+                                {if isset($smarty.session.cart) != null}
+                                    <span class="label label-default">{$smarty.session.cart|@count}</span>
+                                {else}
+                                    <span class="label label-default">0</span>
+                                {/if}
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Cart</a>
+                        </li>*}
+                                                        
+                                                        
+                                                        
+                                                        
 					<div class="col-sm-12 col-md-3 col-lg-9">
 					  <div class="cart-area">
 						<div class="main-cart-area">
 							<div class="cart-icon">
-								<a href="#">
-								<i class="fa fa-shopping-cart"></i>My Cart: 2
+								<a href="cart/" id="_cartStep">
+                                                                    {if isset($smarty.session.cart) != null}
+								<i class="fa fa-shopping-cart"></i>My Cart {$smarty.session.cart|@count}
+                                                                 {else}
+                                                                     <i class="fa fa-shopping-cart"></i>My Cart
+                                                                     {/if}
 								</a>
 							</div>
 							<div class="cart-sub">
@@ -245,14 +303,7 @@
 									  <a href="index.html" class="mega-title"> BiCycle Store </a>
 									</li>
                                                                         
-                                                                        {if isset($smarty.session.admin.logged)}
-                                                                        <li><a href="admClients/">Clients</a></li>
-                                                                        <li><a href="admOrders/" name="bAdmOrders">Orders</a></li>
-                                                                        <li><a href="#" name="bShowBanners">Banners</a></li>
-                                                                        <li><a href="#" name="bNewBanner">New Banner</a></li> 
-                                                                        <li><a href="/admin-categories/">Categories</a></li>
-                                                                        <li><a href="/admin-products/">Products</a></li>
-                                                                        {/if}
+                                                                        
                                                                         
                                                                         
 									{*<li><a href="index-2.html"> <img src="img/home-menu/2.jpg" alt="" /> </a>
@@ -363,6 +414,16 @@
 								</div> 
 							</li>*}
 							<li><a href="contact.html">contact us</a></li>
+                                                        
+                                                         {if isset($smarty.session.admin.logged)}
+                                                            <li><a href="admClients/">Clients</a></li>
+                                                            <li><a href="admOrders/" name="bAdmOrders">Orders</a></li>
+                                                            <li><a href="#" name="bShowBanners">Banners</a></li>
+                                                            <li><a href="#" name="bNewBanner">New Banner</a></li> 
+                                                            <li><a href="/admin-categories/">Categories</a></li>
+                                                            <li><a href="/admin-products/">Products</a></li>
+                                                            {/if}
+                                                        
 						   </ul>
 						</nav>
 					</div>

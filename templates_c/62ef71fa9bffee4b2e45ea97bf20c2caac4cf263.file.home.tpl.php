@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-02-10 14:07:17
+<?php /* Smarty version Smarty-3.1.18, created on 2017-02-10 17:08:28
          compiled from "./templates/home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1922127071589740e28f6857-72719638%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '62ef71fa9bffee4b2e45ea97bf20c2caac4cf263' => 
     array (
       0 => './templates/home.tpl',
-      1 => 1486728434,
+      1 => 1486739306,
       2 => 'file',
     ),
   ),
@@ -96,34 +96,30 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							<ul>
 								
 								
-								<li><a href="#"><span> <i class="fa fa-unlock-alt"></i></span> Login  </a>
-									<div class="block-content">
-									  <ul class="form-list">
-									    <li> 
-										 <label>Email Address<em>*</em></label> 
-										 <input type="text" class="input-text">
-										</li>
-										<li> 
-										 <label>Password<em>*</em></label> 
-										 <input type="password" class="input-text">
-										 </li>
-										 <li><span class="required">* Required Fields</span></li>
-									  </ul>
-									  <div class="action-forgot">
-										   <div class="login_forgotpassword">
-											 <p><a href="#">Forgot Your Password?</a></p>
-											  <p><span>Don't have an account?</span>
-											   <a class="create-account-link-wishlist" href="#" title="Sign Up">Sign Up</a>
-											   </p>
-										   </div>
-										   <div class="actions">
-											 <button type="submit" class="button"><span><span>Login</span></span></button>
-										  </div>
-									  </div>
-									</div>
-								</li>
-								<li><a href="#"><span><i class="fa fa-key"></i></span>  Register</a></li>
-								<li><a href="#"><span> <i class="fa fa-heart"></i> </span>Wishlist</a></li>
+                                                                
+                                                       
+                                                                
+                                                                <?php if (isset($_SESSION['admin']['logged'])) {?>
+                            <li><a href="#"><span <i class="fa fa-unlock-alt"></i></span> <?php echo $_SESSION['admin']['name'];?>
+</a></li>
+                            <li><a href="/admin-exit/" name="logout" id="logout" <i class="fa fa-unlock-alt"></i> >Sign out</a></li>
+                        <?php } elseif (isset($_SESSION['client']['logged'])) {?>
+                        
+                        <li><a href="#" <i class="fa fa-unlock-alt"></i><?php echo $_SESSION['client']['fname'];?>
+ <?php echo $_SESSION['client']['lname'];?>
+</a></li>
+                            <li><a href="#" name="logout" id="logout" <i class="fa fa-unlock-alt"></i>Sign out</a></li>
+                                <div class="logout"></div>
+                                <?php } else { ?>
+                            <li><a href="#" id="_accCreate" name="_accCreate" <i class="fa fa-key"></i> Sign Up</a></li>
+                            <li><a href="#" id="clLogin" name="clLogin" <i class="fa fa-unlock-alt"></i> Login</a></li>
+                            <div class="login"></div>
+                            <div class="acc_create"></div>
+                        <?php }?>
+                        
+                        
+								
+								
 							</ul>
 						
 						</div>
@@ -137,16 +133,49 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<div class="row">
 					<div class="col-sm-12 col-md-3 col-lg-3">
 					  <div class="h2-logo">
-						<a href="index.html"><img src="../libs/img/logos/medicine-get-logo.png" alt="" /></a>
+						<a href="/"><img src="../libs/img/logos/medicine-get-logo.png" alt="" /></a>
 					  </div>
 					</div>
-					
+					<div class="col-sm-12 col-md-6 col-lg-6">
+					  <div class="h2-cat-search">
+					    <div class="em-category-search">
+						  <form method="get" action="index.php">
+						   <div class="form-search cate_search">
+						     <div class="input_cat hidden-xs"> 
+                                                         
+                     
+                                                         
+                                                         
+							  
+							</div> 
+                                                        
+							<div class="text-search">
+								<input type="search" placeholder="Search entire store here..." class="input-text required-entry" value=""> 
+								<button class="button" name="search_BTN" title="Search Now!" type="submit"><span><span>Search</span></span></button>
+							</div> 
+					       </div>
+						 </form>
+						</div>
+					  </div>
+					</div>
+                                                        
+                                                        
+                            
+                                                        
+                                                        
+                                                        
+                                                        
 					<div class="col-sm-12 col-md-3 col-lg-9">
 					  <div class="cart-area">
 						<div class="main-cart-area">
 							<div class="cart-icon">
-								<a href="#">
-								<i class="fa fa-shopping-cart"></i>My Cart: 2
+								<a href="cart/" id="_cartStep">
+                                                                    <?php if (isset($_SESSION['cart'])!=null) {?>
+								<i class="fa fa-shopping-cart"></i>My Cart <?php echo count($_SESSION['cart']);?>
+
+                                                                 <?php } else { ?>
+                                                                     <i class="fa fa-shopping-cart"></i>My Cart
+                                                                     <?php }?>
 								</a>
 							</div>
 							<div class="cart-sub">
@@ -205,14 +234,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 									  <a href="index.html" class="mega-title"> BiCycle Store </a>
 									</li>
                                                                         
-                                                                        <?php if (isset($_SESSION['admin']['logged'])) {?>
-                                                                        <li><a href="admClients/">Clients</a></li>
-                                                                        <li><a href="admOrders/" name="bAdmOrders">Orders</a></li>
-                                                                        <li><a href="#" name="bShowBanners">Banners</a></li>
-                                                                        <li><a href="#" name="bNewBanner">New Banner</a></li> 
-                                                                        <li><a href="/admin-categories/">Categories</a></li>
-                                                                        <li><a href="/admin-products/">Products</a></li>
-                                                                        <?php }?>
+                                                                        
                                                                         
                                                                         
 									
@@ -263,6 +285,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						   	<li><a href="about.html">About</a></li>
 						   	
 							<li><a href="contact.html">contact us</a></li>
+                                                        
+                                                         <?php if (isset($_SESSION['admin']['logged'])) {?>
+                                                            <li><a href="admClients/">Clients</a></li>
+                                                            <li><a href="admOrders/" name="bAdmOrders">Orders</a></li>
+                                                            <li><a href="#" name="bShowBanners">Banners</a></li>
+                                                            <li><a href="#" name="bNewBanner">New Banner</a></li> 
+                                                            <li><a href="/admin-categories/">Categories</a></li>
+                                                            <li><a href="/admin-products/">Products</a></li>
+                                                            <?php }?>
+                                                        
 						   </ul>
 						</nav>
 					</div>
