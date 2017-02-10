@@ -532,98 +532,27 @@
 							</div>
 						</div>
 					  </div>
-					  <div class="h2-testimuial">
-
-
-						  <div class="singl-tesimonial">
-							  <div class="s-test-img">
-								  <img src="../libs/img/testi2.png" alt="">
-							  </div>
-							  <div class="s-test-infos">
-								  <h3>Nirob khan </h3>
-								  <p class="text-testi"><i class="fa fa-quote-left"></i>You can change the visual appearance of almost every                                element of the theme.</p>
-							  </div>
-						  </div>
-						  <div class="singl-tesimonial">
-							  <div class="s-test-img">
-								  <img src="../libs/img/testi3.png" alt="">
-							  </div>
-							  <div class="s-test-infos">
-								  <h3>salim rana </h3>
-								  <p class="text-testi"><i class="fa fa-quote-left"></i>You can change the visual appearance of almost every                                element of the theme.</p>
-							  </div>
-						  </div>
-
-                        	<div class="h2-left-cat nra">
-						<h2 class="left-crt-title">Best Sellers</h2>
-						<div class="b-p-area">
-							<div class="product-sale-of">
-							  <div class="s-of-p-img">
-								  <a href="#">
-									  <img class="min-img" src="../libs/img/products/thumb/23.jpg" alt="">
-									  <img class="other-img" src="../libs/img/products/thumb/24.jpg" alt="">
-								  </a>
-							  </div>
-							  <div class="s-of-p-info">
-								<div class="tab-p-info">
-									<a href="#"> Apple iMac ME045 </a>
-									<div class="star">
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-									</div>
-									<h3>$872.00 </h3>
-								</div>  
-							  </div>
-						  </div>
-						  <div class="product-sale-of">
-							  <div class="s-of-p-img">
-								  <a href="#">
-									  <img class="min-img" src="../libs/img/products/thumb/25.jpg" alt="">
-									  <img class="other-img" src="../libs/img/products/thumb/26.jpg" alt="">
-								  </a>
-							  </div>
-							  <div class="s-of-p-info">
-								<div class="tab-p-info">
-									<a href="#"> Apple iMac ME045 </a>
-									<div class="star">
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-									</div>
-									<h3>$872.00 </h3>
-								</div>  
-							  </div>
-						  </div>
-						  <div class="product-sale-of last-pd">
-							  <div class="s-of-p-img">
-								  <a href="#">
-									  <img class="min-img" src="../libs/img/products/thumb/27.jpg" alt="">
-									  <img class="other-img" src="../libs/img/products/thumb/28.jpg" alt="">
-								  </a>
-							  </div>
-							  <div class="s-of-p-info">
-								<div class="tab-p-info">
-									<a href="#"> Apple iMac ME045 </a>
-									<div class="star">
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-									</div>
-									<h3>$872.00 </h3>
-								</div>  
-							  </div>
-						  </div>
-						</div>
-					</div>    
-                    </div> 
-					
+                        <div class="h2-testimuial">
+                            <div class="singl-tesimonial">
+                                <div class="s-test-img">
+                                    <img src="../libs/img/testi2.png" alt="">
+                                </div>
+                                <div class="s-test-infos">
+                                    <h3>Nirob khan </h3>
+                                    <p class="text-testi"><i class="fa fa-quote-left"></i>You can change the visual appearance of almost every                                element of the theme.</p>
+                                </div>
+                            </div>
+                            <div class="singl-tesimonial">
+                                <div class="s-test-img">
+                                    <img src="../libs/img/testi3.png" alt="">
+                                </div>
+                                <div class="s-test-infos">
+                                    <h3>salim rana </h3>
+                                    <p class="text-testi"><i class="fa fa-quote-left"></i>You can change the visual appearance of almost every                                element of the theme.</p>
+                                </div>
+                            </div>
+                        </div> 
+                   
 					{*<div class="h2-left-cat nra">
 						<h2 class="left-crt-title">Best Sellers</h2>
 						<div class="b-p-area">
@@ -694,7 +623,7 @@
 					</div>*}
 					
 					<!-- add area -->
-					<div class="all-h17-left-add">
+					{*<div class="all-h17-left-add">
 						<div class="new-adds electronics-bottom-bannar-area">
 							<a href="#"><img src="../libs/img/all-adds/90.jpg" alt=""></a>
 						</div>
@@ -718,11 +647,11 @@
 							</a>
 						  </div>
 						</div>
-					</div>
+					</div>*}
 					<!-- add area -->
 					</div>
 					
-					<div class="col-sm-12 col-md-9 col-lg-9">
+					<div class="col-sm-12 col-md-9 col-lg-6">
 						<div class="h-2-sliders all-navs">
 							<div class="single-h2-slide s171">
 								<img src="../libs/img/slider/h17/1.jpg" alt="" />
@@ -1154,6 +1083,75 @@
 					            </div>
 					        </div>
 					    </div>
+					</div>
+                    <h2>Test</h2>
+                    		<div class="h2-left-cat nra">
+						<h2 class="left-crt-title">Best Sellers</h2>
+						<div class="b-p-area">
+							<div class="product-sale-of">
+							  <div class="s-of-p-img">
+								  <a href="#">
+									  <img class="min-img" src="../libs/img/products/thumb/23.jpg" alt="">
+									  <img class="other-img" src="../libs/img/products/thumb/24.jpg" alt="">
+								  </a>
+							  </div>
+							  <div class="s-of-p-info">
+								<div class="tab-p-info">
+									<a href="#"> Apple iMac ME045 </a>
+									<div class="star">
+										 <i class="fa fa-star"></i>
+										 <i class="fa fa-star"></i>
+										 <i class="fa fa-star-half-o"></i>
+										 <i class="fa fa-star-half-o"></i>
+										 <i class="fa fa-star-half-o"></i>
+									</div>
+									<h3>$872.00 </h3>
+								</div>  
+							  </div>
+						  </div>
+						  <div class="product-sale-of">
+							  <div class="s-of-p-img">
+								  <a href="#">
+									  <img class="min-img" src="../libs/img/products/thumb/25.jpg" alt="">
+									  <img class="other-img" src="../libs/img/products/thumb/26.jpg" alt="">
+								  </a>
+							  </div>
+							  <div class="s-of-p-info">
+								<div class="tab-p-info">
+									<a href="#"> Apple iMac ME045 </a>
+									<div class="star">
+										 <i class="fa fa-star"></i>
+										 <i class="fa fa-star"></i>
+										 <i class="fa fa-star-half-o"></i>
+										 <i class="fa fa-star-half-o"></i>
+										 <i class="fa fa-star-half-o"></i>
+									</div>
+									<h3>$872.00 </h3>
+								</div>  
+							  </div>
+						  </div>
+						  <div class="product-sale-of last-pd">
+							  <div class="s-of-p-img">
+								  <a href="#">
+									  <img class="min-img" src="../libs/img/products/thumb/27.jpg" alt="">
+									  <img class="other-img" src="../libs/img/products/thumb/28.jpg" alt="">
+								  </a>
+							  </div>
+							  <div class="s-of-p-info">
+								<div class="tab-p-info">
+									<a href="#"> Apple iMac ME045 </a>
+									<div class="star">
+										 <i class="fa fa-star"></i>
+										 <i class="fa fa-star"></i>
+										 <i class="fa fa-star-half-o"></i>
+										 <i class="fa fa-star-half-o"></i>
+										 <i class="fa fa-star-half-o"></i>
+									</div>
+									<h3>$872.00 </h3>
+								</div>  
+							  </div>
+						  </div>
+						</div>
 					</div>
 				</div>
 			</div>
