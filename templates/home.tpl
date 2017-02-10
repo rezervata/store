@@ -220,7 +220,7 @@
                                                         
                                                         
                                                         
-					<div class="col-sm-12 col-md-3 col-lg-9">
+					<div class="col-sm-12 col-md-3 col-lg-3">
 					  <div class="cart-area">
 						<div class="main-cart-area">
 							<div class="cart-icon">
