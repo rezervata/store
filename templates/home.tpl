@@ -1142,8 +1142,8 @@
 					    </div>
 					</div>
                     <h2>Test</h2>
-                    		<div class="h2-left-cat nra">
-						<h2 class="left-crt-title">Best Sellers</h2>
+                    		<div class="h2-right-cat nra">
+						<h2 class="right-crt-title">Best Sellers</h2>
 						<div class="b-p-area">
 							<div class="product-sale-of">
 							  <div class="s-of-p-img">
@@ -1163,17 +1163,17 @@
 										 <i class="fa fa-star-half-o"></i>
 									</div>*}
 									<h3>$872.00 </h3>
-								</div>  
+								</div> 
 							  </div>
 						  </div>
-						  <div class="product-sale-of">
+						  {*<div class="product-sale-of">
 							  <div class="s-of-p-img">
 								  <a href="#">
 									  <img class="min-img" src="../libs/img/products/thumb/25.jpg" alt="">
 									  <img class="other-img" src="../libs/img/products/thumb/26.jpg" alt="">
 								  </a>
 							  </div>
-							  <div class="s-of-p-info">
+							 {* <div class="s-of-p-info">
 								<div class="tab-p-info">
 									<a href="#"> Apple iMac ME045 </a>
 									<{*div class="star">
@@ -1182,12 +1182,12 @@
 										 <i class="fa fa-star-half-o"></i>
 										 <i class="fa fa-star-half-o"></i>
 										 <i class="fa fa-star-half-o"></i>
-									</div>*}
+									</div>
 									<h3>$872.00 </h3>
 								</div>  
 							  </div>
-						  </div>
-						  <div class="product-sale-of last-pd">
+						  </div>*}
+						 {* <div class="product-sale-of last-pd">
 							  <div class="s-of-p-img">
 								  <a href="#">
 									  <img class="min-img" src="../libs/img/products/thumb/27.jpg" alt="">
@@ -1203,11 +1203,11 @@
 										 <i class="fa fa-star-half-o"></i>
 										 <i class="fa fa-star-half-o"></i>
 										 <i class="fa fa-star-half-o"></i>
-									</div>*}
+									</div>
 									<h3>$872.00 </h3>
 								</div>  
 							  </div>
-						  </div>
+						  </div>*}
 						</div>
 					</div>
 				</div>

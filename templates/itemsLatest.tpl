@@ -2,7 +2,7 @@
 
 {section name=li loop=$LAST5}
     <a class="lastetItem" href="/product/{$LAST5[li].name|stripslashes}" alt="{$LAST5[li].name}" title="{$LAST5[li].name}">
-    <link href="http://medicine-speed.com/product/{$LAST5[li].name|htmlentities|stripslashes|toSEO}" rel="canonical">
+    <link href="http://medicine-get.com/product/{$LAST5[li].name|htmlentities|stripslashes|toSEO}" rel="canonical">
     <div class="liItem{if $smarty.section.li.last} liLast{/if}">
     	<div class="liName">{$LAST5[li].name|stripslashes}</div>
         <div class="liText">

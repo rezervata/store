@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-02-10 18:06:03
+<?php /* Smarty version Smarty-3.1.18, created on 2017-02-10 18:31:34
          compiled from "./templates/itemsLatest.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1922726969589740e2d24a61-68771767%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bdfda12fa5eff1b5e4c702515f0cf3b22048347e' => 
     array (
       0 => './templates/itemsLatest.tpl',
-      1 => 1486742563,
+      1 => 1486744262,
       2 => 'file',
     ),
   ),
@@ -53,7 +53,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['li']['last']       = ($_smar
 " alt="<?php echo $_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name'];?>
 " title="<?php echo $_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name'];?>
 ">
-    <link href="http://medicine-speed.com/product/<?php echo toSEO(stripslashes(htmlentities($_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name'])));?>
+    <link href="http://medicine-get.com/product/<?php echo toSEO(stripslashes(htmlentities($_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name'])));?>
 " rel="canonical">
     <div class="liItem<?php if ($_smarty_tpl->getVariable('smarty')->value['section']['li']['last']) {?> liLast<?php }?>">
     	<div class="liName"><?php echo stripslashes($_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name']);?>
