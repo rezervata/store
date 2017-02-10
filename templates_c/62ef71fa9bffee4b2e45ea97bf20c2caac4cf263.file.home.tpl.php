@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-02-10 17:08:28
+<?php /* Smarty version Smarty-3.1.18, created on 2017-02-10 18:11:57
          compiled from "./templates/home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1922127071589740e28f6857-72719638%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '62ef71fa9bffee4b2e45ea97bf20c2caac4cf263' => 
     array (
       0 => './templates/home.tpl',
-      1 => 1486739306,
+      1 => 1486743115,
       2 => 'file',
     ),
   ),
@@ -97,8 +97,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								
 								
                                                                 
-                                                       
-                                                                
+                                                      
                                                                 <?php if (isset($_SESSION['admin']['logged'])) {?>
                             <li><a href="#"><span <i class="fa fa-unlock-alt"></i></span> <?php echo $_SESSION['admin']['name'];?>
 </a></li>
@@ -111,6 +110,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             <li><a href="#" name="logout" id="logout" <i class="fa fa-unlock-alt"></i>Sign out</a></li>
                                 <div class="logout"></div>
                                 <?php } else { ?>
+                                    
                             <li><a href="#" id="_accCreate" name="_accCreate" <i class="fa fa-key"></i> Sign Up</a></li>
                             <li><a href="#" id="clLogin" name="clLogin" <i class="fa fa-unlock-alt"></i> Login</a></li>
                             <div class="login"></div>
@@ -224,11 +224,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 col-md-12 col-lg-12">
-				    <div class="small-logo"><a href="#"><img src="../libs/img/logos/h2-logo_small.png" alt=""></a></div>
+				    <div class="small-logo"><a href="/"><img src="../libs/img/logos/medicine-get-logo.png" alt=""></a></div>
 					<div class="menu-area">
 						<nav class="main-menu">
 						  <ul>
-						   	<li><a href="#">home</a>
+						   	<li><a href="/">home</a>
 								<ul class="img-mega-menu">
 									<li><a href="index.html"> <img src="../libs/img/home-menu/1.jpg" alt="" /> </a>
 									  <a href="index.html" class="mega-title"> BiCycle Store </a>
@@ -920,13 +920,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['last']       = ($_smar
 							  <div class="s-of-p-info">
 								<div class="tab-p-info">
 									<a href="#"> Apple iMac ME045 </a>
-									<div class="star">
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-									</div>
+									
 									<h3>$872.00 </h3>
 								</div>  
 							  </div>
@@ -941,13 +935,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['last']       = ($_smar
 							  <div class="s-of-p-info">
 								<div class="tab-p-info">
 									<a href="#"> Apple iMac ME045 </a>
-									<div class="star">
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-									</div>
+									<
 									<h3>$872.00 </h3>
 								</div>  
 							  </div>
@@ -962,13 +950,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['last']       = ($_smar
 							  <div class="s-of-p-info">
 								<div class="tab-p-info">
 									<a href="#"> Apple iMac ME045 </a>
-									<div class="star">
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-									</div>
+									
 									<h3>$872.00 </h3>
 								</div>  
 							  </div>
@@ -1061,72 +1043,13 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['last']       = ($_smar
     </div>
 
 
-        <div id="wrapper">
+       
 
-            <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="/">MEDICINE-GET.com</a>
-                    </div>
-                    <ul class="nav navbar-nav">
-                        
-                        
-
-                        
-                        <?php if (isset($_SESSION['admin']['logged'])) {?>
-                            <li><a href="admClients/">Clients</a></li>
-                            <li><a href="admOrders/" name="bAdmOrders">Orders</a></li>
-                            <li><a href="#" name="bShowBanners">Banners</a></li>
-                            <li><a href="#" name="bNewBanner">New Banner</a></li> 
-                            <li><a href="/admin-categories/">Categories</a></li>
-                            <li><a href="/admin-products/">Products</a></li>
-                            <?php }?>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <?php if (isset($_SESSION['admin']['logged'])) {?>
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['admin']['name'];?>
-</a></li>
-                            <li><a href="/admin-exit/" name="logout" id="logout" class="logout glyphicon glyphicon-user" >Sign out</a></li>
-                        <?php } elseif (isset($_SESSION['client']['logged'])) {?>
-                            <li><a href="#" class="glyphicon glyphicon-user"><?php echo $_SESSION['client']['fname'];?>
- <?php echo $_SESSION['client']['lname'];?>
-</a></li>
-                            <li><a href="#" name="logout" id="logout" class="logout glyphicon glyphicon-user" >Sign out</a></li>
-                                <div class="logout"></div>
-                             <li><a href="orders/" name="myorders" class="glyphicon glyphicon-user">My Orders</a></li>
-                        <?php } else { ?>
-                            <li><a href="#" id="_accCreate" name="_accCreate" class="_accCreate glyphicon glyphicon-user"> Sign Up</a></li>
-                            <li><a href="#" id="clLogin" name="clLogin" class="clLogin glyphicon glyphicon-log-in"> Login</a></li>
-                            <div class="login"></div>
-                            <div class="acc_create"></div>
-                        <?php }?>
-                        <li>
-                            <a href="cart/" id="_cartStep">
-                                <?php if (isset($_SESSION['cart'])!=null) {?>
-                                    <span class="label label-default"><?php echo count($_SESSION['cart']);?>
-</span>
-                                <?php } else { ?>
-                                    <span class="label label-default">0</span>
-                                <?php }?>
-                                <span class="glyphicon glyphicon-shopping-cart"></span> Cart</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </nav>
-
-
-            <div class="row">
-                <form class="col-md-3 col-md-push-5" method="get" action="index.php">
-                    <input type="text" name="search" title="Search…">
-                    <input type="submit" name="search_BTN" title="Search Now!" value="Search!"
-                           class="searchbutton">
-                </form>
-            </div>
+            
                                 
                                 
                               
-                                <div class="metro_body" id="metro_body"></div>
+                          
             
                                 
                                 
@@ -1134,39 +1057,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['last']       = ($_smar
                                 
                                 
                                 <!-- Sidebar -->
-            <div class="col-sm-2 sidenav">
-                <ul class="sidebar-nav">
-                    <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['kk'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['kk']);
-$_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['name'] = 'kk';
-$_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['CATEGORIES']->value) ? count($_loop) : max(0, (int) $_loop); unset($_loop);
-$_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['show'] = true;
-$_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['max'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['loop'];
-$_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['step'] = 1;
-$_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['start'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['step'] > 0 ? 0 : $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['loop']-1;
-if ($_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['show']) {
-    $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['total'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['loop'];
-    if ($_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['total'] == 0)
-        $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['show'] = false;
-} else
-    $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['total'] = 0;
-if ($_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['show']):
-
-            for ($_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['index'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['start'], $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['iteration'] = 1;
-                 $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['iteration'] <= $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['total'];
-                 $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['index'] += $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['step'], $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['iteration']++):
-$_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['rownum'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['iteration'];
-$_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['index_prev'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['index'] - $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['step'];
-$_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['index_next'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['index'] + $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['step'];
-$_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['iteration'] == 1);
-$_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['total']);
-?>
-                        <li>
-                            <a href="category/<?php echo $_smarty_tpl->tpl_vars['CATEGORIES']->value[$_smarty_tpl->getVariable('smarty')->value['section']['kk']['index']]['metakeys'];?>
-"><?php echo stripslashes($_smarty_tpl->tpl_vars['CATEGORIES']->value[$_smarty_tpl->getVariable('smarty')->value['section']['kk']['index']]['name']);?>
-</a>
-                        <?php endfor; endif; ?>
-                </ul>
-            </div>
+            
             <!-- /#sidebar-wrapper -->
             
             <div class="col-sm-8 content">

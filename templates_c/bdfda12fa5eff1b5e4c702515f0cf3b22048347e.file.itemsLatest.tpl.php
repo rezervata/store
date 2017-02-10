@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-02-05 17:12:34
+<?php /* Smarty version Smarty-3.1.18, created on 2017-02-10 18:06:03
          compiled from "./templates/itemsLatest.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1922726969589740e2d24a61-68771767%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bdfda12fa5eff1b5e4c702515f0cf3b22048347e' => 
     array (
       0 => './templates/itemsLatest.tpl',
-      1 => 1486305974,
+      1 => 1486742563,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_589740e2e0c9b0_17372255',
   'variables' => 
   array (
     'LAST5' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_589740e2e0c9b0_17372255',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_589740e2e0c9b0_17372255')) {function content_589740e2e0c9b0_17372255($_smarty_tpl) {?>	<div class="sidePanTitle">most recent products</div>
 
@@ -56,7 +56,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['li']['last']       = ($_smar
     <link href="http://medicine-speed.com/product/<?php echo toSEO(stripslashes(htmlentities($_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name'])));?>
 " rel="canonical">
     <div class="liItem<?php if ($_smarty_tpl->getVariable('smarty')->value['section']['li']['last']) {?> liLast<?php }?>">
-    	<div class="liName"><?php echo toSEO(stripslashes($_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name']));?>
+    	<div class="liName"><?php echo stripslashes($_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name']);?>
 </div>
         <div class="liText">
         	

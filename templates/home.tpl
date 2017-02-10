@@ -86,23 +86,7 @@
 								   </ul>
 								</li>*}
                                                                 
-                                                      {*          
-                                                                {if isset($smarty.session.admin.logged)}
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> {$smarty.session.admin.name}</a></li>
-                            <li><a href="/admin-exit/" name="logout" id="logout" class="logout glyphicon glyphicon-user" >Sign out</a></li>
-                        {elseif isset($smarty.session.client.logged)}
-                            <li><a href="#" class="glyphicon glyphicon-user">{$smarty.session.client.fname} {$smarty.session.client.lname}</a></li>
-                            <li><a href="#" name="logout" id="logout" class="logout glyphicon glyphicon-user" >Sign out</a></li>
-                                <div class="logout"></div>
-                             <li><a href="orders/" name="myorders" class="glyphicon glyphicon-user">My Orders</a></li>
-                        {else}
-                            <li><a href="#" id="_accCreate" name="_accCreate" class="_accCreate glyphicon glyphicon-user"> Sign Up</a></li>
-                            <li><a href="#" id="clLogin" name="clLogin" class="clLogin glyphicon glyphicon-log-in"> Login</a></li>
-                            <div class="login"></div>
-                            <div class="acc_create"></div>
-                        {/if}
-                                                               *} 
-                                                                
+                                                      
                                                                 {if isset($smarty.session.admin.logged)}
                             <li><a href="#"><span <i class="fa fa-unlock-alt"></i></span> {$smarty.session.admin.name}</a></li>
                             <li><a href="/admin-exit/" name="logout" id="logout" <i class="fa fa-unlock-alt"></i> >Sign out</a></li>
@@ -112,6 +96,7 @@
                             <li><a href="#" name="logout" id="logout" <i class="fa fa-unlock-alt"></i>Sign out</a></li>
                                 <div class="logout"></div>
                                 {else}
+                                    
                             <li><a href="#" id="_accCreate" name="_accCreate" <i class="fa fa-key"></i> Sign Up</a></li>
                             <li><a href="#" id="clLogin" name="clLogin" <i class="fa fa-unlock-alt"></i> Login</a></li>
                             <div class="login"></div>
@@ -293,11 +278,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 col-md-12 col-lg-12">
-				    <div class="small-logo"><a href="#"><img src="../libs/img/logos/h2-logo_small.png" alt=""></a></div>
+				    <div class="small-logo"><a href="/"><img src="../libs/img/logos/medicine-get-logo.png" alt=""></a></div>
 					<div class="menu-area">
 						<nav class="main-menu">
 						  <ul>
-						   	<li><a href="#">home</a>
+						   	<li><a href="/">home</a>
 								<ul class="img-mega-menu">
 									<li><a href="index.html"> <img src="../libs/img/home-menu/1.jpg" alt="" /> </a>
 									  <a href="index.html" class="mega-title"> BiCycle Store </a>
@@ -1170,13 +1155,13 @@
 							  <div class="s-of-p-info">
 								<div class="tab-p-info">
 									<a href="#"> Apple iMac ME045 </a>
-									<div class="star">
+									{*<div class="star">
 										 <i class="fa fa-star"></i>
 										 <i class="fa fa-star"></i>
 										 <i class="fa fa-star-half-o"></i>
 										 <i class="fa fa-star-half-o"></i>
 										 <i class="fa fa-star-half-o"></i>
-									</div>
+									</div>*}
 									<h3>$872.00 </h3>
 								</div>  
 							  </div>
@@ -1191,13 +1176,13 @@
 							  <div class="s-of-p-info">
 								<div class="tab-p-info">
 									<a href="#"> Apple iMac ME045 </a>
-									<div class="star">
+									<{*div class="star">
 										 <i class="fa fa-star"></i>
 										 <i class="fa fa-star"></i>
 										 <i class="fa fa-star-half-o"></i>
 										 <i class="fa fa-star-half-o"></i>
 										 <i class="fa fa-star-half-o"></i>
-									</div>
+									</div>*}
 									<h3>$872.00 </h3>
 								</div>  
 							  </div>
@@ -1212,13 +1197,13 @@
 							  <div class="s-of-p-info">
 								<div class="tab-p-info">
 									<a href="#"> Apple iMac ME045 </a>
-									<div class="star">
+									{*<div class="star">
 										 <i class="fa fa-star"></i>
 										 <i class="fa fa-star"></i>
 										 <i class="fa fa-star-half-o"></i>
 										 <i class="fa fa-star-half-o"></i>
 										 <i class="fa fa-star-half-o"></i>
-									</div>
+									</div>*}
 									<h3>$872.00 </h3>
 								</div>  
 							  </div>
@@ -1527,7 +1512,7 @@
     </div>
 
 
-        <div id="wrapper">
+       {* <div id="wrapper">
 
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
@@ -1563,7 +1548,7 @@
                             <div class="login"></div>
                             <div class="acc_create"></div>
                         {/if}
-                        <li>
+                     {*   <li>
                             <a href="cart/" id="_cartStep">
                                 {if isset($smarty.session.cart) != null}
                                     <span class="label label-default">{$smarty.session.cart|@count}</span>
@@ -1576,19 +1561,19 @@
                     </ul>
                 </div>
             </nav>
+*}
 
-
-            <div class="row">
+            {*<div class="row">
                 <form class="col-md-3 col-md-push-5" method="get" action="index.php">
                     <input type="text" name="search" title="Search…">
                     <input type="submit" name="search_BTN" title="Search Now!" value="Search!"
                            class="searchbutton">
                 </form>
-            </div>
+            </div>*}
                                 
                                 
                               
-                                <div class="metro_body" id="metro_body"></div>
+                          {*      <div class="metro_body" id="metro_body"></div>*}
             
                                 
                                 
@@ -1596,14 +1581,14 @@
                                 
                                 
                                 <!-- Sidebar -->
-            <div class="col-sm-2 sidenav">
+            {*<div class="col-sm-2 sidenav">
                 <ul class="sidebar-nav">
                     {section name=kk loop=$CATEGORIES}
                         <li>
                             <a href="category/{$CATEGORIES[kk].metakeys}">{$CATEGORIES[kk].name|stripslashes}</a>
                         {/section}
                 </ul>
-            </div>
+            </div>*}
             <!-- /#sidebar-wrapper -->
             
             <div class="col-sm-8 content">
