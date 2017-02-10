@@ -66,7 +66,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-4 col-md-3 col-lg-3">
-					   <p> <i class="fa fa-phone"></i> hotline: 01922262289</p>
+					   <p> {*<i class="fa fa-phone"></i>*} MEDICINE-GET Medicines for your health!</p>
 					</div>
 					<div class="col-sm-8 col-md-9 col-lg-9">
 					   <div class="right-menus">
@@ -78,13 +78,13 @@
 								   	<li><a href="#"> <img alt="" src="img/lng/german.png"> <span>German</span> </a></li>
 								   </ul>
 								</li>*}
-								<li><a href="#">USD <i class="fa fa-angle-down"></i></a>
+								{*<li><a href="#">USD <i class="fa fa-angle-down"></i></a>
 								  <ul class="sub-lng tk">
 								   	<li><a href="#"> <span>EUR</span> </a></li>
 								   	<li><a href="#"> <span>USD</span> </a></li>
 								   	<li><a href="#"> <span>EUR</span> </a></li>
 								   </ul>
-								</li>
+								</li>*}
 								<li><a href="#"><span> <i class="fa fa-unlock-alt"></i></span> Login  </a>
 									<div class="block-content">
 									  <ul class="form-list">
@@ -126,7 +126,7 @@
 				<div class="row">
 					<div class="col-sm-12 col-md-3 col-lg-3">
 					  <div class="h2-logo">
-						<a href="index.html"><img src="../libs/img/logos/logo2.png" alt="" /></a>
+						<a href="index.html"><img src="../libs/img/logos/medicine-get-logo.png" alt="" /></a>
 					  </div>
 					</div>
 					{*<div class="col-sm-12 col-md-6 col-lg-6">
@@ -244,6 +244,17 @@
 									<li><a href="index.html"> <img src="../libs/img/home-menu/1.jpg" alt="" /> </a>
 									  <a href="index.html" class="mega-title"> BiCycle Store </a>
 									</li>
+                                                                        
+                                                                        {if isset($smarty.session.admin.logged)}
+                                                                        <li><a href="admClients/">Clients</a></li>
+                                                                        <li><a href="admOrders/" name="bAdmOrders">Orders</a></li>
+                                                                        <li><a href="#" name="bShowBanners">Banners</a></li>
+                                                                        <li><a href="#" name="bNewBanner">New Banner</a></li> 
+                                                                        <li><a href="/admin-categories/">Categories</a></li>
+                                                                        <li><a href="/admin-products/">Products</a></li>
+                                                                        {/if}
+                                                                        
+                                                                        
 									{*<li><a href="index-2.html"> <img src="img/home-menu/2.jpg" alt="" /> </a>
 									  <a href="index-2.html" class="mega-title"> Shopping Mall Store </a>
 									</li>
@@ -292,9 +303,9 @@
 									<li><a href="index-17.html"> <img src="../libs/img/home-menu/17.jpg" alt="" /> </a>
 									  <a href="index-17.html" class="mega-title"> Drug Store </a>
 									</li>
-									<li><a href="index.html"> <img src="../libs/img/home-menu/18.jpg" alt="" /> </a>
+									{*<li><a href="index.html"> <img src="../libs/img/home-menu/18.jpg" alt="" /> </a>
 									  <a href="index.html" class="mega-title"> Fashion Store </a>
-									</li>
+									</li>*}
 								</ul>
 							</li>
 						   	<li><a href="#">Category</a>
