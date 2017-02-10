@@ -1147,14 +1147,19 @@
 						<div class="b-p-area">
 							<div class="product-sale-of">
 							  <div class="s-of-p-img">
-								  <a href="#">
-									  <img class="min-img" src="../libs/img/products/thumb/23.jpg" alt="">
-									  <img class="other-img" src="../libs/img/products/thumb/24.jpg" alt="">
+                                                              
+                                                              {section name=li loop=$LAST5}
+   
+								  <a href="/product/{$LAST5[li].name|stripslashes}" alt="{$LAST5[li].name}" title="{$LAST5[li].name}">
+									<link href="http://medicine-get.com/product/{$LAST5[li].name|htmlentities|stripslashes|toSEO}" rel="canonical">
+                                                                        <div class="liItem{if $smarty.section.li.last} liLast{/if}">
+                                                                      <img class="min-img" src="/img/t{$LAST5[li].image}.jpg" alt="">
+{*									  <img class="other-img" src="../libs/img/products/thumb/24.jpg" alt="">*}
 								  </a>
 							  </div>
 							  <div class="s-of-p-info">
 								<div class="tab-p-info">
-									<a href="#"> Apple iMac ME045 </a>
+									<a href="#">{$LAST5[li].name|stripslashes}</a>
 									{*<div class="star">
 										 <i class="fa fa-star"></i>
 										 <i class="fa fa-star"></i>
@@ -1162,10 +1167,12 @@
 										 <i class="fa fa-star-half-o"></i>
 										 <i class="fa fa-star-half-o"></i>
 									</div>*}
-									<h3>$872.00 </h3>
+{*									<h3>{$LAST5[li].price}</h3>*}
 								</div> 
 							  </div>
 						  </div>
+                                                                </div>
+                                                                        {/section}
 						  {*<div class="product-sale-of">
 							  <div class="s-of-p-img">
 								  <a href="#">
@@ -1626,7 +1633,7 @@
                                     {include file='banners.tpl'}
                                                         </div>                    
 
-                                    {include file='itemsLatest.tpl'}
+{*                                    {include file='itemsLatest.tpl'}*}
                 </table>                        
                 {*</ul>*}
             </div>
