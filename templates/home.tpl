@@ -625,74 +625,6 @@
                             </div>
                         </div> 
                    
-					{*<div class="h2-left-cat nra">
-						<h2 class="left-crt-title">Best Sellers</h2>
-						<div class="b-p-area">
-							<div class="product-sale-of">
-							  <div class="s-of-p-img">
-								  <a href="#">
-									  <img class="min-img" src="img/products/thumb/23.jpg" alt="">
-									  <img class="other-img" src="img/products/thumb/24.jpg" alt="">
-								  </a>
-							  </div>
-							  <div class="s-of-p-info">
-								<div class="tab-p-info">
-									<a href="#"> Apple iMac ME045 </a>
-									<div class="star">
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-									</div>
-									<h3>$872.00 </h3>
-								</div>  
-							  </div>
-						  </div>
-						  <div class="product-sale-of">
-							  <div class="s-of-p-img">
-								  <a href="#">
-									  <img class="min-img" src="img/products/thumb/25.jpg" alt="">
-									  <img class="other-img" src="img/products/thumb/26.jpg" alt="">
-								  </a>
-							  </div>
-							  <div class="s-of-p-info">
-								<div class="tab-p-info">
-									<a href="#"> Apple iMac ME045 </a>
-									<div class="star">
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-									</div>
-									<h3>$872.00 </h3>
-								</div>  
-							  </div>
-						  </div>
-						  <div class="product-sale-of last-pd">
-							  <div class="s-of-p-img">
-								  <a href="#">
-									  <img class="min-img" src="img/products/thumb/27.jpg" alt="">
-									  <img class="other-img" src="img/products/thumb/28.jpg" alt="">
-								  </a>
-							  </div>
-							  <div class="s-of-p-info">
-								<div class="tab-p-info">
-									<a href="#"> Apple iMac ME045 </a>
-									<div class="star">
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-									</div>
-									<h3>$872.00 </h3>
-								</div>  
-							  </div>
-						  </div>
-						</div>
-					</div>*}
 					
 					<!-- add area -->
 					{*<div class="all-h17-left-add">
@@ -1134,79 +1066,33 @@
 					    </div>
 					</div>
                     	
-						<div class="h2-right-cat nra">
+					<div class="h2-right-cat nra">
 						<h2 class="right-crt-title">Best Sellers</h2>
 						<div class="b-p-area">
+							 {section name=li loop=$LAST5}
 							<div class="product-sale-of">
-							  <div class="s-of-p-img">
-                                                              
-                                                              {section name=li loop=$LAST5}
-   
-								  <a href="/product/{$LAST5[li].name|stripslashes}" alt="{$LAST5[li].name}" title="{$LAST5[li].name}">
-									<link href="http://medicine-get.com/product/{$LAST5[li].name|htmlentities|stripslashes|toSEO}" rel="canonical">
-                                                                        <div class="liItem{if $smarty.section.li.last} liLast{/if}">
-                                                                      <img class="min-img" src="/img/t{$LAST5[li].image}.jpg" alt="">
-{*									  <img class="other-img" src="../libs/img/products/thumb/24.jpg" alt="">*}
+							  <div class="s-of-p-img liItem{if $smarty.section.li.last} liLast{/if}">
+								  <a href="/product/{$LAST5[li].name|stripslashes}">
+									  <img class="min-img" src="/img/t{$LAST5[li].image}.jpg" alt="{$LAST5[li].name|stripslashes}">
+									  {*<img class="other-img" src="../libs/img/products/thumb/24.jpg" alt="">*}
 								  </a>
 							  </div>
 							  <div class="s-of-p-info">
 								<div class="tab-p-info">
-									<a href="#">{$LAST5[li].name|stripslashes}</a>
-									{*<div class="star">
+									<a href="/product/{$LAST5[li].name|stripslashes}"> {$LAST5[li].name} </a>
+									<div class="star">
 										 <i class="fa fa-star"></i>
 										 <i class="fa fa-star"></i>
 										 <i class="fa fa-star-half-o"></i>
 										 <i class="fa fa-star-half-o"></i>
 										 <i class="fa fa-star-half-o"></i>
-									</div>*}
-{*									<h3>{$LAST5[li].price}</h3>*}
-								</div> 
+									</div>
+									<h3>{$LAST5[li].price}EUR </h3>
+								</div>  
 							  </div>
 						  </div>
-                                                                </div>
-                                                                        {/section}
-						  {*<div class="product-sale-of">
-							  <div class="s-of-p-img">
-								  <a href="#">
-									  <img class="min-img" src="../libs/img/products/thumb/25.jpg" alt="">
-									  <img class="other-img" src="../libs/img/products/thumb/26.jpg" alt="">
-								  </a>
-							  </div>
-							 {* <div class="s-of-p-info">
-								<div class="tab-p-info">
-									<a href="#"> Apple iMac ME045 </a>
-									<{*div class="star">
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-									</div>
-									<h3>$872.00 </h3>
-								</div>  
-							  </div>
-						  </div>*}
-						 {* <div class="product-sale-of last-pd">
-							  <div class="s-of-p-img">
-								  <a href="#">
-									  <img class="min-img" src="../libs/img/products/thumb/27.jpg" alt="">
-									  <img class="other-img" src="../libs/img/products/thumb/28.jpg" alt="">
-								  </a>
-							  </div>
-							  <div class="s-of-p-info">
-								<div class="tab-p-info">
-									<a href="#"> Apple iMac ME045 </a>
-									{*<div class="star">
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-										 <i class="fa fa-star-half-o"></i>
-									</div>
-									<h3>$872.00 </h3>
-								</div>  
-							  </div>
-						  </div>*}
+						  {/section}
+							
 						</div>
 					</div>
 				</div>

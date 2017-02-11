@@ -895,7 +895,7 @@ class Core {
     /*** end adm orders ***/
     /*** LATEST ***/
     function getLatest($lim=10){
-        $r = $this->db->getAsoc("select id,name,image,left(data,70) as data from items order by id DESC limit $lim");
+        $r = $this->db->getAsoc("select id,name,price,image,left(data,70) as data from items order by id DESC limit $lim");
         return $r;
     }
         

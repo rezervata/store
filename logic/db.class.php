@@ -22,7 +22,7 @@ class DB
     
     public function __destruct()
     {
-        if ($this->db) {
+    if ($this->db) {
             $this->db->close();
         }
     }
