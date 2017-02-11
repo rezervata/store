@@ -122,7 +122,7 @@ if (isset($_GET['adminProducts'])) {
     $smarty->assign('PAGES', $rsProducts['pages']);
 }
 
-$smarty->assign('CATEGORIES', $db->select("select id, metakeys, name from folders order by name"));
+$smarty->assign('CATEGORIES', $db->select("select * from folders order by name"));
 $smarty->assign('TOPPRODUCT', $db->select("select * from items order by id limit 10"));
 
 //...........SEARCH............

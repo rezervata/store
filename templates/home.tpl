@@ -524,12 +524,27 @@
 								<nav>
 									<div class="left-cart-menu">
 										<ul>
+										{*{foreach $CATEGORIES as $cat}
+										{$cat.id|@var_dump}
+										{/foreach}*}
                                          {section name=kk loop=$CATEGORIES}
-                                            <li>
+											{if $CATEGORIES[kk].parent == 0}
+                                            <li>																					
                                                 <a href="category/{$CATEGORIES[kk].metakeys}">{$CATEGORIES[kk].name|stripslashes}</a>
+												 <span><i class="fa fa-caret-right"></i></span>
+												 <ul class="cat-sb">
+												 	{foreach $CATEGORIES as $cat}
+													 	{if $cat.parent == $CATEGORIES[kk].id}	
+															<li>
+																<a href="category/{$cat.metakeys}">{$cat.name|stripslashes}</a>
+															</li>
+														{/if}	
+													{/foreach}
+												</ul>
                                             </li>
+											{/if}
                                         {/section}
-											<li> <i class="fa fa-car"></i> <a href="#"> Women’s Clothing </a> <span><i class="fa fa-caret-right"></i></span>
+											{*<li> <i class="fa fa-car"></i> <a href="#"> Women’s Clothing </a> <span><i class="fa fa-caret-right"></i></span>
 												<ul class="cat-sb">
                                                 
 													<li><a href="#">I-phone5 Clothing</a></li>
@@ -540,7 +555,7 @@
 													<li><a href="#">computer best soft</a></li>
 													<li><a href="#">Bangladesh country</a></li>
 												</ul>
-											</li>
+											</li>*}
 											{*<li> <i class="fa fa-heart"></i> <a href="#"> Men’s Clothing </a> <span><i class="fa fa-caret-right"></i></span>
 												<ul class="cat-sb">
 													<li><a href="#">I-phone5 Clothing</a></li>
@@ -709,32 +724,9 @@
 					</div>
 					
 					<div class="col-sm-12 col-md-9 col-lg-6">
-						<div class="h-2-sliders all-navs">
-							<div class="single-h2-slide s171">
-								<img src="../libs/img/slider/h17/1.jpg" alt="" />
-								<div class="slider-text">
-									<h2>Best Quality <br> <span>Medications</span> </h2>
-									<h3>at Low Prices</h3>
-									<a href="#">purchase now</a>
-								</div>
-							</div>
-							<div class="single-h2-slide s172">
-								<img src="../libs/img/slider/h17/2.jpg" alt="" />
-								<div class="slider-text">
-									<h2>Quality Service</h2>
-									<h3>for all your health needs</h3>
-									<a href="#">purchase now</a>
-								</div>
-							</div>
-							<div class="single-h2-slide s173">
-								<img src="../libs/img/slider/h17/3.jpg" alt="" />
-								<div class="slider-text">
-									<h3>medication packing</h3>
-									<h2>Pharmacy <br> Solutions</h2>
-									<a href="#">purchase now</a>
-								</div>
-							</div>
-						</div>
+						<!-- Baner -->
+						{include file='banners.tpl'}
+						
 						<div class="row">
 							 <!-- add area start -->
 							    <div class="electronics-bottom-bannar-area">
@@ -1141,8 +1133,8 @@
 					        </div>
 					    </div>
 					</div>
-                    <h2>Test</h2>
-                    		<div class="h2-right-cat nra">
+                    	
+						<div class="h2-right-cat nra">
 						<h2 class="right-crt-title">Best Sellers</h2>
 						<div class="b-p-area">
 							<div class="product-sale-of">
