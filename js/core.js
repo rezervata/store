@@ -82,7 +82,7 @@ $(document).ready(function() {
     $(document).on('click', '.clLogin', function(event) {
         $('.login').html('');
         var url = 'async.php?load=clLogin';
-        $('.login').load(url, function() {
+        $('.modal-body').load(url, function() {
             $('#_blanketH').fadeIn();
         });
     });

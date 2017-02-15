@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-02-10 17:05:28
+<?php /* Smarty version Smarty-3.1.18, created on 2017-02-15 10:51:09
          compiled from "./templates/cart.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6299824589dd6b8c8d0d2-86326249%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f3ddb70c7564c38239add3a213818e1d84b39bba' => 
     array (
       0 => './templates/cart.tpl',
-      1 => 1486117376,
+      1 => 1487148662,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_589dd6b91340a8_51693720',
   'variables' => 
   array (
     'CART' => 0,
@@ -25,10 +27,84 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'CART_TOTAL' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_589dd6b91340a8_51693720',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_589dd6b91340a8_51693720')) {function content_589dd6b91340a8_51693720($_smarty_tpl) {?><div class="cart">
+<?php if ($_valid && !is_callable('content_589dd6b91340a8_51693720')) {function content_589dd6b91340a8_51693720($_smarty_tpl) {?><html class="no-js" lang="">
+    <head>
+		<!-- Basic page needs
+		============================================ -->	
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Champions - Cart Page </title>
+        <meta name="description" content="">
+		<!-- Mobile specific metas -->		
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Favicon -->
+		<link rel="shortcut icon" type="image/x-icon" href="img/fav_icon.ico">
+		<!--All Fonts  Here -->
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,300,900' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Raleway:500,400,700,300' rel='stylesheet' type='text/css'>
+		
+		<!-- ALL CSS FILES HERE -->
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- font-awesome CSS -->
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+		<!-- fancybox CSS -->
+        <link rel="stylesheet" href="css/fancybox/jquery.fancybox.css">	
+		<!--bxslider CSS -->
+        <link rel="stylesheet" href="css/jquery.bxslider.min.css">	
+		<!-- owl.carousel CSS-->
+        <link rel="stylesheet" href="css/owl.carousel.css">
+         <!-- owl.carousel transitions CSS-->
+        <link rel="stylesheet" href="css/owl.transitions.css">
+		<!-- simplelens CSS-->
+        <link rel="stylesheet" href="css/jquery.simplelens.css">
+		<!-- owl.theme CSS-->
+        <link rel="stylesheet" href="css/owl.theme.css">
+		<!-- rs-plugin CSS -->	
+		<!-- slider revolution css settings -->
+		<link rel="stylesheet" type="text/css" href="libs/lib/rs-plugin/css/settings.css" media="screen" />
+		<!-- jquery-ui-->
+        <link rel="stylesheet" href="css/jquery-ui.css">
+		<!-- css for mobile menu-->
+        <link rel="stylesheet" href="css/mobile_menu.min.css">
+		<!-- normalize CSS -->		
+        <link rel="stylesheet" href="css/normalize.css">
+		<!-- main CSS -->		
+        <link rel="stylesheet" href="css/main.css">
+		<!-- style CSS -->			
+        <link rel="stylesheet" href="libs/lib/style.css">
+		<!-- responsive CSS -->			
+        <link rel="stylesheet" href="css/responsive.css">
+		
+		<!-- modernizr js -->		
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+
+    <header>
+		<div class="header-top" id="sticker">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-4 col-md-12 col-lg-2 ">
+						<div class="logo-area">
+							<a href="#"><img src="img/logos/logo.png" alt="logo" /> </a>
+						</div>			
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-7">
+						<div class="menu-area">
+							<nav class="main-menu">
+							  <ul>
+							   	<li><a href="#">home</a>
+									<ul class="img-mega-menu">
+										
+										<li><a href="index-17.html"> <img src="img/home-menu/17.jpg" alt="" /> </a>
+										  <a href="index-17.html" class="mega-title"> Drug Store </a>
+										</li>
+										
+									</ul>
+
+<div class="cart">
 
     <?php if (!isset($_SESSION['cart_step'])||$_SESSION['cart_step']==1) {?>
         <header class="cartSteps">

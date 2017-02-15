@@ -68,6 +68,8 @@
 					<div class="col-sm-4 col-md-3 col-lg-3">
 					   <p> {*<i class="fa fa-phone"></i>*} MEDICINE-GET Medicines for your health!</p>
 					</div>
+                                                                            <div class="container">
+
 					<div class="col-sm-8 col-md-9 col-lg-9">
 					   <div class="right-menus">
 							<ul>
@@ -97,10 +99,43 @@
                                 <div class="logout"></div>
                                 {else}
                                     
-                            <li><a href="#" id="_accCreate" name="_accCreate" <i class="fa fa-key"></i> Sign Up</a></li>
-                            <li><a href="#" id="clLogin" name="clLogin" <i class="fa fa-unlock-alt"></i> Login</a></li>
+{*                                     <h2>tuk triabva da se importne</h2>*}
+                                     <!-- Trigger the modal with a button -->
+                                    
+                            <li><a href="#" id="_accCreate" name="_accCreate" <i class="fa fa-key" data-toggle="modal" data-target="#myModal"></i> Sign Up</a></li>
+                            <li><a href="#" id="clLogin" name="clLogin" <i class="fa fa-unlock-alt" data-toggle="modal" data-target="#myModal"></i> Login</a></li>
+                            
+                            {*<div class="_blanketH"></div>*}
+                            <!-- Modal -->
+                            
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Register Form</h4>
+        </div>
+        <div class="modal-body login acc_create">
+            <p></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+
+                       {*     
+                            
+                            
                             <div class="login"></div>
-                            <div class="acc_create"></div>
+                            <div class="acc_create"></div>*}
                         {/if}
                         
                         

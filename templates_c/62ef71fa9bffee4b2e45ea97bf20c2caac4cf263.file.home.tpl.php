@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-02-10 19:00:39
+<?php /* Smarty version Smarty-3.1.18, created on 2017-02-15 14:35:15
          compiled from "./templates/home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1922127071589740e28f6857-72719638%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '62ef71fa9bffee4b2e45ea97bf20c2caac4cf263' => 
     array (
       0 => './templates/home.tpl',
-      1 => 1486746036,
+      1 => 1487162112,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'CATEGORIES' => 0,
+    'cat' => 0,
     'LAST5' => 0,
   ),
   'has_nocache_code' => false,
@@ -92,6 +93,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<div class="col-sm-4 col-md-3 col-lg-3">
 					   <p>  MEDICINE-GET Medicines for your health!</p>
 					</div>
+                                                                            <div class="container">
+
 					<div class="col-sm-8 col-md-9 col-lg-9">
 					   <div class="right-menus">
 							<ul>
@@ -112,10 +115,39 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                 <div class="logout"></div>
                                 <?php } else { ?>
                                     
-                            <li><a href="#" id="_accCreate" name="_accCreate" <i class="fa fa-key"></i> Sign Up</a></li>
-                            <li><a href="#" id="clLogin" name="clLogin" <i class="fa fa-unlock-alt"></i> Login</a></li>
-                            <div class="login"></div>
-                            <div class="acc_create"></div>
+
+                                     <!-- Trigger the modal with a button -->
+                                    
+                            <li><a href="#" id="_accCreate" name="_accCreate" <i class="fa fa-key" data-toggle="modal" data-target="#myModal"></i> Sign Up</a></li>
+                            <li><a href="#" id="clLogin" name="clLogin" <i class="fa fa-unlock-alt" data-toggle="modal" data-target="#myModal"></i> Login</a></li>
+                            
+                            
+                            <!-- Modal -->
+                            
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Register Form</h4>
+        </div>
+        <div class="modal-body login acc_create">
+            <p></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+
+                       
                         <?php }?>
                         
                         
@@ -397,6 +429,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<nav>
 									<div class="left-cart-menu">
 										<ul>
+										
                                          <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['kk'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['kk']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['name'] = 'kk';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['CATEGORIES']->value) ? count($_loop) : max(0, (int) $_loop); unset($_loop);
@@ -421,24 +454,31 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['index_next'] = $_smart
 $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['total']);
 ?>
-                                            <li>
+											<?php if ($_smarty_tpl->tpl_vars['CATEGORIES']->value[$_smarty_tpl->getVariable('smarty')->value['section']['kk']['index']]['parent']==0) {?>
+                                            <li>																					
                                                 <a href="category/<?php echo $_smarty_tpl->tpl_vars['CATEGORIES']->value[$_smarty_tpl->getVariable('smarty')->value['section']['kk']['index']]['metakeys'];?>
 "><?php echo stripslashes($_smarty_tpl->tpl_vars['CATEGORIES']->value[$_smarty_tpl->getVariable('smarty')->value['section']['kk']['index']]['name']);?>
 </a>
-                                            </li>
-                                        <?php endfor; endif; ?>
-											<li> <i class="fa fa-car"></i> <a href="#"> Women’s Clothing </a> <span><i class="fa fa-caret-right"></i></span>
-												<ul class="cat-sb">
-                                                
-													<li><a href="#">I-phone5 Clothing</a></li>
-													<li><a href="#">Nokia 007 Handbags</a></li>
-													<li><a href="#">Eyeglasses technology</a></li>
-													<li><a href="#">Shoes man calculations</a></li>
-													<li><a href="#">Book stall forever</a></li>
-													<li><a href="#">computer best soft</a></li>
-													<li><a href="#">Bangladesh country</a></li>
+												 <span><i class="fa fa-caret-right"></i></span>
+												 <ul class="cat-sb">
+												 	<?php  $_smarty_tpl->tpl_vars['cat'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['cat']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['CATEGORIES']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['cat']->key => $_smarty_tpl->tpl_vars['cat']->value) {
+$_smarty_tpl->tpl_vars['cat']->_loop = true;
+?>
+													 	<?php if ($_smarty_tpl->tpl_vars['cat']->value['parent']==$_smarty_tpl->tpl_vars['CATEGORIES']->value[$_smarty_tpl->getVariable('smarty')->value['section']['kk']['index']]['id']) {?>	
+															<li>
+																<a href="category/<?php echo $_smarty_tpl->tpl_vars['cat']->value['metakeys'];?>
+"><?php echo stripslashes($_smarty_tpl->tpl_vars['cat']->value['name']);?>
+</a>
+															</li>
+														<?php }?>	
+													<?php } ?>
 												</ul>
-											</li>
+                                            </li>
+											<?php }?>
+                                        <?php endfor; endif; ?>
+											
 											
 										</ul>
 									</div>
@@ -468,39 +508,16 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['last']       = ($_smar
                         </div> 
                    
 					
-					
 					<!-- add area -->
 					
 					<!-- add area -->
 					</div>
 					
 					<div class="col-sm-12 col-md-9 col-lg-6">
-						<div class="h-2-sliders all-navs">
-							<div class="single-h2-slide s171">
-								<img src="../libs/img/slider/h17/1.jpg" alt="" />
-								<div class="slider-text">
-									<h2>Best Quality <br> <span>Medications</span> </h2>
-									<h3>at Low Prices</h3>
-									<a href="#">purchase now</a>
-								</div>
-							</div>
-							<div class="single-h2-slide s172">
-								<img src="../libs/img/slider/h17/2.jpg" alt="" />
-								<div class="slider-text">
-									<h2>Quality Service</h2>
-									<h3>for all your health needs</h3>
-									<a href="#">purchase now</a>
-								</div>
-							</div>
-							<div class="single-h2-slide s173">
-								<img src="../libs/img/slider/h17/3.jpg" alt="" />
-								<div class="slider-text">
-									<h3>medication packing</h3>
-									<h2>Pharmacy <br> Solutions</h2>
-									<a href="#">purchase now</a>
-								</div>
-							</div>
-						</div>
+						<!-- Baner -->
+						<?php echo $_smarty_tpl->getSubTemplate ('banners.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
+						
 						<div class="row">
 							 <!-- add area start -->
 							    <div class="electronics-bottom-bannar-area">
@@ -907,14 +924,11 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['kk']['last']       = ($_smar
 					        </div>
 					    </div>
 					</div>
-                    <h2>Test</h2>
-                    		<div class="h2-right-cat nra">
+                    	
+					<div class="h2-right-cat nra">
 						<h2 class="right-crt-title">Best Sellers</h2>
 						<div class="b-p-area">
-							<div class="product-sale-of">
-							  <div class="s-of-p-img">
-                                                              
-                                                              <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['li'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['li']);
+							 <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['li'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['li']);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['li']['name'] = 'li';
 $_smarty_tpl->tpl_vars['smarty']->value['section']['li']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['LAST5']->value) ? count($_loop) : max(0, (int) $_loop); unset($_loop);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['li']['show'] = true;
@@ -938,32 +952,35 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['li']['index_next'] = $_smart
 $_smarty_tpl->tpl_vars['smarty']->value['section']['li']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['li']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['li']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['li']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['li']['total']);
 ?>
-   
+							<div class="product-sale-of">
+							  <div class="s-of-p-img liItem<?php if ($_smarty_tpl->getVariable('smarty')->value['section']['li']['last']) {?> liLast<?php }?>">
 								  <a href="/product/<?php echo stripslashes($_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name']);?>
-" alt="<?php echo $_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name'];?>
-" title="<?php echo $_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name'];?>
 ">
-									<link href="http://medicine-get.com/product/<?php echo toSEO(stripslashes(htmlentities($_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name'])));?>
-" rel="canonical">
-                                                                        <div class="liItem<?php if ($_smarty_tpl->getVariable('smarty')->value['section']['li']['last']) {?> liLast<?php }?>">
-                                                                      <img class="min-img" src="/img/t<?php echo $_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['image'];?>
-.jpg" alt="">
-
+									  <img class="min-img" src="/img/t<?php echo $_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['image'];?>
+.jpg" alt="<?php echo stripslashes($_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name']);?>
+">
+									  
 								  </a>
 							  </div>
 							  <div class="s-of-p-info">
 								<div class="tab-p-info">
-									<a href="#"><?php echo stripslashes($_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name']);?>
-</a>
-									
-
-								</div> 
+									<a href="/product/<?php echo stripslashes($_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name']);?>
+"> <?php echo $_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['name'];?>
+ </a>
+									<div class="star">
+										 <i class="fa fa-star"></i>
+										 <i class="fa fa-star"></i>
+										 <i class="fa fa-star-half-o"></i>
+										 <i class="fa fa-star-half-o"></i>
+										 <i class="fa fa-star-half-o"></i>
+									</div>
+									<h3><?php echo $_smarty_tpl->tpl_vars['LAST5']->value[$_smarty_tpl->getVariable('smarty')->value['section']['li']['index']]['price'];?>
+EUR </h3>
+								</div>  
 							  </div>
 						  </div>
-                                                                </div>
-                                                                        <?php endfor; endif; ?>
-						  
-						 
+						  <?php endfor; endif; ?>
+							
 						</div>
 					</div>
 				</div>
