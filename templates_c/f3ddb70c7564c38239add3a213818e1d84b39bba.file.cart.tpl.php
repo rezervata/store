@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-02-15 10:51:09
+<?php /* Smarty version Smarty-3.1.18, created on 2017-02-16 17:57:54
          compiled from "./templates/cart.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:6299824589dd6b8c8d0d2-86326249%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1746321558a56c15b2fb66-70323968%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'f3ddb70c7564c38239add3a213818e1d84b39bba' => 
     array (
       0 => './templates/cart.tpl',
-      1 => 1487148662,
+      1 => 1487260658,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '6299824589dd6b8c8d0d2-86326249',
+  'nocache_hash' => '1746321558a56c15b2fb66-70323968',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_589dd6b91340a8_51693720',
+  'unifunc' => 'content_58a56c15e6d876_71695638',
   'variables' => 
   array (
     'CART' => 0,
@@ -28,13 +28,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_589dd6b91340a8_51693720')) {function content_589dd6b91340a8_51693720($_smarty_tpl) {?><html class="no-js" lang="">
+<?php if ($_valid && !is_callable('content_58a56c15e6d876_71695638')) {function content_58a56c15e6d876_71695638($_smarty_tpl) {?><html class="no-js" lang="">
     <head>
 		<!-- Basic page needs
 		============================================ -->	
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Champions - Cart Page </title>
+        <title>MEDICINE-GET.com</title>
         <meta name="description" content="">
 		<!-- Mobile specific metas -->		
         <meta name="viewport" content="width=device-width, initial-scale=1">

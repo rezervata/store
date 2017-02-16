@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-02-15 14:35:15
+<?php /* Smarty version Smarty-3.1.18, created on 2017-02-16 17:57:54
          compiled from "./templates/home.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1922127071589740e28f6857-72719638%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:101656193158a56c1562f500-81467051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '62ef71fa9bffee4b2e45ea97bf20c2caac4cf263' => 
     array (
       0 => './templates/home.tpl',
-      1 => 1487162112,
+      1 => 1487260646,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1922127071589740e28f6857-72719638',
+  'nocache_hash' => '101656193158a56c1562f500-81467051',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_589740e2bea4f3_85009538',
+  'unifunc' => 'content_58a56c15ab5da0_85635913',
   'variables' => 
   array (
     'CATEGORIES' => 0,
@@ -25,7 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_589740e2bea4f3_85009538')) {function content_589740e2bea4f3_85009538($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_58a56c15ab5da0_85635913')) {function content_58a56c15ab5da0_85635913($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
     <head>
         <base href="/">
@@ -33,6 +33,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <link rel="icon" type="imgage/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="icon" href="favicon.ico" type="image/x-icon"/>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+        <title>MEDICINE-GET.com</title>
         
         <script type="text/javascript" src="js/core.js"></script>
 
@@ -202,7 +203,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					  <div class="cart-area">
 						<div class="main-cart-area">
 							<div class="cart-icon">
-								<a href="cart/" id="_cartStep">
+								<a href="cart/" id="_cartStep" class="steps" action="index.php">
                                                                     <?php if (isset($_SESSION['cart'])!=null) {?>
 								<i class="fa fa-shopping-cart"></i>My Cart <?php echo count($_SESSION['cart']);?>
 

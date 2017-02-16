@@ -6,6 +6,7 @@
         <link rel="icon" type="imgage/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="icon" href="favicon.ico" type="image/x-icon"/>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+        <title>MEDICINE-GET.com</title>
         {*<link rel="stylesheet" href="libs/css/bootstrap.css" type="text/css">
         <script src="libs/js/jquery.js"></script>
         <script src="libs/js/bootstrap-min.js"></script>*}
@@ -259,7 +260,7 @@
 					  <div class="cart-area">
 						<div class="main-cart-area">
 							<div class="cart-icon">
-								<a href="cart/" id="_cartStep">
+								<a href="cart/" id="_cartStep" class="steps" action="index.php">
                                                                     {if isset($smarty.session.cart) != null}
 								<i class="fa fa-shopping-cart"></i>My Cart {$smarty.session.cart|@count}
                                                                  {else}
