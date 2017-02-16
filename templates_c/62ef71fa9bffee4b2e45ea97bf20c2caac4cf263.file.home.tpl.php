@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2017-02-16 17:57:54
+<?php /* Smarty version Smarty-3.1.18, created on 2017-02-16 18:05:08
          compiled from "./templates/home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:101656193158a56c1562f500-81467051%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '62ef71fa9bffee4b2e45ea97bf20c2caac4cf263' => 
     array (
       0 => './templates/home.tpl',
-      1 => 1487260646,
+      1 => 1487261106,
       2 => 'file',
     ),
   ),
@@ -999,7 +999,7 @@ EUR </h3>
 			<div class="row">
 				<div class="col-sm-12 col-md-4 col-lg-4">
 					<div class="footer-about">
-						<img src="../libs/img/logos/h2-logo_small.png" alt="" />
+						<img src="../libs/img/logos/medicine-get-logo.png" alt="" />
 						<p>Skort Maison Martin Margiela knot ponytail cami texture as tucked t-shirt. Black skirt razor pleats plaited gold collar. Crop 90s spearmint indigo seam luxe washed out.</p>
 						<ul>
 							<li><a href="#"><i class="fa fa-home"></i> NewYork </a></li>
@@ -1049,25 +1049,7 @@ EUR </h3>
     </div>
 	<!-- footer area end -->
 	
-	<!-- footer area start -->
-	<div class="copyright-address-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 col-md-12 col-lg-12">
-					<div class="footer-address"> 
-					   <address>
-						   &copy; 2015 Bootexperts. All Rights Reserved.<br>
-						   <a href="#">Best HTML5 Template </a>
-						   <span>By <a href="http://bootexperts.com">Bootexperts</a></span>
-						   <div class="payment-logo">
-								<a href="#"> <img src="../libs/img/prayment.png" alt="" /></a>
-						   </div>
-					   </address>
-					</div>
-	            </div>
-            </div>
-        </div>
-    </div>
+	
 
 
        

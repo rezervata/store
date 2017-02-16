@@ -1362,7 +1362,7 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-4 col-lg-4">
 					<div class="footer-about">
-						<img src="../libs/img/logos/h2-logo_small.png" alt="" />
+						<img src="../libs/img/logos/medicine-get-logo.png" alt="" />
 						<p>Skort Maison Martin Margiela knot ponytail cami texture as tucked t-shirt. Black skirt razor pleats plaited gold collar. Crop 90s spearmint indigo seam luxe washed out.</p>
 						<ul>
 							<li><a href="#"><i class="fa fa-home"></i> NewYork </a></li>
@@ -1412,7 +1412,7 @@
     </div>
 	<!-- footer area end -->
 	
-	<!-- footer area start -->
+	{*<!-- footer area start -->
 	<div class="copyright-address-area">
 		<div class="container">
 			<div class="row">
@@ -1430,7 +1430,7 @@
 	            </div>
             </div>
         </div>
-    </div>
+    </div>*}
 
 
        {* <div id="wrapper">
